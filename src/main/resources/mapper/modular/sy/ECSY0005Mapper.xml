@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0005Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		select 
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_TYPE_NAME as tagTypeName,<!--标签类型名称-->
+			ROUND_TYPE as roundType,<!--圆角样式-->
+			MARK_TYPE as markType,<!--标记样式-->
+			PLAIN_TYPE as plainType,<!--空心样式-->
+			TAG_SIZE as tagSize,<!--标签大小-->
+			DEFAULT_TEXT_COLOR as defaultTextColor,<!--默认文本颜色-->
+			DEFAULT_BACKGROUND_COLOR as defaultBackgroundColor,<!--默认背景颜色-->
+			CHOICE_TYPE as choiceType,<!--选择类型（1：单选，2：多选）-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_TYPE
+		where
+		TAG_TYPE_CODE = #{tagTypeCode}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		select 
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_TYPE_NAME as tagTypeName,<!--标签类型名称-->
+			ROUND_TYPE as roundType,<!--圆角样式-->
+			MARK_TYPE as markType,<!--标记样式-->
+			PLAIN_TYPE as plainType,<!--空心样式-->
+			TAG_SIZE as tagSize,<!--标签大小-->
+			DEFAULT_TEXT_COLOR as defaultTextColor,<!--默认文本颜色-->
+			DEFAULT_BACKGROUND_COLOR as defaultBackgroundColor,<!--默认背景颜色-->
+			CHOICE_TYPE as choiceType,<!--选择类型（1：单选，2：多选）-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_TYPE
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!---->
+		</if>
+		<if test="tagTypeCode != null and tagTypeCode!=''">
+			 and TAG_TYPE_CODE = #{tagTypeCode}<!--标签类型编码-->
+		</if>
+		<if test="tagTypeName != null and tagTypeName!=''">
+			 and TAG_TYPE_NAME = #{tagTypeName}<!--标签类型名称-->
+		</if>
+		<if test="roundType != null and roundType!=''">
+			 and ROUND_TYPE = #{roundType}<!--圆角样式-->
+		</if>
+		<if test="markType != null and markType!=''">
+			 and MARK_TYPE = #{markType}<!--标记样式-->
+		</if>
+		<if test="plainType != null and plainType!=''">
+			 and PLAIN_TYPE = #{plainType}<!--空心样式-->
+		</if>
+		<if test="tagSize != null and tagSize!=''">
+			 and TAG_SIZE = #{tagSize}<!--标签大小-->
+		</if>
+		<if test="defaultTextColor != null and defaultTextColor!=''">
+			 and DEFAULT_TEXT_COLOR = #{defaultTextColor}<!--默认文本颜色-->
+		</if>
+		<if test="defaultBackgroundColor != null and defaultBackgroundColor!=''">
+			 and DEFAULT_BACKGROUND_COLOR = #{defaultBackgroundColor}<!--默认背景颜色-->
+		</if>
+		<if test="remark != null and remark!=''">
+			 and REMARK = #{remark}<!--备注-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		insert into streetcloud.SYS_TAG_TYPE(
+			TAG_TYPE_CODE,<!--标签类型编码-->
+			TAG_TYPE_NAME,<!--标签类型名称-->
+			ROUND_TYPE,<!--圆角样式-->
+			MARK_TYPE,<!--标记样式-->
+			PLAIN_TYPE,<!--空心样式-->
+			TAG_SIZE,<!--标签大小-->
+			DEFAULT_TEXT_COLOR,<!--默认文本颜色-->
+			DEFAULT_BACKGROUND_COLOR,<!--默认背景颜色-->
+			SORT,<!--排序-->
+			CHOICE_TYPE,<!--选择类型（1：单选，2：多选）-->
+			REMARK,<!--备注-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+		values(
+			#{tagTypeCode},
+			#{tagTypeName},
+			#{roundType},
+			#{markType},
+			#{plainType},
+			#{tagSize},
+			#{defaultTextColor},
+			#{defaultBackgroundColor},
+			#{sort},
+			#{choiceType},
+			#{remark},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		update SYS_TAG_TYPE
+			<set>
+				<if test="tagTypeCode != null ">
+					TAG_TYPE_CODE = #{tagTypeCode},<!--标签类型编码-->
+				</if>
+				<if test="tagTypeName != null ">
+					TAG_TYPE_NAME = #{tagTypeName},<!--标签类型名称-->
+				</if>
+				<if test="roundType != null ">
+					ROUND_TYPE = #{roundType},<!--圆角样式-->
+				</if>
+				<if test="markType != null ">
+					MARK_TYPE = #{markType},<!--标记样式-->
+				</if>
+				<if test="plainType != null ">
+					PLAIN_TYPE = #{plainType},<!--空心样式-->
+				</if>
+				<if test="tagSize != null ">
+					TAG_SIZE = #{tagSize},<!--标签大小-->
+				</if>
+				<if test="defaultTextColor != null ">
+					DEFAULT_TEXT_COLOR = #{defaultTextColor},<!--默认文本颜色-->
+				</if>
+				<if test="defaultBackgroundColor != null ">
+					DEFAULT_BACKGROUND_COLOR = #{defaultBackgroundColor},<!--默认背景颜色-->
+				</if>
+				<if test="sort != null">
+					SORT = #{sort},<!--排序-->
+				</if>
+				<if test="choiceType != null">
+					CHOICE_TYPE = #{choiceType},<!--选择类型（1：单选，2：多选）-->
+				</if>
+				<if test="remark != null ">
+					REMARK = #{remark},<!--备注-->
+				</if>
+				<if test="enabled != null ">
+					ENABLED = #{enabled},<!--是否有效-->
+				</if>
+				<if test="removed != null ">
+					REMOVED = #{removed},<!--是否删除-->
+				</if>
+				<if test="createUserId != null ">
+					CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+				</if>
+				<if test="createUserName != null ">
+					CREATE_USER_NAME = #{createUserName},<!--创建人-->
+				</if>
+				<if test="createTime != null ">
+					CREATE_TIME = #{createTime},<!--创建时间-->
+				</if>
+				<if test="updateUserId != null ">
+					UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+				</if>
+				<if test="updateUserName != null ">
+					UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+				</if>
+				<if test="updateTime != null ">
+					UPDATE_TIME = #{updateTime},<!--更新时间-->
+				</if>
+			</set>
+		 	where id=#{id}
+		 </update>
+
+	<update id="deleteById" parameterType="java.lang.String">
+		UPDATE streetcloud.SYS_TAG_TYPE
+		SET
+		TAG_TYPE_CODE = CONCAT(TAG_TYPE_CODE,unix_timestamp(now())),
+		ENABLED = 0,
+		REMOVED = 1
+		WHERE
+		id=#{id}
+	</update>
+
+
+	<select id="queryBy" parameterType="java.lang.String" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+	  SELECT
+			ID as id,<!--ID-->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_TYPE_NAME as tagTypeName,<!--标签类型名称-->
+			DEFAULT_TEXT_COLOR as defaultTextColor,<!--默认文本颜色-->
+			DEFAULT_BACKGROUND_COLOR as defaultBackgroundColor,<!--默认背景颜色-->
+			ROUND_TYPE as roundType,<!--圆角样式-->
+			MARK_TYPE as markType,<!--标记样式-->
+			PLAIN_TYPE as plainType,<!--空心样式-->
+			TAG_SIZE as tagSize,<!--标签大小-->
+			SORT as sort,<!--排序-->
+			CHOICE_TYPE as choiceType,<!--选择类型（1：单选，2：多选）-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+	  FROM
+		streetcloud.SYS_TAG_TYPE
+			where  1=1
+			and ENABLED = 1
+			and REMOVED = 0
+			<if test="tagTypeCode !=null and tagTypeCode!=''">
+				and TAG_TYPE_CODE = #{tagTypeCode}<!--标签类型编码-->
+			</if>
+			<if test="tagTypeName !=null and tagTypeName!=''">
+				and TAG_TYPE_NAME like '%${tagTypeName}%'<!--标签类型名称-->
+			</if>
+			order by UPDATE_TIME desc
+	</select>
+
+	<select id="queryBYCode" parameterType="java.lang.String" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		select
+		ID as id,<!--id-->
+		TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+		TAG_TYPE_NAME as tagTypeName,<!--标签类型名称-->
+		ROUND_TYPE as roundType,<!--圆角样式-->
+		MARK_TYPE as markType,<!--标记样式-->
+		PLAIN_TYPE as plainType,<!--空心样式-->
+		TAG_SIZE as tagSize,<!--标签大小-->
+		DEFAULT_TEXT_COLOR as defaultTextColor,<!--默认文本颜色-->
+		DEFAULT_BACKGROUND_COLOR as defaultBackgroundColor,<!--默认背景颜色-->
+		SORT as sort,<!--排序-->
+		CHOICE_TYPE as choiceType,<!--选择类型（1：单选，2：多选）-->
+		REMARK as remark<!--备注-->
+		from streetcloud.SYS_TAG_TYPE
+		where TAG_TYPE_CODE = #{tagTypeCode}
+	</select>
+	
+	<select id="queryDetailsByCode" parameterType="java.lang.String" resultType="java.util.Map">
+		SELECT
+			stype.ID AS 'id',
+			stype.TAG_TYPE_CODE AS 'tagTypeCode',
+			stype.TAG_TYPE_NAME AS 'tagTypeName',
+			stype.ROUND_TYPE AS 'roundType',
+			stype.MARK_TYPE AS 'markType',
+			stype.PLAIN_TYPE AS 'plainType',
+			stype.TAG_SIZE AS 'tagSize',
+			stype.DEFAULT_TEXT_COLOR AS 'defaultTextColor',
+			stype.DEFAULT_BACKGROUND_COLOR AS 'defaultBackgroundColor',
+			sinfo.TAG_NAME AS 'tagName',
+			sinfo.TEXT_COLOR AS 'textColor',
+			sinfo.BACKGROUND_COLOR AS 'backgroundColor'
+		FROM
+			streetcloud.SYS_TAG_TYPE stype
+			LEFT JOIN SYS_TAG_INFO sinfo ON stype.Id = sinfo.TAG_TYPE_ID
+		WHERE
+			stype.ENABLED = 1
+			AND stype.REMOVED = 0
+			AND stype.TAG_TYPE_CODE = #{tagTypeCode}
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0005">
+		select
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_TYPE_NAME as tagTypeName,<!--标签类型名称-->
+			ROUND_TYPE as roundType,<!--圆角样式-->
+			MARK_TYPE as markType,<!--标记样式-->
+			PLAIN_TYPE as plainType,<!--空心样式-->
+			TAG_SIZE as tagSize,<!--标签大小-->
+			DEFAULT_TEXT_COLOR as defaultTextColor,<!--默认文本颜色-->
+			DEFAULT_BACKGROUND_COLOR as defaultBackgroundColor,<!--默认背景颜色-->
+			SORT as sort,<!--排序-->
+			CHOICE_TYPE as choiceType,<!--选择类型（1：单选，2：多选）-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_TYPE
+		where
+		ID = #{id}
+	</select>
+
+</mapper>

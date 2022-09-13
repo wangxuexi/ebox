@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: E-BOX
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+mybatis:
+  mapper-locations: classpath:mapper/modular/*/*.xml
+ribbon:
+  ReadTimeout: 1200000
+  ConnectTimeout: 1200000
+  management:
+    server:
+      servlet:
+        context-path: /
+server:
+  tomcat:
+    max-http-post-size: -1
+    max-http-header-size: 102400

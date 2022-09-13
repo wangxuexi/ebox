@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.SYFL0001Mapper">
+
+	<select id="queryFile" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD where ENABLED = 1 AND REMOVED = 0
+		AND ORG_CODE = #{orgCode} and ENTITY_TYPE_CODE = #{entityTypeCode} and OBJECT_ID = #{objectId}
+	</select>
+
+	<select id="queryFileByFileClass" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD where ENABLED = 1 AND REMOVED = 0
+		AND ORG_CODE = #{orgCode} and ENTITY_TYPE_CODE = #{entityTypeCode} and OBJECT_ID = #{objectId}
+		AND FILE_CLASS = #{fileClass}
+	</select>
+
+
+
+	<select id="queryAll" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		<if test="id != null and id!=''">
+			and ID = #{id}<!---->
+		</if>
+		<if test="modular != null and modular!=''">
+			and MODULAR = #{modular}<!--模块-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--业务实体ID-->
+		</if>
+		<if test="fileName != null and fileName!=''">
+			and FILE_NAME = #{fileName}<!--名称-->
+		</if>
+		<if test="fileNewName != null and fileNewName!=''">
+			and FILE_NEW_NAME = #{fileNewName}<!--文件存放服务器后生成的名字-->
+		</if>
+		<if test="filePath != null and filePath!=''">
+			and FILE_PATH = #{filePath}<!--文件保存路径-->
+		</if>
+		<if test="fileClass != null and fileClass!=''">
+			and FILE_CLASS = #{fileClass}<!--文件类型-->
+		</if>
+		<if test="fileSize != null and fileSize!=''">
+			and FILE_SIZE = #{fileSize}<!--尺寸-->
+		</if>
+		<if test="fileDesc != null and fileDesc!=''">
+			and FILE_DESC = #{fileDesc}<!--附件描述-->
+		</if>
+		<if test="fileUsecase != null and fileUsecase!=''">
+			and FILE_USECASE = #{fileUsecase}<!--附件用途-->
+		</if>
+		<if test="attr1 != null and attr1!=''">
+			and ATTR1 = #{attr1}<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		</if>
+		<if test="attr2 != null and attr2!=''">
+			and ATTR2 = #{attr2}<!--扩展字段2-->
+		</if>
+		<if test="attr3 != null and attr3!=''">
+			and ATTR3 = #{attr3}<!--扩展字段3-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+		<if test="orderByClause != null and orderByClause !=''" >
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<select id="queryAllInOrgCode" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		<if test="id != null and id!=''">
+			and ID = #{id}<!---->
+		</if>
+		<if test="modular != null and modular!=''">
+			and MODULAR = #{modular}<!--模块-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE in(${orgCode})<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--业务实体ID-->
+		</if>
+		<if test="fileName != null and fileName!=''">
+			and FILE_NAME = #{fileName}<!--名称-->
+		</if>
+		<if test="fileNewName != null and fileNewName!=''">
+			and FILE_NEW_NAME = #{fileNewName}<!--文件存放服务器后生成的名字-->
+		</if>
+		<if test="filePath != null and filePath!=''">
+			and FILE_PATH = #{filePath}<!--文件保存路径-->
+		</if>
+		<if test="fileClass != null and fileClass!=''">
+			and FILE_CLASS = #{fileClass}<!--文件类型-->
+		</if>
+		<if test="fileSize != null and fileSize!=''">
+			and FILE_SIZE = #{fileSize}<!--尺寸-->
+		</if>
+		<if test="fileDesc != null and fileDesc!=''">
+			and FILE_DESC = #{fileDesc}<!--附件描述-->
+		</if>
+		<if test="fileUsecase != null and fileUsecase!=''">
+			and FILE_USECASE = #{fileUsecase}<!--附件用途-->
+		</if>
+		<if test="attr1 != null and attr1!=''">
+			and ATTR1 = #{attr1}<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		</if>
+		<if test="attr2 != null and attr2!=''">
+			and ATTR2 = #{attr2}<!--扩展字段2-->
+		</if>
+		<if test="attr3 != null and attr3!=''">
+			and ATTR3 = #{attr3}<!--扩展字段3-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+		<if test="orderByClause != null and orderByClause !=''" >
+			order by ${orderByClause}
+		</if>
+	</select>
+
+	<select id="queryListByOrgCodeOrEntity" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+	</select>
+	<select id="queryLogList" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		substring_index(FILE_NAME,'.',1) AS fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		DATE_FORMAT(CREATE_TIME,'%Y-%m') as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE  like '%${orgCode}%'<!--组织编码  IN ${orgCode}-->
+		</if>
+		<if test="modular != null and modular!=''">
+			and MODULAR = #{modular}<!--模块-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="startDate != null and startDate != ''">AND DATE_FORMAT(CREATE_TIME,'%Y-%m') = #{startDate}</if>
+		<if test="orderByClause != null and orderByClause !=''" >
+			order by ${orderByClause}
+		</if>
+		limit 20
+	</select>
+	<select id="query" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select 
+			ID as id,<!---->
+			MODULAR as modular,<!--模块-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+			OBJECT_ID as objectId,<!--业务实体ID-->
+			FILE_NAME as fileName,<!--名称-->
+			FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+			FILE_PATH as filePath,<!--文件保存路径-->
+			FILE_CLASS as fileClass,<!--文件类型-->
+			FILE_SIZE as fileSize,<!--尺寸-->
+			FILE_DESC as fileDesc,<!--附件描述-->
+			FILE_USECASE as fileUsecase,<!--附件用途-->
+			ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+			ATTR2 as attr2,<!--扩展字段2-->
+			ATTR3 as attr3,<!--扩展字段3-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!---->
+		</if>
+		<if test="modular != null and modular!=''">
+			 and MODULAR = #{modular}<!--模块-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			 and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			 and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			 and OBJECT_ID = #{objectId}<!--业务实体ID-->
+		</if>
+		<if test="fileName != null and fileName!=''">
+			 and FILE_NAME = #{fileName}<!--名称-->
+		</if>
+		<if test="fileNewName != null and fileNewName!=''">
+			 and FILE_NEW_NAME = #{fileNewName}<!--文件存放服务器后生成的名字-->
+		</if>
+		<if test="filePath != null and filePath!=''">
+			 and FILE_PATH = #{filePath}<!--文件保存路径-->
+		</if>
+		<if test="fileClass != null and fileClass!=''">
+			 and FILE_CLASS = #{fileClass}<!--文件类型-->
+		</if>
+		<if test="fileSize != null and fileSize!=''">
+			 and FILE_SIZE = #{fileSize}<!--尺寸-->
+		</if>
+		<if test="fileDesc != null and fileDesc!=''">
+			 and FILE_DESC = #{fileDesc}<!--附件描述-->
+		</if>
+		<if test="fileUsecase != null and fileUsecase!=''">
+			 and FILE_USECASE = #{fileUsecase}<!--附件用途-->
+		</if>
+		<if test="attr1 != null and attr1!=''">
+			 and ATTR1 = #{attr1}<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		</if>
+		<if test="attr2 != null and attr2!=''">
+			 and ATTR2 = #{attr2}<!--扩展字段2-->
+		</if>
+		<if test="attr3 != null and attr3!=''">
+			 and ATTR3 = #{attr3}<!--扩展字段3-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001" useGeneratedKeys="true" keyProperty="id">
+		 insert into streetcloud.SYS_FILE_UPLOAD(
+			MODULAR,<!--模块-->
+			ORG_CODE,<!--组织编码-->
+			ENTITY_TYPE_CODE,<!--实体类型编码-->
+			OBJECT_ID,<!--业务实体ID-->
+			FILE_NAME,<!--名称-->
+			FILE_NEW_NAME,<!--文件存放服务器后生成的名字-->
+			FILE_PATH,<!--文件保存路径-->
+			FILE_CLASS,<!--文件类型-->
+			FILE_SIZE,<!--尺寸-->
+			FILE_DESC,<!--附件描述-->
+			FILE_USECASE,<!--附件用途-->
+			ATTR1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+			ATTR2,<!--扩展字段2-->
+			ATTR3,<!--扩展字段3-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+		 values(
+			#{modular},
+			#{orgCode},
+			#{entityTypeCode},
+			#{objectId},
+			#{fileName},
+			#{fileNewName},
+			#{filePath},
+			#{fileClass},
+			#{fileSize},
+			#{fileDesc},
+			#{fileUsecase},
+			#{attr1},
+			#{attr2},
+			#{attr3},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		 update streetcloud.SYS_FILE_UPLOAD
+		<set>
+		<if test="id != null and id!=''">
+			ID = #{id},<!---->
+		</if>
+		<if test="modular != null and modular!=''">
+			MODULAR = #{modular},<!--模块-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			ORG_CODE = #{orgCode},<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			ENTITY_TYPE_CODE = #{entityTypeCode},<!--实体类型编码-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			OBJECT_ID = #{objectId},<!--业务实体ID-->
+		</if>
+		<if test="fileName != null and fileName!=''">
+			FILE_NAME = #{fileName},<!--名称-->
+		</if>
+		<if test="fileNewName != null and fileNewName!=''">
+			FILE_NEW_NAME = #{fileNewName},<!--文件存放服务器后生成的名字-->
+		</if>
+		<if test="filePath != null and filePath!=''">
+			FILE_PATH = #{filePath},<!--文件保存路径-->
+		</if>
+		<if test="fileClass != null and fileClass!=''">
+			FILE_CLASS = #{fileClass},<!--文件类型-->
+		</if>
+		<if test="fileSize != null and fileSize!=''">
+			FILE_SIZE = #{fileSize},<!--尺寸-->
+		</if>
+		<if test="fileDesc != null and fileDesc!=''">
+			FILE_DESC = #{fileDesc},<!--附件描述-->
+		</if>
+		<if test="fileUsecase != null and fileUsecase!=''">
+			FILE_USECASE = #{fileUsecase},<!--附件用途-->
+		</if>
+		<if test="attr1 != null and attr1!=''">
+			ATTR1 = #{attr1},<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		</if>
+		<if test="attr2 != null and attr2!=''">
+			ATTR2 = #{attr2},<!--扩展字段2-->
+		</if>
+		<if test="attr3 != null and attr3!=''">
+			ATTR3 = #{attr3},<!--扩展字段3-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			ENABLED = #{enabled},<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			REMOVED = #{removed},<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			CREATE_TIME = #{createTime},<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			UPDATE_TIME = #{updateTime},<!--更新时间-->
+		</if>
+		</set>
+		 where 	ID = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		 delete from streetcloud.SYS_FILE_UPLOAD
+		 where 1=1 
+			<if test="id != null and id!=''">
+				and ID = #{id}<!---->
+			</if>
+			<if test="modular != null and modular!=''">
+				and MODULAR = #{modular}<!--模块-->
+			</if>
+			<if test="orgCode != null and orgCode!=''">
+				and ORG_CODE = #{orgCode}<!--组织编码-->
+			</if>
+			<if test="entityTypeCode != null and entityTypeCode!=''">
+				and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+			</if>
+			<if test="objectId != null and objectId!=''">
+				and OBJECT_ID = #{objectId}<!--业务实体ID-->
+			</if>
+			<if test="fileName != null and fileName!=''">
+				and FILE_NAME = #{fileName}<!--名称-->
+			</if>
+			<if test="fileNewName != null and fileNewName!=''">
+				and FILE_NEW_NAME = #{fileNewName}<!--文件存放服务器后生成的名字-->
+			</if>
+			<if test="filePath != null and filePath!=''">
+				and FILE_PATH = #{filePath}<!--文件保存路径-->
+			</if>
+			<if test="fileClass != null and fileClass!=''">
+				and FILE_CLASS = #{fileClass}<!--文件类型-->
+			</if>
+			<if test="fileSize != null and fileSize!=''">
+				and FILE_SIZE = #{fileSize}<!--尺寸-->
+			</if>
+			<if test="fileDesc != null and fileDesc!=''">
+				and FILE_DESC = #{fileDesc}<!--附件描述-->
+			</if>
+			<if test="fileUsecase != null and fileUsecase!=''">
+				and FILE_USECASE = #{fileUsecase}<!--附件用途-->
+			</if>
+			<if test="attr1 != null and attr1!=''">
+				and ATTR1 = #{attr1}<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+			</if>
+			<if test="attr2 != null and attr2!=''">
+				and ATTR2 = #{attr2}<!--扩展字段2-->
+			</if>
+			<if test="attr3 != null and attr3!=''">
+				and ATTR3 = #{attr3}<!--扩展字段3-->
+			</if>
+			<if test="enabled != null and enabled!=''">
+				and ENABLED = #{enabled}<!--是否有效-->
+			</if>
+			<if test="removed != null and removed!=''">
+				and REMOVED = #{removed}<!--是否删除-->
+			</if>
+			<if test="createUserId != null and createUserId!=''">
+				and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+			</if>
+			<if test="createUserName != null and createUserName!=''">
+				and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+			</if>
+			<if test="createTime != null and createTime!=''">
+				and CREATE_TIME = #{createTime}<!--创建时间-->
+			</if>
+			<if test="updateUserId != null and updateUserId!=''">
+				and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+			</if>
+			<if test="updateUserName != null and updateUserName!=''">
+				and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+			</if>
+			<if test="updateTime != null and updateTime!=''">
+				and UPDATE_TIME = #{updateTime}<!--更新时间-->
+			</if>
+		</delete>
+
+	<select id="queryListByEntityTypeCodeAndFileClassAndObjectId" parameterType="java.lang.String" resultType="java.util.Map">
+		select
+		ID as id,
+		FILE_PATH as filePath<!--文件保存路径-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="fileClass != null and fileClass!=''">
+			and FILE_CLASS = #{fileClass}<!--文件类型-->
+		</if>
+		<if test="objectId != null">
+			and OBJECT_ID = #{objectId}<!--对象id-->
+		</if>
+			and ENABLED = 1
+	</select>
+
+	<select id="queryAllByEntityTypeCodeAndFileClassAndObjectId" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001" parameterType="java.lang.String">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+			and OBJECT_ID = #{objectId}<!--业务实体ID-->
+			and FILE_CLASS = #{fileClass}<!--文件类型-->
+			and ENABLED = 1
+	</select>
+
+	<select id="queryAllByEntityTypeCodeAndInFileClassAndObjectId" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001" parameterType="java.lang.String">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		and OBJECT_ID = #{objectId}<!--业务实体ID-->
+		and FILE_CLASS in ${fileClass}<!--文件类型-->
+		and ENABLED = 1
+	</select>
+
+
+	<select id="queryExportFilesByOrgCodeOrEntity" resultType="com.fijo.ebox.modular.sy.pojo.SYFL0001" parameterType="com.fijo.ebox.modular.sy.pojo.SYFL0001">
+		select
+		ID as id,<!---->
+		MODULAR as modular,<!--模块-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--实体类型编码-->
+		OBJECT_ID as objectId,<!--业务实体ID-->
+		FILE_NAME as fileName,<!--名称-->
+		FILE_NEW_NAME as fileNewName,<!--文件存放服务器后生成的名字-->
+		FILE_PATH as filePath,<!--文件保存路径-->
+		FILE_CLASS as fileClass,<!--文件类型-->
+		FILE_SIZE as fileSize,<!--尺寸-->
+		FILE_DESC as fileDesc,<!--附件描述-->
+		FILE_USECASE as fileUsecase,<!--附件用途-->
+		ATTR1 as attr1,<!--扩展字段1 附件类型分类，将此附件与其它同业务实体的附件做区分处理-->
+		ATTR2 as attr2,<!--扩展字段2-->
+		ATTR3 as attr3,<!--扩展字段3-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_FILE_UPLOAD
+		where 1=1
+		  	and ENABLED = 1
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE IN ${orgCode}<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="attr1 != null and attr1 !=''">
+			and ATTR1 = #{attr1}<!--附件类型分类-->
+		</if>
+			order by CREATE_TIME desc
+	</select>
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_FILE_UPLOAD
+		 where ID=#{id}
+	</delete>
+
+
+	<delete id="logicDeleteById">
+		update streetcloud.SYS_FILE_UPLOAD set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID in ${id}
+	</delete>
+
+	<delete id="logicDeleteFile">
+		update streetcloud.SYS_FILE_UPLOAD set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{userId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{userName},<!--更新人姓名-->
+		UPDATE_TIME = #{operateTime}<!--更新时间-->
+		where
+		ORG_CODE = #{orgCode}
+		and ENTITY_TYPE_CODE = #{entityTypeCode}
+		and OBJECT_ID in ${objectIds}
+		<if test="fileClass != null and fileClass != ''">
+			and FILE_CLASS = #{fileClass}
+		</if>
+	</delete>
+
+</mapper>

@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0009Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select 
+			ID as id,<!--主键ID-->
+			ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+			USER_ID as userId,<!--用户ID-->
+			CONTENT as content,<!--消息内容-->
+			MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+			STATE as state,<!--是否已读（1：是，2：否）-->
+			READ_DATE as readDate,<!--阅读时间-->
+			OBJECT_ID as objectId,<!--业务ID-->
+			PHONE_MSG as phoneMsg,<!--是否需要发短信(1：是，2：否)-->
+			PHONE_MSG_STATE as phoneMsgState,<!--是否已发送（1：是，2：否）-->
+			MODEL_PARAMS as modelParams,<!--短信模板参数-->
+			TITLE as title,
+			COL_1 as col1,<!--预留字段-->
+			COL_2 as col2,<!--预留字段-->
+			COL_3 as col3,<!--预留字段-->
+			COL_4 as col4,<!--预留字段-->
+			COL_5 as col5,<!--预留字段-->
+			COL_6 as col6,<!--预留字段-->
+			COL_7 as col7,<!--预留字段-->
+			COL_8 as col8,<!--预留字段-->
+			COL_9 as col9,<!--预留字段-->
+			COL_10 as col10,<!--预留字段-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.SYS_MSG
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select
+			ID as id,<!--主键ID-->
+			ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+			USER_ID as userId,<!--用户ID-->
+			CONTENT as content,<!--消息内容-->
+			MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+			STATE as state,<!--是否已读（1：是，2：否）-->
+			READ_DATE as readDate,<!--阅读时间-->
+			OBJECT_ID as objectId,<!--业务ID-->
+			PHONE_MSG as phoneMsg,<!--是否需要发短信(1：是，2：否)-->
+			PHONE_MSG_STATE as phoneMsgState,<!--是否已发送（1：是，2：否）-->
+		MODEL_PARAMS as modelParams,<!--短信模板参数-->
+		TITLE as title,
+			COL_1 as col1,<!--预留字段-->
+			COL_2 as col2,<!--预留字段-->
+			COL_3 as col3,<!--预留字段-->
+			COL_4 as col4,<!--预留字段-->
+			COL_5 as col5,<!--预留字段-->
+			COL_6 as col6,<!--预留字段-->
+			COL_7 as col7,<!--预留字段-->
+			COL_8 as col8,<!--预留字段-->
+			COL_9 as col9,<!--预留字段-->
+			COL_10 as col10,<!--预留字段-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.SYS_MSG where ID = #{id}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select
+			ID as id,<!--主键ID-->
+			ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+			USER_ID as userId,<!--用户ID-->
+			CONTENT as content,<!--消息内容-->
+			MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+			STATE as state,<!--是否已读（1：是，2：否）-->
+			READ_DATE as readDate,<!--阅读时间-->
+			OBJECT_ID as objectId,<!--业务ID-->
+			PHONE_MSG as phoneMsg,<!--是否需要发短信(1：是，2：否)-->
+			PHONE_MSG_STATE as phoneMsgState,<!--是否已发送（1：是，2：否）-->
+		MODEL_PARAMS as modelParams,<!--短信模板参数-->
+		TITLE as title,
+			COL_1 as col1,<!--预留字段-->
+			COL_2 as col2,<!--预留字段-->
+			COL_3 as col3,<!--预留字段-->
+			COL_4 as col4,<!--预留字段-->
+			COL_5 as col5,<!--预留字段-->
+			COL_6 as col6,<!--预留字段-->
+			COL_7 as col7,<!--预留字段-->
+			COL_8 as col8,<!--预留字段-->
+			COL_9 as col9,<!--预留字段-->
+			COL_10 as col10,<!--预留字段-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.SYS_MSG
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!--主键ID-->
+		</if>
+		<if test="entitiyTypeCode != null and entitiyTypeCode!=''">
+			 and ENTITIY_TYPE_CODE = #{entitiyTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="userId != null and userId!=''">
+			 and USER_ID = #{userId}<!--用户ID-->
+		</if>
+		<if test="content != null and content!=''">
+			 and CONTENT = #{content}<!--消息内容-->
+		</if>
+		<if test="msgFrom != null and msgFrom!=''">
+			 and MSG_FROM = #{msgFrom}<!--消息来源(1：消息通知，2：预警消息)-->
+		</if>
+		<if test="state != null and state!=''">
+			 and STATE = #{state}<!--是否已读（1：是，2：否）-->
+		</if>
+		<if test="readDate != null and readDate!=''">
+			 and READ_DATE = #{readDate}<!--阅读时间-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			 and OBJECT_ID = #{objectId}<!--业务ID-->
+		</if>
+		<if test="phoneMsg != null and phoneMsg!=''">
+			 and PHONE_MSG = #{phoneMsg}<!--是否需要发短信(1：是，2：否)-->
+		</if>
+		<if test="phoneMsgState != null and phoneMsgState!=''">
+			 and PHONE_MSG_STATE = #{phoneMsgState}<!--是否已发送（1：是，2：否）-->
+		</if>
+		<if test="title != null and title != '' ">
+			and TITLE = #{title},
+		</if>
+		<if test="col1 != null and col1!=''">
+			 and COL_1 = #{col1}<!--预留字段-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			 and COL_2 = #{col2}<!--预留字段-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			 and COL_3 = #{col3}<!--预留字段-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			 and COL_4 = #{col4}<!--预留字段-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			 and COL_5 = #{col5}<!--预留字段-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			 and COL_6 = #{col6}<!--预留字段-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			 and COL_7 = #{col7}<!--预留字段-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			 and COL_8 = #{col8}<!--预留字段-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			 and COL_9 = #{col9}<!--预留字段-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			 and COL_10 = #{col10}<!--预留字段-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+
+	</select>
+	<select id="queryList" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0009" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select
+		ID as id,<!--主键ID-->
+		ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+		USER_ID as userId,<!--用户ID-->
+		CONTENT as content,<!--消息内容-->
+		MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+		STATE as state,<!--是否已读（1：是，2：否）-->
+		READ_DATE as readDate,<!--阅读时间-->
+		OBJECT_ID as objectId,<!--业务ID-->
+		PHONE_MSG as phoneMsg,<!--是否需要发短信(1：是，2：否)-->
+		PHONE_MSG_STATE as phoneMsgState,<!--是否已发送（1：是，2：否）-->
+		MODEL_PARAMS as modelParams,<!--短信模板参数-->
+		TITLE as title,
+		COL_1 as col1,<!--预留字段-->
+		COL_2 as col2,<!--预留字段-->
+		COL_3 as col3,<!--预留字段-->
+		COL_4 as col4,<!--预留字段-->
+		COL_5 as col5,<!--预留字段-->
+		COL_6 as col6,<!--预留字段-->
+		COL_7 as col7,<!--预留字段-->
+		COL_8 as col8,<!--预留字段-->
+		COL_9 as col9,<!--预留字段-->
+		COL_10 as col10,<!--预留字段-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.SYS_MSG
+		where 1=1
+		<if test="id != null and id!=''">
+			and ID = #{id}<!--主键ID-->
+		</if>
+		<if test="entitiyTypeCode != null and entitiyTypeCode!=''">
+			and ENTITIY_TYPE_CODE = #{entitiyTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="userId != null and userId!=''">
+			and USER_ID = #{userId}<!--用户ID-->
+		</if>
+		<if test="content != null and content!=''">
+			and CONTENT = #{content}<!--消息内容-->
+		</if>
+		<if test="msgFrom != null and msgFrom!=''">
+			and MSG_FROM = #{msgFrom}<!--消息来源(1：消息通知，2：预警消息)-->
+		</if>
+		<if test="state != null">
+			and STATE = #{state}<!--是否已读（1：是，2：否）-->
+		</if>
+		<if test="readDate != null and readDate!=''">
+			and READ_DATE = #{readDate}<!--阅读时间-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--业务ID-->
+		</if>
+		<if test="phoneMsg != null ">
+			and PHONE_MSG = #{phoneMsg}<!--是否需要发短信(1：是，2：否)-->
+		</if>
+		<if test="phoneMsgState != null ">
+			and PHONE_MSG_STATE = #{phoneMsgState}<!--是否已发送（1：是，2：否）-->
+		</if>
+		<if test="title != null and title != '' ">
+			and TITLE = #{title},
+		</if>
+		<if test="col1 != null and col1!=''">
+			and COL_1 = #{col1}<!--预留字段-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			and COL_2 = #{col2}<!--预留字段-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			and COL_3 = #{col3}<!--预留字段-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			and COL_4 = #{col4}<!--预留字段-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			and COL_5 = #{col5}<!--预留字段-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			and COL_6 = #{col6}<!--预留字段-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			and COL_7 = #{col7}<!--预留字段-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			and COL_8 = #{col8}<!--预留字段-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			and COL_9 = #{col9}<!--预留字段-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			and COL_10 = #{col10}<!--预留字段-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0009" keyProperty="id" useGeneratedKeys="true">
+		 insert into streetcloud.SYS_MSG(
+			ENTITIY_TYPE_CODE,<!--实体类型编码-->
+			USER_ID,<!--用户ID-->
+			CONTENT,<!--消息内容-->
+			MSG_FROM,<!--消息来源(1：消息通知，2：预警消息)-->
+			STATE,<!--是否已读（1：是，2：否）-->
+			READ_DATE,<!--阅读时间-->
+			OBJECT_ID,<!--业务ID-->
+			PHONE_MSG,<!--是否需要发短信(1：是，2：否)-->
+			PHONE_MSG_STATE,<!--是否已发送（1：是，2：否）-->
+			MODEL_PARAMS,<!--短信模板参数-->
+			TITLE,
+			COL_1,<!--预留字段-->
+			COL_2,<!--预留字段-->
+			COL_3,<!--预留字段-->
+			COL_4,<!--预留字段-->
+			COL_5,<!--预留字段-->
+			COL_6,<!--预留字段-->
+			COL_7,<!--预留字段-->
+			COL_8,<!--预留字段-->
+			COL_9,<!--预留字段-->
+			COL_10,<!--预留字段-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+
+		)
+ 		 values(
+			#{entitiyTypeCode},
+			#{userId},
+			#{content},
+			#{msgFrom},
+			#{state},
+			#{readDate},
+			#{objectId},
+			#{phoneMsg},
+			#{phoneMsgState},
+			#{modelParams},<!--短信模板参数-->
+			#{title},
+			#{col1},
+			#{col2},
+			#{col3},
+			#{col4},
+			#{col5},
+			#{col6},
+			#{col7},
+			#{col8},
+			#{col9},
+			#{col10},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		 update streetcloud.SYS_MSG set
+			ENTITIY_TYPE_CODE = #{entitiyTypeCode},<!--实体类型编码-->
+			USER_ID = #{userId},<!--用户ID-->
+			CONTENT = #{content},<!--消息内容-->
+			MSG_FROM = #{msgFrom},<!--消息来源(1：消息通知，2：预警消息)-->
+			STATE = #{state},<!--是否已读（1：是，2：否）-->
+			READ_DATE = #{readDate},<!--阅读时间-->
+			OBJECT_ID = #{objectId},<!--业务ID-->
+			PHONE_MSG = #{phoneMsg},<!--是否需要发短信(1：是，2：否)-->
+			PHONE_MSG_STATE = #{phoneMsgState},<!--是否已发送（1：是，2：否）-->
+		MODEL_PARAMS = #{modelParams},<!--短信模板参数-->
+		 TITLE = #{title},
+			COL_1 = #{col1},<!--预留字段-->
+			COL_2 = #{col2},<!--预留字段-->
+			COL_3 = #{col3},<!--预留字段-->
+			COL_4 = #{col4},<!--预留字段-->
+			COL_5 = #{col5},<!--预留字段-->
+			COL_6 = #{col6},<!--预留字段-->
+			COL_7 = #{col7},<!--预留字段-->
+			COL_8 = #{col8},<!--预留字段-->
+			COL_9 = #{col9},<!--预留字段-->
+			COL_10 = #{col10},<!--预留字段-->
+			ENABLED = #{enabled},<!--是否有效-->
+			REMOVED = #{removed},<!--是否删除-->
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+			CREATE_TIME = #{createTime},<!--创建时间-->
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+			UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		 where ID=#{id}
+	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_MSG
+		 where ID=#{id}
+	</delete>
+
+
+
+	<update id="updateState" >
+		update streetcloud.SYS_MSG set
+		STATE = 1,<!--是否已读（1：是，2：否）-->
+		READ_DATE = #{readDate}<!--阅读时间-->
+		where OBJECT_ID=#{Id}
+		<if test="userId != null and userId != '' ">
+			and  USER_ID = #{userId}
+		</if>
+	</update>
+	<update id="updateMsgState" parameterType="java.lang.String">
+		update streetcloud.SYS_MSG set
+		PHONE_MSG_STATE = 1,<!--是否已发送-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID=#{id}
+	</update>
+
+
+	<select id="queryMsgBySrare" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select
+		ID as id,<!--主键ID-->
+		ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+		MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+		OBJECT_ID as objectId<!--业务ID-->
+		from streetcloud.SYS_MSG
+		where 1=1
+		and STATE = 0
+		<if test="id != null and id!=''">
+			and ID = #{id}<!--主键ID-->
+		</if>
+		<if test="entitiyTypeCode != null and entitiyTypeCode!=''">
+			and ENTITIY_TYPE_CODE = #{entitiyTypeCode}<!--实体类型编码-->
+		</if>
+		<if test="userId != null and userId!=''">
+			and USER_ID = #{userId}<!--用户ID-->
+		</if>
+		<if test="content != null and content!=''">
+			and CONTENT = #{content}<!--消息内容-->
+		</if>
+		<if test="msgFrom != null and msgFrom!=''">
+			and MSG_FROM = #{msgFrom}<!--消息来源(1：消息通知，2：预警消息)-->
+		</if>
+		<if test="readDate != null and readDate!=''">
+			and READ_DATE = #{readDate}<!--阅读时间-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--业务ID-->
+		</if>
+		<if test="phoneMsg != null and phoneMsg!=''">
+			and PHONE_MSG = #{phoneMsg}<!--是否需要发短信(1：是，2：否)-->
+		</if>
+		<if test="phoneMsgState != null and phoneMsgState!=''">
+			and PHONE_MSG_STATE = #{phoneMsgState}<!--是否已发送（1：是，2：否）-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			and COL_1 = #{col1}<!--预留字段-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			and COL_2 = #{col2}<!--预留字段-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			and COL_3 = #{col3}<!--预留字段-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			and COL_4 = #{col4}<!--预留字段-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			and COL_5 = #{col5}<!--预留字段-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			and COL_6 = #{col6}<!--预留字段-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			and COL_7 = #{col7}<!--预留字段-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			and COL_8 = #{col8}<!--预留字段-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			and COL_9 = #{col9}<!--预留字段-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			and COL_10 = #{col10}<!--预留字段-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+
+	<select id="getMsgListByUser" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0009">
+		select
+		ID as id,<!--主键ID-->
+		ENTITIY_TYPE_CODE as entitiyTypeCode,<!--实体类型编码-->
+		USER_ID as userId,<!--用户ID-->
+		CONTENT as content,<!--消息内容-->
+		MSG_FROM as msgFrom,<!--消息来源(1：消息通知，2：预警消息)-->
+		STATE as state,<!--是否已读（1：是，2：否）-->
+		READ_DATE as readDate,<!--阅读时间-->
+		OBJECT_ID as objectId,<!--业务ID-->
+		PHONE_MSG as phoneMsg,<!--是否需要发短信(1：是，2：否)-->
+		PHONE_MSG_STATE as phoneMsgState,<!--是否已发送（1：是，2：否）-->
+		MODEL_PARAMS as modelParams,<!--短信模板参数-->
+		TITLE as title,
+		COL_1 as col1,<!--预留字段-->
+		COL_2 as col2,<!--预留字段-->
+		COL_3 as col3,<!--预留字段-->
+		COL_4 as col4,<!--预留字段-->
+		COL_5 as col5,<!--预留字段-->
+		COL_6 as col6,<!--预留字段-->
+		COL_7 as col7,<!--预留字段-->
+		COL_8 as col8,<!--预留字段-->
+		COL_9 as col9,<!--预留字段-->
+		COL_10 as col10,<!--预留字段-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_MSG
+		where STATE=0 and
+		USER_ID=#{userId} and MSG_FROM =#{msgFrom}
+		order by CREATE_TIME desc
+	</select>
+
+
+	<update id="updateMsgReadState" parameterType="java.lang.String">
+		update streetcloud.SYS_MSG set
+		STATE = 1,<!--是否已发送-->
+		READ_DATE = #{readDate}<!--更新时间-->
+		where ID=#{id}
+	</update>
+
+
+</mapper>
+

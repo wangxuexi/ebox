@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0007Mapper">
+    <select id="queryListByTenantAndCode" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0007"
+            parameterType="java.lang.String">
+        select
+        ID as id,<!---->
+        CATEGORY as category,<!--分类 0:类型            1：数据字典-->
+        LEVEL as level,<!--层级-->
+        CODE as code,<!--编码-->
+        NAME as name,<!--名称-->
+        PARENT_ID as parentId,<!--父级id-->
+        REMARK as remark,<!--描述-->
+        TENANT as tenant,<!--租户编码-->
+        ORG_CODE as orgCode,<!--组织编码-->
+        ENABLED as enabled,<!--是否有效-->
+        REMOVED as removed,<!--是否删除-->
+        CREATE_USER_ID as createUserId,<!--创建人ID-->
+        CREATE_USER_NAME as createUserName,<!--创建人-->
+        CREATE_TIME as createTime,<!--创建时间-->
+        UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+        UPDATE_USER_NAME as updateUserName,<!--更新人-->
+        UPDATE_TIME as updateTime,<!--更新时间-->
+        SORT_NO as sortNo<!--排序码，步长为5-->
+        from streetcloud.SYS_DATADICTIONARY
+        where 1=1
+        and CODE = #{code}<!--编码-->
+        and TENANT = #{tenant}<!--租户编码-->
+    </select>
+
+    <select id="queryListByTenant" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0007"
+            resultType="java.util.Map">
+		SELECT
+			s.ID AS id,s.PARENT_ID AS pId, s.NAME AS name
+		FROM
+            streetcloud.SYS_DATADICTIONARY s
+		where
+			1=1 and s.TENANT = #{tenant} and s.ENABLED = 1 order by s.SORT_NO asc
+	</select>
+
+    <select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0007">
+        select
+        ID as id,<!---->
+        CATEGORY as category,<!--分类 0:类型            1：数据字典-->
+        LEVEL as level,<!--层级-->
+        CODE as code,<!--编码-->
+        NAME as name,<!--名称-->
+        PARENT_ID as parentId,<!--父级id-->
+        REMARK as remark,<!--描述-->
+        TENANT as tenant,<!--租户编码-->
+        ORG_CODE as orgCode,<!--组织编码-->
+        ENABLED as enabled,<!--是否有效-->
+        REMOVED as removed,<!--是否删除-->
+        CREATE_USER_ID as createUserId,<!--创建人ID-->
+        CREATE_USER_NAME as createUserName,<!--创建人-->
+        CREATE_TIME as createTime,<!--创建时间-->
+        UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+        UPDATE_USER_NAME as updateUserName,<!--更新人-->
+        UPDATE_TIME as updateTime,<!--更新时间-->
+        SORT_NO as sortNo<!--排序码，步长为5-->
+        from streetcloud.SYS_DATADICTIONARY
+    </select>
+
+    <select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0007" parameterType="java.lang.Long">
+        select
+        ID as id,<!---->
+        CATEGORY as category,<!--分类 0:类型            1：数据字典-->
+        LEVEL as level,<!--层级-->
+        CODE as code,<!--编码-->
+        NAME as name,<!--名称-->
+        PARENT_ID as parentId,<!--父级id-->
+        REMARK as remark,<!--描述-->
+        TENANT as tenant,<!--租户编码-->
+        ORG_CODE as orgCode,<!--组织编码-->
+        ENABLED as enabled,<!--是否有效-->
+        REMOVED as removed,<!--是否删除-->
+        CREATE_USER_ID as createUserId,<!--创建人ID-->
+        CREATE_USER_NAME as createUserName,<!--创建人-->
+        CREATE_TIME as createTime,<!--创建时间-->
+        UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+        UPDATE_USER_NAME as updateUserName,<!--更新人-->
+        UPDATE_TIME as updateTime,<!--更新时间-->
+        SORT_NO as sortNo<!--排序码，步长为5-->
+        from streetcloud.SYS_DATADICTIONARY where ID = #{id}
+    </select>
+
+    <select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0007">
+        select
+        ID as id,<!---->
+        CATEGORY as category,<!--分类 0:类型            1：数据字典-->
+        LEVEL as level,<!--层级-->
+        CODE as code,<!--编码-->
+        NAME as name,<!--名称-->
+        PARENT_ID as parentId,<!--父级id-->
+        REMARK as remark,<!--描述-->
+        TENANT as tenant,<!--租户编码-->
+        ORG_CODE as orgCode,<!--组织编码-->
+        ENABLED as enabled,<!--是否有效-->
+        REMOVED as removed,<!--是否删除-->
+        CREATE_USER_ID as createUserId,<!--创建人ID-->
+        CREATE_USER_NAME as createUserName,<!--创建人-->
+        CREATE_TIME as createTime,<!--创建时间-->
+        UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+        UPDATE_USER_NAME as updateUserName,<!--更新人-->
+        UPDATE_TIME as updateTime,<!--更新时间-->
+        SORT_NO as sortNo<!--排序码，步长为5-->
+        from streetcloud.SYS_DATADICTIONARY
+        where 1=1
+        <if test="id != null and id!=''">
+            and ID = #{id}<!---->
+        </if>
+        <if test="category != null and category!=''">
+            and CATEGORY = #{category}<!--分类 0:类型            1：数据字典-->
+        </if>
+        <if test="level != null and level!=''">
+            and LEVEL = #{level}<!--层级-->
+        </if>
+        <if test="code != null and code!=''">
+            and CODE = #{code}<!--编码-->
+        </if>
+        <if test="name != null and name!=''">
+            and NAME = #{name}<!--名称-->
+        </if>
+        <if test="parentId != null and parentId!=''">
+            and PARENT_ID = #{parentId}<!--父级id-->
+        </if>
+        <if test="remark != null and remark!=''">
+            and REMARK = #{remark}<!--描述-->
+        </if>
+        <if test="tenant != null and tenant!=''">
+            and TENANT = #{tenant}<!--租户编码-->
+        </if>
+        <if test="orgCode != null and orgCode!=''">
+            and ORG_CODE = #{orgCode}<!--组织编码-->
+        </if>
+        <if test="enabled != null and enabled!=''">
+            and ENABLED = #{enabled}<!--是否有效-->
+        </if>
+        <if test="removed != null and removed!=''">
+            and REMOVED = #{removed}<!--是否删除-->
+        </if>
+        <if test="createUserId != null and createUserId!=''">
+            and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+        </if>
+        <if test="createUserName != null and createUserName!=''">
+            and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+        </if>
+        <if test="createTime != null and createTime!=''">
+            and CREATE_TIME = #{createTime}<!--创建时间-->
+        </if>
+        <if test="updateUserId != null and updateUserId!=''">
+            and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+        </if>
+        <if test="updateUserName != null and updateUserName!=''">
+            and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+        </if>
+        <if test="updateTime != null and updateTime!=''">
+            and UPDATE_TIME = #{updateTime}<!--更新时间-->
+        </if>
+        <if test="sortNo != null and sortNo!=''">
+            and SORT_NO = #{sortNo}<!--排序码，步长为5-->
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0007">
+        insert into streetcloud.SYS_DATADICTIONARY(
+        ID,<!---->
+        CATEGORY,<!--分类 0:类型            1：数据字典-->
+        LEVEL,<!--层级-->
+        CODE,<!--编码-->
+        NAME,<!--名称-->
+        PARENT_ID,<!--父级id-->
+        REMARK,<!--描述-->
+        TENANT,<!--租户编码-->
+        ORG_CODE,<!--组织编码-->
+        ENABLED,<!--是否有效-->
+        REMOVED,<!--是否删除-->
+        CREATE_USER_ID,<!--创建人ID-->
+        CREATE_USER_NAME,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        UPDATE_USER_ID,<!--更新人ID-->
+        UPDATE_USER_NAME,<!--更新人-->
+        UPDATE_TIME,<!--更新时间-->
+        SORT_NO<!--排序码，步长为5-->
+        )
+        values(
+        #{id},
+        #{category},
+        #{level},
+        #{code},
+        #{name},
+        #{parentId},
+        #{remark},
+        #{tenant},
+        #{orgCode},
+        #{enabled},
+        #{removed},
+        #{createUserId},
+        #{createUserName},
+        #{createTime},
+        #{updateUserId},
+        #{updateUserName},
+        #{updateTime},
+        #{sortNo}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0007">
+        update streetcloud.SYS_DATADICTIONARY
+        <set>
+            <if test="category != null ">
+                CATEGORY = #{category},<!--分类 0:类型            1：数据字典-->
+            </if>
+            <if test="level != null ">
+                LEVEL = #{level},<!--层级-->
+            </if>
+            <if test="code != null ">
+                CODE = #{code},<!--编码-->
+            </if>
+            <if test="name != null ">
+                NAME = #{name},<!--名称-->
+            </if>
+            <if test="parentId != null ">
+                PARENT_ID = #{parentId},<!--父级id-->
+            </if>
+            <if test="remark != null ">
+                REMARK = #{remark},<!--描述-->
+            </if>
+            <if test="tenant != null ">
+                TENANT = #{tenant},<!--租户编码-->
+            </if>
+            <if test="orgCode != null ">
+                ORG_CODE = #{orgCode},<!--组织编码-->
+            </if>
+            <if test="enabled != null ">
+                ENABLED = #{enabled},<!--是否有效-->
+            </if>
+            <if test="removed != null ">
+                REMOVED = #{removed},<!--是否删除-->
+            </if>
+            <if test="createUserId != null ">
+                CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+            </if>
+            <if test="createUserName != null ">
+                CREATE_USER_NAME = #{createUserName},<!--创建人-->
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME = #{createTime},<!--创建时间-->
+            </if>
+            <if test="updateUserId != null ">
+                UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+            </if>
+            <if test="updateUserName != null ">
+                UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+            </if>
+            <if test="updateTime != null ">
+                UPDATE_TIME = #{updateTime},<!--更新时间-->
+            </if>
+            <if test="sortNo != null ">
+                SORT_NO = #{sortNo},<!--排序码，步长为5-->
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_DATADICTIONARY
+		 where id=#{id} 
+	</delete>
+
+    <select id="queryAllDataListByTenantAndCode" parameterType="java.lang.String" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0007">
+        SELECT
+            ID as id,<!---->
+            CATEGORY as category,<!--分类 0:类型            1：数据字典-->
+            LEVEL as level,<!--层级-->
+            CODE as code,<!--编码-->
+            NAME as name,<!--名称-->
+            PARENT_ID as parentId,<!--父级id-->
+            REMARK as remark,<!--描述-->
+            TENANT as tenant,<!--租户编码-->
+            ORG_CODE as orgCode,<!--组织编码-->
+            ENABLED as enabled,<!--是否有效-->
+            REMOVED as removed,<!--是否删除-->
+            CREATE_USER_ID as createUserId,<!--创建人ID-->
+            CREATE_USER_NAME as createUserName,<!--创建人-->
+            CREATE_TIME as createTime,<!--创建时间-->
+            UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+            UPDATE_USER_NAME as updateUserName,<!--更新人-->
+            UPDATE_TIME as updateTime,<!--更新时间-->
+            SORT_NO as sortNo<!--排序码，步长为5-->
+        FROM
+            SYS_DATADICTIONARY
+        WHERE
+            ENABLED = 1
+            AND TENANT = #{tenant}
+            AND (CODE = #{ddCode}
+            OR PARENT_ID IN ( SELECT ID FROM SYS_DATADICTIONARY WHERE ENABLED = 1 AND TENANT = #{tenant} AND CODE = #{ddCode} ) )
+    </select>
+
+</mapper>

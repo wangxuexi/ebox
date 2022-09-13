@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY000601Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY000601">
+		select
+			ID as id,<!--ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_ID as tagId,<!--标签ID-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			SORT as sort,<!--排序-->
+			REMARKS as remarks,<!--备注-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.ORG_TAG_CONFIG where ENABLED = 1 and REMOVED = 0
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY000601">
+		select
+			ID as id,<!--ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_ID as tagId,<!--标签ID-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			SORT as sort,<!--排序-->
+			REMARKS as remarks,<!--备注-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.ORG_TAG_CONFIG where ID = #{id}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY000601">
+		select
+			ID as id,<!--ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型编码-->
+			TAG_ID as tagId,<!--标签ID-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			SORT as sort,<!--排序-->
+			REMARKS as remarks,<!--备注-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from streetcloud.ORG_TAG_CONFIG
+		where 1=1
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!--ID-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			 and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="tagTypeCode != null and tagTypeCode!=''">
+			 and TAG_TYPE_CODE = #{tagTypeCode}<!--标签类型编码-->
+		</if>
+		<if test="tagId != null and tagId!=''">
+			 and TAG_ID = #{tagId}<!--标签ID-->
+		</if>
+		<if test="tagCode != null and tagCode!=''">
+			 and TAG_CODE = #{tagCode}<!--标签编码-->
+		</if>
+		<if test="sort != null and sort!=''">
+			 and SORT = #{sort}<!--排序-->
+		</if>
+		<if test="remarks != null and remarks!=''">
+			 and REMARKS = #{remarks}<!--备注-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			 and COL_1 = #{col1}<!--预留字段1-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			 and COL_2 = #{col2}<!--预留字段2-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			 and COL_3 = #{col3}<!--预留字段3-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			 and COL_4 = #{col4}<!--预留字段4-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			 and COL_5 = #{col5}<!--预留字段5-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			 and COL_6 = #{col6}<!--预留字段6-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			 and COL_7 = #{col7}<!--预留字段7-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			 and COL_8 = #{col8}<!--预留字段8-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			 and COL_9 = #{col9}<!--预留字段9-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			 and COL_10 = #{col10}<!--预留字段10-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY000601" keyProperty="id" useGeneratedKeys="true">
+		 insert into streetcloud.ORG_TAG_CONFIG(
+			ORG_CODE,<!--组织编码-->
+			TAG_TYPE_CODE,<!--标签类型编码-->
+			TAG_ID,<!--标签ID-->
+			TAG_CODE,<!--标签编码-->
+			SORT,<!--排序-->
+			REMARKS,<!--备注-->
+			COL_1,<!--预留字段1-->
+			COL_2,<!--预留字段2-->
+			COL_3,<!--预留字段3-->
+			COL_4,<!--预留字段4-->
+			COL_5,<!--预留字段5-->
+			COL_6,<!--预留字段6-->
+			COL_7,<!--预留字段7-->
+			COL_8,<!--预留字段8-->
+			COL_9,<!--预留字段9-->
+			COL_10,<!--预留字段10-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+
+		)
+ 		 values(
+			#{orgCode},
+			#{tagTypeCode},
+			#{tagId},
+			#{tagCode},
+			#{sort},
+			#{remarks},
+			#{col1},
+			#{col2},
+			#{col3},
+			#{col4},
+			#{col5},
+			#{col6},
+			#{col7},
+			#{col8},
+			#{col9},
+			#{col10},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY000601">
+		 update streetcloud.ORG_TAG_CONFIG set
+			ORG_CODE = #{orgCode},<!--组织编码-->
+			TAG_TYPE_CODE = #{tagTypeCode},<!--标签类型编码-->
+			TAG_ID = #{tagId},<!--标签ID-->
+			TAG_CODE = #{tagCode},<!--标签编码-->
+			SORT = #{sort},<!--排序-->
+			REMARKS = #{remarks},<!--备注-->
+			COL_1 = #{col1},<!--预留字段1-->
+			COL_2 = #{col2},<!--预留字段2-->
+			COL_3 = #{col3},<!--预留字段3-->
+			COL_4 = #{col4},<!--预留字段4-->
+			COL_5 = #{col5},<!--预留字段5-->
+			COL_6 = #{col6},<!--预留字段6-->
+			COL_7 = #{col7},<!--预留字段7-->
+			COL_8 = #{col8},<!--预留字段8-->
+			COL_9 = #{col9},<!--预留字段9-->
+			COL_10 = #{col10},<!--预留字段10-->
+			ENABLED = #{enabled},<!--是否有效-->
+			REMOVED = #{removed},<!--是否删除-->
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+			CREATE_TIME = #{createTime},<!--创建时间-->
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+			UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		 where ID=#{id}
+	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.ORG_TAG_CONFIG
+		 where ID=#{id}
+	</delete>
+
+
+	<delete id="logicDeleteById">
+		update  streetcloud.ORG_TAG_CONFIG set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID in ${id}
+	</delete>
+
+	<select id="queryOrgChooseTag" parameterType="java.lang.String" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			info.ID as id,<!---->
+			info.TAG_TYPE_CODE as tagTypeCode,<!--标签类型code-->
+			info.TAG_CODE as tagCode,<!--标签编码-->
+			info.TAG_NAME as tagName,<!--标签名称-->
+			info.TEXT_COLOR as textColor,<!--文本颜色-->
+			info.BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			info.REMARK as remark,<!--备注-->
+			info.ENABLED as enabled,<!--是否有效-->
+			info.REMOVED as removed,<!--是否删除-->
+			info.CREATE_USER_ID as createUserId,<!--创建人ID-->
+			info.CREATE_USER_NAME as createUserName,<!--创建人-->
+			info.CREATE_TIME as createTime,<!--创建时间-->
+			info.UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			info.UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			info.UPDATE_TIME as updateTime<!--更新时间-->
+		from
+		streetcloud.SYS_TAG_INFO AS info
+			LEFT JOIN streetcloud.ORG_TAG_CONFIG AS org ON info.ID = org.TAG_ID
+		where
+			info.ENABLED = 1
+		  	and info.REMOVED = 0
+			and org.ORG_CODE in ${orgCode}
+			<if test="tagTypeCode != null and tagTypeCode != ''">
+				and info.TAG_TYPE_CODE = #{tagTypeCode}
+			</if>
+			<if test="tagName != null and tagName != ''">
+				and info.TAG_NAME in ${tagName}
+			</if>
+		order by org.CREATE_TIME desc
+	</select>
+
+	<select id="queryUnselectedTag" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型code-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			TAG_NAME as tagName,<!--标签名称-->
+			TEXT_COLOR as textColor,<!--文本颜色-->
+			BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from
+		streetcloud.SYS_TAG_INFO
+		where
+			ENABLED = 1
+			and REMOVED = 0
+			and TAG_TYPE_CODE = #{tagTypeCode}
+			<if test="tagIds != null and tagIds != ''">
+				and ID not in ${tagIds}
+			</if>
+			<if test="tagName != null and tagName != ''">
+				and TAG_NAME in ${tagName}
+			</if>
+		ORDER BY CREATE_TIME desc
+	</select>
+
+	<delete id="deleteTagOrgConfig">
+		delete from streetcloud.ORG_TAG_CONFIG
+		where TAG_ID = #{tagId} and ORG_CODE = #{orgCode}
+	</delete>
+
+	<select id="queryOrgInTagDataList" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		SELECT
+			b.ID as id,<!---->
+			b.TAG_TYPE_CODE AS tagTypeCode,<!--标签类型id-->
+			b.TAG_CODE as tagCode,<!--标签编码-->
+			b.TAG_NAME as tagName,<!--标签名称-->
+			b.TEXT_COLOR as textColor,<!--文本颜色-->
+			b.BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			b.REMARK as remark,<!--备注-->
+			b.ENABLED as enabled,<!--是否有效-->
+			b.REMOVED as removed,<!--是否删除-->
+			b.CREATE_USER_ID as createUserId,<!--创建人ID-->
+			b.CREATE_USER_NAME as createUserName,<!--创建人-->
+			b.CREATE_TIME as createTime,<!--创建时间-->
+			b.UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			b.UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			b.UPDATE_TIME as updateTime,<!--更新时间-->
+			a.TAG_TYPE_CODE as tagTypeCode,
+			a.TAG_TYPE_NAME as tagTypeName,
+			c.ORG_CODE as orgCode,
+			a.CHOICE_TYPE as choiceType<!--选择类型（1：单选，2：多选）-->
+		FROM
+		streetcloud.SYS_TAG_TYPE AS a
+			LEFT JOIN streetcloud.SYS_TAG_INFO AS b ON a.TAG_TYPE_CODE = b.TAG_TYPE_CODE
+			LEFT JOIN streetcloud.ORG_TAG_CONFIG AS c ON b.ID = c.TAG_ID
+		where
+			a.ENABLED = 1
+			and a.REMOVED = 0
+			and c.ORG_CODE in ${orgCode}
+			<if test="tagTypeName != null and tagTypeName != ''">
+				and a.TAG_TYPE_NAME like concat('%',#{tagTypeName},'%')
+			</if>
+			<if test="tagName != null and tagName != ''">
+				and b.TAG_NAME like concat('%',#{tagName},'%')
+			</if>
+		ORDER BY a.SORT,b.SORT asc
+	</select>
+
+	<select id="queryTagDataByTagCode" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			b.ID as id,<!---->
+			b.TAG_TYPE_CODE as tagTypeCode,<!--标签类型id-->
+			b.TAG_CODE as tagCode,<!--标签编码-->
+			b.TAG_NAME as tagName,<!--标签名称-->
+			b.TEXT_COLOR as textColor,<!--文本颜色-->
+			b.BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			b.REMARK as remark,<!--备注-->
+			b.ENABLED as enabled,<!--是否有效-->
+			b.REMOVED as removed,<!--是否删除-->
+			b.CREATE_USER_ID as createUserId,<!--创建人ID-->
+			b.CREATE_USER_NAME as createUserName,<!--创建人-->
+			b.CREATE_TIME as createTime,<!--创建时间-->
+			b.UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			b.UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			b.UPDATE_TIME as updateTime,<!--更新时间-->
+			a.TAG_TYPE_CODE as tagTypeCode,
+			a.TAG_TYPE_NAME as tagTypeName
+		FROM
+		streetcloud.SYS_TAG_TYPE AS a
+			LEFT JOIN streetcloud.SYS_TAG_INFO AS b ON a.Id = b.TAG_TYPE_ID
+		WHERE
+			b.ENABLED = 1
+			AND b.REMOVED = 0
+			and b.TAG_CODE = #{tagCode}
+	</select>
+
+</mapper>
+

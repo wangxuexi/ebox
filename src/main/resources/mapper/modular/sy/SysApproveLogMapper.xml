@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.SysApproveLogMapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.SysApproveLog">
+		select 
+			ID as id,<!---->
+			USER_ID as userId,<!--审批人ID-->
+			USER_NAME as userName,<!--审批人姓名-->
+			OPERATE_TIME as operateTime,<!--审批时间-->
+			TYPE_CODE as typeCode,<!--审批类型编码-->
+			TYPE_NAME as typeName,<!--审批类型名称-->
+			OBJECT_ID as objectId,<!--审批对象ID-->
+			OBJECT_NAME as objectName,<!--审批对象名称-->
+			TASK_NAME as taskName,<!--审批环节-->
+			TASK_RESULT as taskResult,<!--审批结果-->
+			TASK_COMMENT as taskComment,<!--审批意见-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_APPROVE_LOG
+	</select>
+
+	<select id="queryList" parameterType="com.fijo.ebox.modular.sy.pojo.SysApproveLog" resultType="com.fijo.ebox.modular.sy.pojo.SysApproveLog">
+		select
+		ID as id,<!---->
+		USER_ID as userId,<!--审批人ID-->
+		USER_NAME as userName,<!--审批人姓名-->
+		OPERATE_TIME as operateTime,<!--审批时间-->
+		TYPE_CODE as typeCode,<!--审批类型编码-->
+		TYPE_NAME as typeName,<!--审批类型名称-->
+		OBJECT_ID as objectId,<!--审批对象ID-->
+		OBJECT_NAME as objectName,<!--审批对象名称-->
+		TASK_NAME as taskName,<!--审批环节-->
+		TASK_RESULT as taskResult,<!--审批结果-->
+		TASK_COMMENT as taskComment,<!--审批意见-->
+		REMARKS as remarks,<!--备注-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_APPROVE_LOG
+		where 1=1
+		<if test="id != null and id!=''">
+			and ID = #{id}<!---->
+		</if>
+		<if test="userId != null and userId!=''">
+			and USER_ID = #{userId}<!--审批人ID-->
+		</if>
+		<if test="userName != null and userName!=''">
+			and USER_NAME = #{userName}<!--审批人姓名-->
+		</if>
+		<if test="operateTime != null and operateTime!=''">
+			and OPERATE_TIME = #{operateTime}<!--审批时间-->
+		</if>
+		<if test="typeCode != null and typeCode!=''">
+			and TYPE_CODE = #{typeCode}<!--审批类型编码-->
+		</if>
+		<if test="typeName != null and typeName!=''">
+			and TYPE_NAME = #{typeName}<!--审批类型名称-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--审批对象ID-->
+		</if>
+		<if test="objectName != null and objectName!=''">
+			and OBJECT_NAME = #{objectName}<!--审批对象名称-->
+		</if>
+		<if test="taskName != null and taskName!=''">
+			and TASK_NAME = #{taskName}<!--审批环节-->
+		</if>
+		<if test="taskResult != null and taskResult!=''">
+			and TASK_RESULT = #{taskResult}<!--审批结果-->
+		</if>
+		<if test="taskComment != null and taskComment!=''">
+			and TASK_COMMENT = #{taskComment}<!--审批意见-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+		<if test="orderByClause != null and orderByClause !=''" >
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.SysApproveLog">
+		select 
+			ID as id,<!---->
+			USER_ID as userId,<!--审批人ID-->
+			USER_NAME as userName,<!--审批人姓名-->
+			OPERATE_TIME as operateTime,<!--审批时间-->
+			TYPE_CODE as typeCode,<!--审批类型编码-->
+			TYPE_NAME as typeName,<!--审批类型名称-->
+			OBJECT_ID as objectId,<!--审批对象ID-->
+			OBJECT_NAME as objectName,<!--审批对象名称-->
+			TASK_NAME as taskName,<!--审批环节-->
+			TASK_RESULT as taskResult,<!--审批结果-->
+			TASK_COMMENT as taskComment,<!--审批意见-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_APPROVE_LOG
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!---->
+		</if>
+		<if test="userId != null and userId!=''">
+			 and USER_ID = #{userId}<!--审批人ID-->
+		</if>
+		<if test="userName != null and userName!=''">
+			 and USER_NAME = #{userName}<!--审批人姓名-->
+		</if>
+		<if test="operateTime != null and operateTime!=''">
+			 and OPERATE_TIME = #{operateTime}<!--审批时间-->
+		</if>
+		<if test="typeCode != null and typeCode!=''">
+			 and TYPE_CODE = #{typeCode}<!--审批类型编码-->
+		</if>
+		<if test="typeName != null and typeName!=''">
+			 and TYPE_NAME = #{typeName}<!--审批类型名称-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			 and OBJECT_ID = #{objectId}<!--审批对象ID-->
+		</if>
+		<if test="objectName != null and objectName!=''">
+			 and OBJECT_NAME = #{objectName}<!--审批对象名称-->
+		</if>
+		<if test="taskName != null and taskName!=''">
+			 and TASK_NAME = #{taskName}<!--审批环节-->
+		</if>
+		<if test="taskResult != null and taskResult!=''">
+			 and TASK_RESULT = #{taskResult}<!--审批结果-->
+		</if>
+		<if test="taskComment != null and taskComment!=''">
+			 and TASK_COMMENT = #{taskComment}<!--审批意见-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.SysApproveLog">
+		 insert into streetcloud.SYS_APPROVE_LOG(
+			USER_ID,<!--审批人ID-->
+			USER_NAME,<!--审批人姓名-->
+			OPERATE_TIME,<!--审批时间-->
+			TYPE_CODE,<!--审批类型编码-->
+			TYPE_NAME,<!--审批类型名称-->
+			OBJECT_ID,<!--审批对象ID-->
+			OBJECT_NAME,<!--审批对象名称-->
+			TASK_NAME,<!--审批环节-->
+			TASK_RESULT,<!--审批结果-->
+			TASK_COMMENT,<!--审批意见-->
+			REMARKS,<!--备注-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+		 values(
+			#{userId},
+			#{userName},
+			#{operateTime},
+			#{typeCode},
+			#{typeName},
+			#{objectId},
+			#{objectName},
+			#{taskName},
+			#{taskResult},
+			#{taskComment},
+			#{remarks},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.SysApproveLog">
+		 update streetcloud.SYS_APPROVE_LOG
+			<set>
+		<if test="userId != null ">
+			USER_ID = #{userId},<!--审批人ID-->
+		</if>
+		<if test="userName != null ">
+			USER_NAME = #{userName},<!--审批人姓名-->
+		</if>
+		<if test="operateTime != null ">
+			OPERATE_TIME = #{operateTime},<!--审批时间-->
+		</if>
+		<if test="typeCode != null ">
+			TYPE_CODE = #{typeCode},<!--审批类型编码-->
+		</if>
+		<if test="typeName != null ">
+			TYPE_NAME = #{typeName},<!--审批类型名称-->
+		</if>
+		<if test="objectId != null ">
+			OBJECT_ID = #{objectId},<!--审批对象ID-->
+		</if>
+		<if test="objectName != null ">
+			OBJECT_NAME = #{objectName},<!--审批对象名称-->
+		</if>
+		<if test="taskName != null ">
+			TASK_NAME = #{taskName},<!--审批环节-->
+		</if>
+		<if test="taskResult != null ">
+			TASK_RESULT = #{taskResult},<!--审批结果-->
+		</if>
+		<if test="taskComment != null ">
+			TASK_COMMENT = #{taskComment},<!--审批意见-->
+		</if>
+		<if test="createUserId != null ">
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+		</if>
+		<if test="createUserName != null ">
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+		</if>
+		<if test="createTime != null ">
+			CREATE_TIME = #{createTime},<!--创建时间-->
+		</if>
+		<if test="updateUserId != null ">
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null ">
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+		</if>
+		<if test="updateTime != null ">
+			UPDATE_TIME = #{updateTime},<!--更新时间-->
+		</if>
+			</set>
+		 where id=#{id}	</update>
+
+	<delete id="delete" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_APPROVE_LOG
+		 where id=#{id} 
+	</delete>
+
+	<select id="queryMonthSizeByUid" resultType="java.lang.Integer">
+		SELECT
+			COUNT(ID)
+		FROM
+			streetcloud.SYS_APPROVE_LOG
+		WHERE
+			USER_ID = #{uId}
+			AND DATE_FORMAT(OPERATE_TIME,'%Y%m') = DATE_FORMAT(CURDATE( ),'%Y%m')
+	</select>
+
+	<select id="queryYearSizeByUid" resultType="java.lang.Integer">
+		SELECT
+			COUNT(ID)
+		FROM
+			streetcloud.SYS_APPROVE_LOG
+		WHERE
+			USER_ID = #{uId}
+			AND YEAR(OPERATE_TIME)=YEAR(NOW());
+	</select>
+
+	<select id="querySysApproveLogTopFiveByUid" resultType="java.util.Map">
+		SELECT
+			a.ID AS 'ID',
+			a.ENTITY_TYPE_CODE AS 'entityTypeCode',
+			CASE
+				a.ENTITY_TYPE_CODE
+				WHEN 'BGRL0001' THEN
+				'企业变更认领'
+				WHEN 'BGRL0002' THEN
+				'中介变更认领'
+				WHEN 'ECBG0001' THEN
+				'企业变更'
+				WHEN 'ECBG0002' THEN
+				'中介变更'
+				WHEN 'ECCL0001' THEN
+				'企业注销'
+				WHEN 'ECCL0002' THEN
+			  '中介注销'
+				WHEN 'ECGQ0001' THEN
+				'股权变更预警'
+				WHEN 'ECGS0001' THEN
+				'企业归属变更'
+				WHEN 'ECGT0001' THEN
+				'企业沟通记录'
+				WHEN 'ECJY0001' THEN
+				'经营异常预警'
+				WHEN 'ECRL0001' THEN
+				'中介认领'
+				WHEN 'ECRL0002' THEN
+				'个人认领'
+				WHEN 'ECXB0001' THEN
+				'企业新办'
+				WHEN 'GRCL0001' THEN
+				'个人注销认领'
+				WHEN 'QYFW0001' THEN
+				'企业服务工单'
+				WHEN 'ZJCL0001' THEN
+				'中介注销认领'  ELSE '其他' END  AS 'sourceName',
+			a.SUPPORT_PRJ_NAME AS 'supportPrjName',
+			m.`NAME` AS 'entName',
+			b.OPERATE_TIME AS 'operateTime',
+			b.TASK_RESULT as 'taskResult'
+		FROM
+			(
+			SELECT ID,ENTITY_TYPE_CODE,SUPPORT_PRJ_NAME,HEADER_ID AS MAIN_ID FROM ENT_CANCEL_HEADER_ENT UNION
+			SELECT ID,ENTITY_TYPE_CODE,SUPPORT_PRJ_NAME,MAIN_ID FROM ENT_CERTIFICATE_HEADER UNION
+			SELECT ID,ENTITY_TYPE_CODE,SUPPORT_PRJ_NAME,HEADER_ID AS MAIN_ID FROM ENT_CHANGE_HEADER_ENT UNION
+			SELECT ID,ENTITY_TYPE_CODE,SUPPORT_PRJ_NAME,HEADER_ID AS MAIN_ID FROM	ENT_CHANGE_HEADER_INT UNION
+			SELECT ID,ENTITY_TYPE_CODE,SUPPORT_PRJ_NAME,MAIN_ID FROM ENT_NEW_HEADER
+			) AS a
+			LEFT JOIN streetcloud.SYS_APPROVE_LOG AS b ON b.OBJECT_ID = a.ID
+			INNER JOIN ENT_ENTERPRISE_FLOW_MAIN AS m ON a.MAIN_ID = m.ID
+			WHERE
+			b.USER_ID = #{uId}
+			ORDER BY b.OPERATE_TIME DESC
+			LIMIT 5
+	</select>
+
+</mapper>

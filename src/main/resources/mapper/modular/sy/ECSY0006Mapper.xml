@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0006Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型id-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			TAG_NAME as tagName,<!--标签名称-->
+			TEXT_COLOR as textColor,<!--文本颜色-->
+			BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_INFO
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			ID as id,<!---->
+			TAG_TYPE_CODE as tagTypeCode,<!--标签类型id-->
+			TAG_CODE as tagCode,<!--标签编码-->
+			TAG_NAME as tagName,<!--标签名称-->
+			TEXT_COLOR as textColor,<!--文本颜色-->
+			BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_INFO
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!---->
+		</if>
+		<if test="tagTypeCode != null and tagTypeCode!=''">
+			 and TAG_TYPE_CODE = #{tagTypeCode}<!--标签类型编码-->
+		</if>
+		<if test="tagName != null and tagName!=''">
+			 and TAG_NAME = #{tagName}<!--标签名称-->
+		</if>
+		<if test="textColor != null and textColor!=''">
+			 and TEXT_COLOR = #{textColor}<!--文本颜色-->
+		</if>
+		<if test="backgroundColor != null and backgroundColor!=''">
+			 and BACKGROUND_COLOR = #{backgroundColor}<!--背景颜色-->
+		</if>
+		<if test="remark != null and remark!=''">
+			 and REMARK = #{remark}<!--备注-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		 insert into streetcloud.SYS_TAG_INFO(
+			ID,<!---->
+			TAG_TYPE_CODE,<!--标签类型编码-->
+			TAG_CODE,<!--标签编码-->
+			TAG_NAME,<!--标签名称-->
+			TEXT_COLOR,<!--文本颜色-->
+			BACKGROUND_COLOR,<!--背景颜色-->
+			SORT,<!--排序-->
+			REMARK,<!--备注-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+ 		 values(
+			#{id},
+			#{tagTypeCode},
+			#{tagCode},
+			#{tagName},
+			#{textColor},
+			#{backgroundColor},
+			#{sort},
+			#{remark},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		 update streetcloud.SYS_TAG_INFO
+			<set>
+				<if test="tagTypeCode != null ">
+					TAG_TYPE_CODE = #{tagTypeCode},<!--标签类型编码-->
+				</if>
+				<if test="tagCode != null ">
+					TAG_CODE = #{tagCode},<!--标签编码-->
+				</if>
+				<if test="tagName != null ">
+					TAG_NAME = #{tagName},<!--标签名称-->
+				</if>
+				<if test="textColor != null ">
+					TEXT_COLOR = #{textColor},<!--文本颜色-->
+				</if>
+				<if test="backgroundColor != null ">
+					BACKGROUND_COLOR = #{backgroundColor},<!--背景颜色-->
+				</if>
+				<if test="sort != null">
+					SORT = #{sort},<!--排序-->
+				</if>
+				<if test="remark != null ">
+					REMARK = #{remark},<!--备注-->
+				</if>
+				<if test="enabled != null ">
+					ENABLED = #{enabled},<!--是否有效-->
+				</if>
+				<if test="removed != null ">
+					REMOVED = #{removed},<!--是否删除-->
+				</if>
+				<if test="createUserId != null ">
+					CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+				</if>
+				<if test="createUserName != null ">
+					CREATE_USER_NAME = #{createUserName},<!--创建人-->
+				</if>
+				<if test="createTime != null ">
+					CREATE_TIME = #{createTime},<!--创建时间-->
+				</if>
+				<if test="updateUserId != null ">
+					UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+				</if>
+				<if test="updateUserName != null ">
+					UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+				</if>
+				<if test="updateTime != null ">
+					UPDATE_TIME = #{updateTime},<!--更新时间-->
+				</if>
+			</set>
+		 where id=#{id}	</update>
+
+	<update id="deleteById" parameterType="java.lang.String">
+		UPDATE streetcloud.SYS_TAG_INFO
+		SET
+		TAG_NAME = CONCAT(TAG_NAME,unix_timestamp(now())),
+		ENABLED = 0,
+		REMOVED = 1
+		WHERE
+		id=#{id}
+	</update>
+
+	<select id="queryBytagTypeCode" parameterType="java.lang.String" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+		ID as id,<!---->
+		TAG_TYPE_CODE as tagTypeCode,<!--标签类型id-->
+		TAG_CODE as tagCode,<!--标签编码-->
+		TAG_NAME as tagName,<!--标签名称-->
+		TEXT_COLOR as textColor,<!--文本颜色-->
+		BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+		SORT as sort,<!--排序-->
+		REMARK as remark,<!--备注-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_TAG_INFO
+		where
+		ENABLED = 1
+		and REMOVED = 0
+		and TAG_TYPE_CODE = #{tagTypeCode}
+		ORDER BY SORT asc
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0006">
+		select
+			b.ID as id,<!---->
+			b.TAG_TYPE_CODE as tagTypeCode,<!--标签类型code-->
+			b.TAG_CODE as tagCode,<!--标签编码-->
+			b.TAG_NAME as tagName,<!--标签名称-->
+			b.TEXT_COLOR as textColor,<!--文本颜色-->
+			b.BACKGROUND_COLOR as backgroundColor,<!--背景颜色-->
+			b.SORT as sort,<!--排序-->
+			b.REMARK as remark,<!--备注-->
+			b.ENABLED as enabled,<!--是否有效-->
+			b.REMOVED as removed,<!--是否删除-->
+			b.CREATE_USER_ID as createUserId,<!--创建人ID-->
+			b.CREATE_USER_NAME as createUserName,<!--创建人-->
+			b.CREATE_TIME as createTime,<!--创建时间-->
+			b.UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			b.UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			b.UPDATE_TIME as updateTime,<!--更新时间-->
+			a.TAG_TYPE_CODE as tagTypeCode,
+			a.TAG_TYPE_NAME as tagTypeName
+		FROM
+		streetcloud.SYS_TAG_TYPE AS a
+			LEFT JOIN streetcloud.SYS_TAG_INFO AS b ON a.TAG_TYPE_CODE = b.TAG_TYPE_CODE
+		where
+			a.ENABLED = 1
+			and a.REMOVED = 0
+			and b.ID = #{id}
+	</select>
+
+
+</mapper>

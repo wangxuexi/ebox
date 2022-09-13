@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0004Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0004">
+		select 
+			ID as id,<!--ID-->
+			TABLE_NAME_CN as tableNameCn,<!--表中文名-->
+			TABLE_NAME as tableName,<!--表名-->
+			DD_ID_FIELD as ddIdField,<!--数据字典值id字段名-->
+			DD_NAME_FIELD as ddNameField,<!--数据字典值名称字段名-->
+			DD_CODE as ddCode,<!--数据字典编码-->
+			IS_CONNECT_STR as isConnectStr,<!--是否拼接-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DATADICTIONARY
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0004">
+		select 
+			ID as id,<!--ID-->
+			TABLE_NAME_CN as tableNameCn,<!--表中文名-->
+			TABLE_NAME as tableName,<!--表名-->
+			DD_ID_FIELD as ddIdField,<!--数据字典值id字段名-->
+			DD_NAME_FIELD as ddNameField,<!--数据字典值名称字段名-->
+			DD_CODE as ddCode,<!--数据字典编码-->
+			IS_CONNECT_STR as isConnectStr,<!--是否拼接-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DATADICTIONARY
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!--ID-->
+		</if>
+		<if test="tableNameCn != null and tableNameCn!=''">
+			 and TABLE_NAME_CN = #{tableNameCn}<!--表中文名-->
+		</if>
+		<if test="tableName != null and tableName!=''">
+			 and TABLE_NAME = #{tableName}<!--表名-->
+		</if>
+		<if test="ddIdField != null and ddIdField!=''">
+			 and DD_ID_FIELD = #{ddIdField}<!--数据字典值id字段名-->
+		</if>
+		<if test="ddNameField != null and ddNameField!=''">
+			 and DD_NAME_FIELD = #{ddNameField}<!--数据字典值名称字段名-->
+		</if>
+		<if test="ddCode != null and ddCode!=''">
+			 and DD_CODE = #{ddCode}<!--数据字典编码-->
+		</if>
+		<if test="isConnectStr != null and isConnectStr!=''">
+			 and IS_CONNECT_STR = #{isConnectStr}<!--是否拼接-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			 and COL_1 = #{col1}<!--预留字段1-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			 and COL_2 = #{col2}<!--预留字段2-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			 and COL_3 = #{col3}<!--预留字段3-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			 and COL_4 = #{col4}<!--预留字段4-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			 and COL_5 = #{col5}<!--预留字段5-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<select id="queryBy" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0004" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0004">
+		select
+		ID as id,<!--ID-->
+		TABLE_NAME_CN as tableNameCn,<!--表中文名-->
+		TABLE_NAME as tableName,<!--表名-->
+		DD_ID_FIELD as ddIdField,<!--数据字典值id字段名-->
+		DD_NAME_FIELD as ddNameField,<!--数据字典值名称字段名-->
+		DD_CODE as ddCode,<!--数据字典编码-->
+		IS_CONNECT_STR as isConnectStr,<!--是否拼接-->
+		COL_1 as col1,<!--预留字段1-->
+		COL_2 as col2,<!--预留字段2-->
+		COL_3 as col3,<!--预留字段3-->
+		COL_4 as col4,<!--预留字段4-->
+		COL_5 as col5,<!--预留字段5-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DATADICTIONARY
+		where 1=1
+		and ENABLED = 1
+		and REMOVED = 0
+		<if test="tableNameCn != null and tableNameCn!=''">
+			and TABLE_NAME_CN like '%${tableNameCn}%'<!--表中文名-->
+		</if>
+		<if test="tableName != null and tableName!=''">
+			and TABLE_NAME like '%${tableName}%'<!--表名-->
+		</if>
+		<if test="ddIdField != null and ddIdField!=''">
+			and DD_ID_FIELD = #{ddIdField}<!--数据字典值id字段名-->
+		</if>
+		<if test="ddNameField != null and ddNameField!=''">
+			and DD_NAME_FIELD like '%${ddNameField}%'<!--数据字典值名称字段名-->
+		</if>
+		<if test="ddCode != null and ddCode!=''">
+			and DD_CODE = #{ddCode}<!--数据字典编码-->
+		</if>
+		<if test="isConnectStr != null ">
+			and IS_CONNECT_STR = #{isConnectStr}<!--是否拼接-->
+		</if>
+		order by UPDATE_TIME desc
+	</select>
+
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0004">
+		 insert into streetcloud.SYS_DATADICTIONARY(
+			ID,<!--ID-->
+			TABLE_NAME_CN,<!--表中文名-->
+			TABLE_NAME,<!--表名-->
+			DD_ID_FIELD,<!--数据字典值id字段名-->
+			DD_NAME_FIELD,<!--数据字典值名称字段名-->
+			DD_CODE,<!--数据字典编码-->
+			IS_CONNECT_STR,<!--是否拼接-->
+			COL_1,<!--预留字段1-->
+			COL_2,<!--预留字段2-->
+			COL_3,<!--预留字段3-->
+			COL_4,<!--预留字段4-->
+			COL_5,<!--预留字段5-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+ 		 values(
+			#{id},
+			#{tableNameCn},
+			#{tableName},
+			#{ddIdField},
+			#{ddNameField},
+			#{ddCode},
+			#{isConnectStr},
+			#{col1},
+			#{col2},
+			#{col3},
+			#{col4},
+			#{col5},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0004">
+		 update streetcloud.SYS_DATADICTIONARY
+			<set>
+		<if test="tableNameCn != null ">
+			TABLE_NAME_CN = #{tableNameCn},<!--表中文名-->
+		</if>
+		<if test="tableName != null ">
+			TABLE_NAME = #{tableName},<!--表名-->
+		</if>
+		<if test="ddIdField != null ">
+			DD_ID_FIELD = #{ddIdField},<!--数据字典值id字段名-->
+		</if>
+		<if test="ddNameField != null ">
+			DD_NAME_FIELD = #{ddNameField},<!--数据字典值名称字段名-->
+		</if>
+		<if test="ddCode != null ">
+			DD_CODE = #{ddCode},<!--数据字典编码-->
+		</if>
+		<if test="isConnectStr != null ">
+			IS_CONNECT_STR = #{isConnectStr},<!--是否拼接-->
+		</if>
+		<if test="col1 != null ">
+			COL_1 = #{col1},<!--预留字段1-->
+		</if>
+		<if test="col2 != null ">
+			COL_2 = #{col2},<!--预留字段2-->
+		</if>
+		<if test="col3 != null ">
+			COL_3 = #{col3},<!--预留字段3-->
+		</if>
+		<if test="col4 != null ">
+			COL_4 = #{col4},<!--预留字段4-->
+		</if>
+		<if test="col5 != null ">
+			COL_5 = #{col5},<!--预留字段5-->
+		</if>
+		<if test="enabled != null ">
+			ENABLED = #{enabled},<!--是否有效-->
+		</if>
+		<if test="removed != null ">
+			REMOVED = #{removed},<!--是否删除-->
+		</if>
+		<if test="createUserId != null ">
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+		</if>
+		<if test="createUserName != null ">
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+		</if>
+		<if test="createTime != null ">
+			CREATE_TIME = #{createTime},<!--创建时间-->
+		</if>
+		<if test="updateUserId != null ">
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null ">
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+		</if>
+		<if test="updateTime != null ">
+			UPDATE_TIME = #{updateTime},<!--更新时间-->
+		</if>
+			</set>
+		 where id=#{id}
+		 </update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_DATADICTIONARY
+		 where id=#{id}
+	</delete>
+
+</mapper>

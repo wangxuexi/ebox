@@ -1,0 +1,91 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: fijo123456
+    url: jdbc:mysql://172.16.100.180:3306/ebox?characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true
+  redis:
+    host: 172.16.100.180
+    password: fijo12345
+    port: 6379
+    database: 0
+  session:
+    store-type: redis
+  mail:
+    host: smtp.exmail.qq.com
+    username: noreply@fijo.com.cn
+    password: LCGfj1234
+    default-encoding: UTF-8
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.sun.mail.util.MailSSLSocketFactory
+              fallback: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.16.100.186:8761/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+sysmsg:
+  fromMail: noreply@fijo.com.cn
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+pagehelper:
+  helperDialect: mySql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+server:
+  port: 18091
+  max-http-header-size: 102400
+
+redirectUrl:
+  default: http://emplat.fijo.com.cn/zszx/page/login.html
+
+
+#模板页面跳转详情页路径
+temdetailsurl:
+  detailsUrl: http://emplat.fijo.com.cn/dev/tint/tintapp/tint_page/page/TINT/TINT0001.html
+
+#微信接口
+wxapi:
+  getAccessToken: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential #获取accessToken
+  insertImg: https://api.weixin.qq.com/cgi-bin/material/add_material #新增永久素材（图文消息缩略图）
+  imgFileUpload: https://api.weixin.qq.com/cgi-bin/media/uploadimg #图文消息内容图片上传
+  insertDraft: https://api.weixin.qq.com/cgi-bin/draft/add #新增草稿
+  sendMsgPreview: https://api.weixin.qq.com/cgi-bin/message/mass/preview #图文消息群发推送 （预览接口）
+  sendMsg: https://api.weixin.qq.com/cgi-bin/message/mass/send #图文消息群发接口
+  getMstSendState: https://api:weixin:qq:com/cgi-bin/message/mass/get #获取消息发送状态
+
+fileaddr:
+  #ftp文件存放物理路径
+  ftpPath: http://file.static.fijo.com.cn
+  #ftp服务器地址
+  ftpHost: 172.16.100.199
+  #ftp服务员器端口号
+  ftpPort: 21
+  #登录用户
+  ftpUserName: fijoftp
+  #登录密码
+  ftpPassword: 123456
+
+
+#esaerch:
+#  secretKey: xxx
+#待我审批单据
+approval:
+  expirationTime: 14400000 #超时时间  4*60*60*1000
+intercept:
+  isOpenintercept: true #是否开启请求拦截 true  false
+
+base: #业务基础配置
+  config:
+    enumPath: com.fijo.ftxt.enums.ModularEnum

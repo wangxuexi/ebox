@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.wt.mapper.QUWT0001Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+		ID as id,<!--主键ID-->
+		ONELVL_ORG_CODE as onelvlOrgCode,<!--一级组织-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+		OBJECT_ID as objectId,<!--来源ID-->
+		PROBLEM_NAME as problemName,<!--问题标题-->
+		PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+		LNG as lng,<!--经度-->
+		LAT as lat,<!--纬度-->
+		HAPPEN_TIME as happenTime,<!--发生时间-->
+		IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+		IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+		PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+		PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+		PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+		PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类 （数据字典）-->
+		PROBLEM_CONTENT as problemContent,<!--问题说明-->
+		SUBMIT_ID as submitId,<!--提交人ID-->
+		SUBMIT_NAME as submitName,<!--提交人-->
+		SUBMIT_TIME as submitTime,<!--提交时间-->
+		PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+		END_TIME as endTime,<!--结案时间-->
+		END_USER_ID as endUserId,<!--结案人ID-->
+		END_NAME as endName,<!--结案人-->
+		END_EXPLAIN as endExplain,<!--结案说明-->
+		STATE_NAME as stateName,<!--状态名称-->
+		STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+		NOTE as note,<!--备注-->
+		SORT as sort,<!--排序-->
+		COL_1 as col1,<!--预留字段1-->
+		COL_2 as col2,<!--预留字段2-->
+		COL_3 as col3,<!--预留字段3-->
+		COL_4 as col4,<!--预留字段4-->
+		COL_5 as col5,<!--预留字段5-->
+		COL_6 as col6,<!--预留字段6-->
+		COL_7 as col7,<!--预留字段7-->
+		COL_8 as col8,<!--预留字段8-->
+		COL_9 as col9,<!--预留字段9-->
+		COL_10 as col10,<!--预留字段10-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建日期-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		UPDATE_TIME as updateTime,<!--更新时间-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_USER_ID as updateUserId<!--更新人ID-->
+
+		from streetcloud.CM_PROBLEM_HANDLE_RECORD where ENABLED = 1 and REMOVED = 0
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+		ID as id,<!--主键ID-->
+		ONELVL_ORG_CODE as onelvlOrgCode,<!--一级组织-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+		OBJECT_ID as objectId,<!--来源ID-->
+		PROBLEM_NAME as problemName,<!--问题标题-->
+		PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+		LNG as lng,<!--经度-->
+		LAT as lat,<!--纬度-->
+		HAPPEN_TIME as happenTime,<!--发生时间-->
+		IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+		IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+		PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+		PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+		PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+		PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类 （数据字典）-->
+		PROBLEM_CONTENT as problemContent,<!--问题说明-->
+		SUBMIT_ID as submitId,<!--提交人ID-->
+		SUBMIT_NAME as submitName,<!--提交人-->
+		SUBMIT_TIME as submitTime,<!--提交时间-->
+		PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+		END_TIME as endTime,<!--结案时间-->
+		END_USER_ID as endUserId,<!--结案人ID-->
+		END_NAME as endName,<!--结案人-->
+		END_EXPLAIN as endExplain,<!--结案说明-->
+		STATE_NAME as stateName,<!--状态名称-->
+		STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+		NOTE as note,<!--备注-->
+		SORT as sort,<!--排序-->
+		COL_1 as col1,<!--预留字段1-->
+		COL_2 as col2,<!--预留字段2-->
+		COL_3 as col3,<!--预留字段3-->
+		COL_4 as col4,<!--预留字段4-->
+		COL_5 as col5,<!--预留字段5-->
+		COL_6 as col6,<!--预留字段6-->
+		COL_7 as col7,<!--预留字段7-->
+		COL_8 as col8,<!--预留字段8-->
+		COL_9 as col9,<!--预留字段9-->
+		COL_10 as col10,<!--预留字段10-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建日期-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		UPDATE_TIME as updateTime,<!--更新时间-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_USER_ID as updateUserId<!--更新人ID-->
+
+		from streetcloud.CM_PROBLEM_HANDLE_RECORD where ID = #{id}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+		ID as id,<!--主键ID-->
+		ONELVL_ORG_CODE as onelvlOrgCode,<!--一级组织-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+		OBJECT_ID as objectId,<!--来源ID-->
+		PROBLEM_NAME as problemName,<!--问题标题-->
+		PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+		LNG as lng,<!--经度-->
+		LAT as lat,<!--纬度-->
+		HAPPEN_TIME as happenTime,<!--发生时间-->
+		IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+		IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+		PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+		PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+		PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+		PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类 （数据字典）-->
+		PROBLEM_CONTENT as problemContent,<!--问题说明-->
+		SUBMIT_ID as submitId,<!--提交人ID-->
+		SUBMIT_NAME as submitName,<!--提交人-->
+		SUBMIT_TIME as submitTime,<!--提交时间-->
+		PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+		END_TIME as endTime,<!--结案时间-->
+		END_USER_ID as endUserId,<!--结案人ID-->
+		END_NAME as endName,<!--结案人-->
+		END_EXPLAIN as endExplain,<!--结案说明-->
+		STATE_NAME as stateName,<!--状态名称-->
+		STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+		NOTE as note,<!--备注-->
+		SORT as sort,<!--排序-->
+		COL_1 as col1,<!--预留字段1-->
+		COL_2 as col2,<!--预留字段2-->
+		COL_3 as col3,<!--预留字段3-->
+		COL_4 as col4,<!--预留字段4-->
+		COL_5 as col5,<!--预留字段5-->
+		COL_6 as col6,<!--预留字段6-->
+		COL_7 as col7,<!--预留字段7-->
+		COL_8 as col8,<!--预留字段8-->
+		COL_9 as col9,<!--预留字段9-->
+		COL_10 as col10,<!--预留字段10-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建日期-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		UPDATE_TIME as updateTime,<!--更新时间-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_USER_ID as updateUserId<!--更新人ID-->
+
+		from streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where 1=1
+		<if test="id != null and id!=''">
+			and ID = #{id}<!--主键ID-->
+		</if>
+		<if test="onelvlOrgCode != null and onelvlOrgCode!=''">
+			and ONELVL_ORG_CODE = #{onelvlOrgCode}<!--一级组织-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="entityTypeCode != null and entityTypeCode!=''">
+			and ENTITY_TYPE_CODE = #{entityTypeCode}<!--来源实体类编码-->
+		</if>
+		<if test="objectId != null and objectId!=''">
+			and OBJECT_ID = #{objectId}<!--来源ID-->
+		</if>
+		<if test="problemName != null and problemName!=''">
+			and PROBLEM_NAME = #{problemName}<!--问题标题-->
+		</if>
+		<if test="problemAddress != null and problemAddress!=''">
+			and PROBLEM_ADDRESS = #{problemAddress}<!--发生地址-->
+		</if>
+		<if test="lng != null and lng!=''">
+			and LNG = #{lng}<!--经度-->
+		</if>
+		<if test="lat != null and lat!=''">
+			and LAT = #{lat}<!--纬度-->
+		</if>
+		<if test="happenTime != null and happenTime!=''">
+			and HAPPEN_TIME = #{happenTime}<!--发生时间-->
+		</if>
+		<if test="isRepairRecord != null and isRepairRecord!=''">
+			and IS_REPAIR_RECORD = #{isRepairRecord}<!--是否生成维修记录（废弃）-->
+		</if>
+		<if test="isSyncDisPlat != null and isSyncDisPlat!=''">
+			and IS_SYNC_DIS_PLAT = #{isSyncDisPlat}<!--是否同步区级平台-->
+		</if>
+		<if test="problemSource != null and problemSource!=''">
+			and PROBLEM_SOURCE = #{problemSource}<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		</if>
+		<if test="problemSourceId != null and problemSourceId!=''">
+			and PROBLEM_SOURCE_ID = #{problemSourceId}<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		</if>
+		<if test="problemType != null and problemType!=''">
+			and PROBLEM_TYPE = #{problemType}<!--问题类型（数据字典）-->
+		</if>
+		<if test="problemTypeId != null and problemTypeId!=''">
+			and PROBLEM_TYPE_ID = #{problemTypeId}<!--问题类型ID （数据字典）-->
+		</if>
+		<if test="problemSmallTypeId != null and problemSmallTypeId!=''">
+			and PROBLEM_SMALL_TYPE_ID = #{problemSmallTypeId}<!--问题类型小类ID （数据字典）-->
+		</if>
+		<if test="problemSmallType != null and problemSmallType!=''">
+			and PROBLEM_SMALL_TYPE = #{problemSmallType}<!--问题类型小类 （数据字典）-->
+		</if>
+		<if test="problemContent != null and problemContent!=''">
+			and PROBLEM_CONTENT = #{problemContent}<!--问题说明-->
+		</if>
+		<if test="submitId != null and submitId!=''">
+			and SUBMIT_ID = #{submitId}<!--提交人ID-->
+		</if>
+		<if test="submitName != null and submitName!=''">
+			and SUBMIT_NAME = #{submitName}<!--提交人-->
+		</if>
+		<if test="submitTime != null and submitTime!=''">
+			and SUBMIT_TIME = #{submitTime}<!--提交时间-->
+		</if>
+		<if test="punishDepartment != null and punishDepartment!=''">
+			and PUNISH_DEPARTMENT = #{punishDepartment}<!--处罚部门-->
+		</if>
+		<if test="endTime != null and endTime!=''">
+			and END_TIME = #{endTime}<!--结案时间-->
+		</if>
+		<if test="endName != null and endName!=''">
+			and END_NAME = #{endName}<!--结案人-->
+		</if>
+		<if test="endExplain != null and endExplain!=''">
+			and END_EXPLAIN = #{endExplain}<!--结案说明-->
+		</if>
+		<if test="stateName != null and stateName!=''">
+			and STATE_NAME = #{stateName}<!--状态名称-->
+		</if>
+		<if test="state != null and state!=''">
+			and STATE = #{state}<!--状态 1：待处理 2：已处理 3：已结案-->
+		</if>
+		<if test="note != null and note!=''">
+			and NOTE = #{note}<!--备注-->
+		</if>
+		<if test="sort != null and sort!=''">
+			and SORT = #{sort}<!--排序-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			and COL_1 = #{col1}<!--预留字段1-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			and COL_2 = #{col2}<!--预留字段2-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			and COL_3 = #{col3}<!--预留字段3-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			and COL_4 = #{col4}<!--预留字段4-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			and COL_5 = #{col5}<!--预留字段5-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			and COL_6 = #{col6}<!--预留字段6-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			and COL_7 = #{col7}<!--预留字段7-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			and COL_8 = #{col8}<!--预留字段8-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			and COL_9 = #{col9}<!--预留字段9-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			and COL_10 = #{col10}<!--预留字段10-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			and CREATE_TIME = #{createTime}<!--创建日期-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.wt.pojo.QUWT0001" keyProperty="id" useGeneratedKeys="true">
+		insert into streetcloud.CM_PROBLEM_HANDLE_RECORD(
+		ONELVL_ORG_CODE,<!--一级组织-->
+		ORG_CODE,<!--组织编码-->
+		ENTITY_TYPE_CODE,<!--来源实体类编码-->
+		OBJECT_ID,<!--来源ID-->
+		PROBLEM_NAME,<!--问题标题-->
+		PROBLEM_ADDRESS,<!--发生地址-->
+		LNG,<!--经度-->
+		LAT,<!--纬度-->
+		HAPPEN_TIME,<!--发生时间-->
+		IS_REPAIR_RECORD,<!--是否生成维修记录（废弃）-->
+		IS_SYNC_DIS_PLAT,<!--是否同步区级平台-->
+		PROBLEM_SOURCE,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		PROBLEM_SOURCE_ID,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		PROBLEM_TYPE,<!--问题类型（数据字典）-->
+		PROBLEM_TYPE_ID,<!--问题类型ID （数据字典）-->
+		PROBLEM_SMALL_TYPE_ID,<!--问题类型小类ID （数据字典）-->
+		PROBLEM_SMALL_TYPE,<!--问题类型小类 （数据字典）-->
+		PROBLEM_CONTENT,<!--问题说明-->
+		SUBMIT_ID,<!--提交人ID-->
+		SUBMIT_NAME,<!--提交人-->
+		SUBMIT_TIME,<!--提交时间-->
+		PUNISH_DEPARTMENT,<!--处罚部门-->
+		END_TIME,<!--结案时间-->
+		END_USER_ID,<!--结案人ID-->
+		END_NAME,<!--结案人-->
+		END_EXPLAIN,<!--结案说明-->
+		STATE_NAME,<!--状态名称-->
+		STATE,<!--状态 1：待处理 2：已处理 3：已结案-->
+		NOTE,<!--备注-->
+		SORT,<!--排序-->
+		COL_1,<!--预留字段1-->
+		COL_2,<!--预留字段2-->
+		COL_3,<!--预留字段3-->
+		COL_4,<!--预留字段4-->
+		COL_5,<!--预留字段5-->
+		COL_6,<!--预留字段6-->
+		COL_7,<!--预留字段7-->
+		COL_8,<!--预留字段8-->
+		COL_9,<!--预留字段9-->
+		COL_10,<!--预留字段10-->
+		ENABLED,<!--是否有效-->
+		REMOVED,<!--是否删除-->
+		CREATE_USER_NAME,<!--创建人-->
+		CREATE_TIME,<!--创建日期-->
+		CREATE_USER_ID,<!--创建人ID-->
+		UPDATE_TIME,<!--更新时间-->
+		UPDATE_USER_NAME,<!--更新人-->
+		UPDATE_USER_ID<!--更新人ID-->
+
+		)
+		values(
+		#{onelvlOrgCode},
+		#{orgCode},
+		#{entityTypeCode},
+		#{objectId},
+		#{problemName},
+		#{problemAddress},
+		#{lng},
+		#{lat},
+		#{happenTime},
+		#{isRepairRecord},
+		#{isSyncDisPlat},
+		#{problemSource},
+		#{problemSourceId},
+		#{problemType},
+		#{problemTypeId},
+		#{problemSmallTypeId},
+		#{problemSmallType},
+		#{problemContent},
+		#{submitId},
+		#{submitName},
+		#{submitTime},
+		#{punishDepartment},
+		#{endTime},
+		#{endUserId},
+		#{endName},
+		#{endExplain},
+		#{stateName},
+		#{state},
+		#{note},
+		#{sort},
+		#{col1},
+		#{col2},
+		#{col3},
+		#{col4},
+		#{col5},
+		#{col6},
+		#{col7},
+		#{col8},
+		#{col9},
+		#{col10},
+		#{enabled},
+		#{removed},
+		#{createUserName},
+		#{createTime},
+		#{createUserId},
+		#{updateTime},
+		#{updateUserName},
+		#{updateUserId}
+
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		update streetcloud.CM_PROBLEM_HANDLE_RECORD set
+		ONELVL_ORG_CODE = #{onelvlOrgCode},<!--一级组织-->
+		ORG_CODE = #{orgCode},<!--组织编码-->
+		ENTITY_TYPE_CODE = #{entityTypeCode},<!--来源实体类编码-->
+		OBJECT_ID = #{objectId},<!--来源ID-->
+		PROBLEM_NAME = #{problemName},<!--问题标题-->
+		PROBLEM_ADDRESS = #{problemAddress},<!--发生地址-->
+		LNG = #{lng},<!--经度-->
+		LAT = #{lat},<!--纬度-->
+		HAPPEN_TIME = #{happenTime},<!--发生时间-->
+		IS_REPAIR_RECORD = #{isRepairRecord},<!--是否生成维修记录（废弃）-->
+		IS_SYNC_DIS_PLAT = #{isSyncDisPlat},<!--是否同步区级平台-->
+		PROBLEM_SOURCE = #{problemSource},<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+		PROBLEM_SOURCE_ID = #{problemSourceId},<!--问题来源ID（外部问题唯一标识）（废弃）-->
+		PROBLEM_TYPE = #{problemType},<!--问题类型（数据字典）-->
+		PROBLEM_TYPE_ID = #{problemTypeId},<!--问题类型ID （数据字典）-->
+		PROBLEM_SMALL_TYPE_ID = #{problemSmallTypeId},<!--问题类型小类ID （数据字典）-->
+		PROBLEM_SMALL_TYPE = #{problemSmallType},<!--问题类型小类 （数据字典）-->
+		PROBLEM_CONTENT = #{problemContent},<!--问题说明-->
+		SUBMIT_ID = #{submitId},<!--提交人ID-->
+		SUBMIT_NAME = #{submitName},<!--提交人-->
+		SUBMIT_TIME = #{submitTime},<!--提交时间-->
+		PUNISH_DEPARTMENT = #{punishDepartment},<!--处罚部门-->
+		END_TIME = #{endTime},<!--结案时间-->
+		END_USER_ID = #{endUserId},<!--结案人-->
+		END_NAME = #{endName},<!--结案人-->
+		END_EXPLAIN = #{endExplain},<!--结案说明-->
+		STATE_NAME = #{stateName},<!--状态名称-->
+		STATE = #{state},<!--状态 1：待处理 2：已处理 3：已结案-->
+		NOTE = #{note},<!--备注-->
+		SORT = #{sort},<!--排序-->
+		COL_1 = #{col1},<!--预留字段1-->
+		COL_2 = #{col2},<!--预留字段2-->
+		COL_3 = #{col3},<!--预留字段3-->
+		COL_4 = #{col4},<!--预留字段4-->
+		COL_5 = #{col5},<!--预留字段5-->
+		COL_6 = #{col6},<!--预留字段6-->
+		COL_7 = #{col7},<!--预留字段7-->
+		COL_8 = #{col8},<!--预留字段8-->
+		COL_9 = #{col9},<!--预留字段9-->
+		COL_10 = #{col10},<!--预留字段10-->
+		ENABLED = #{enabled},<!--是否有效-->
+		REMOVED = #{removed},<!--是否删除-->
+		CREATE_USER_NAME = #{createUserName},<!--创建人-->
+		CREATE_TIME = #{createTime},<!--创建日期-->
+		CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+		UPDATE_TIME = #{updateTime},<!--更新时间-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+		UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+
+		where ID=#{id}
+	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where ID=#{id}
+	</delete>
+
+
+	<delete id="logicDeleteById">
+		update  streetcloud.CM_PROBLEM_HANDLE_RECORD set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID in ${id}
+	</delete>
+
+	<select id="queryDataList" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+			ID as id,<!--主键ID-->
+			ONELVL_ORG_CODE as onelvlOrgCode,
+			ORG_CODE as orgCode,<!--组织编码-->
+			ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+			OBJECT_ID as objectId,<!--来源ID-->
+			PROBLEM_NAME as problemName,<!--问题标题-->
+			PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+			LNG as lng,<!--经度-->
+			LAT as lat,<!--纬度-->
+			HAPPEN_TIME as happenTime,<!--发生时间-->
+			IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+			IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+			PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+			PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+			PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+			PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+			PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类（数据字典）-->
+			PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+			PROBLEM_CONTENT as problemContent,<!--问题说明-->
+			SUBMIT_ID as submitId,<!--提交人-->
+			SUBMIT_NAME as submitName,<!--提交人-->
+			SUBMIT_TIME as submitTime,<!--提交时间-->
+			PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+			END_TIME as endTime,<!--结案时间-->
+			END_USER_ID as endUserId,<!--结案人ID-->
+			END_NAME as endName,<!--结案人-->
+			END_EXPLAIN as endExplain,<!--结案说明-->
+			STATE_NAME as stateName,<!--状态名称-->
+			STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+			NOTE as note,<!--备注-->
+			SORT as sort,<!--排序-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建日期-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			UPDATE_TIME as updateTime,<!--更新时间-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_USER_ID as updateUserId<!--更新人ID-->
+		from
+		    streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where
+		    ENABLED = 1
+		  	and REMOVED = 0
+			and ORG_CODE IN ${orgCode}
+			<if test="entityTypeCode != null and entityTypeCode != ''">
+				and ENTITY_TYPE_CODE = #{entityTypeCode}
+			</if>
+			<if test="problemName != null and problemName != ''">
+				and PROBLEM_NAME LIKE CONCAT('%',#{problemName},'%')
+			</if>
+			<if test="happenStratTime != null and happenStratTime != ''">
+				and HAPPEN_TIME &gt;= #{happenStratTime}
+			</if>
+			<if test="happenEndTime != null and happenEndTime != ''">
+				and HAPPEN_TIME &lt;= #{happenEndTime}
+			</if>
+			<if test="state != null and state != ''">
+				and STATE = #{state}
+			</if>
+			<if test="problemSource != null and problemSource != ''">
+				and PROBLEM_SOURCE = #{problemSource}
+			</if>
+			<if test="problemTypeId != null and problemTypeId != ''">
+				and PROBLEM_TYPE_ID = #{problemTypeId}
+			</if>
+			<if test="problemSmallTypeId != null and problemSmallTypeId != ''">
+				and PROBLEM_SMALL_TYPE_ID = #{problemSmallTypeId}
+			</if>
+			<if test="submitName != null and submitName != ''">
+				and SUBMIT_NAME LIKE CONCAT('%',#{submitName},'%')
+			</if>
+		order by HAPPEN_TIME desc
+	</select>
+
+	<update id="quesHandle">
+		update streetcloud.CM_PROBLEM_HANDLE_RECORD set
+			END_TIME = #{endTime},<!--结案时间-->
+			 END_USER_ID = #{endUserId},<!--结案人ID-->
+			END_NAME = #{endName},<!--结案人-->
+			END_EXPLAIN = #{endExplain},<!--结案说明-->
+			STATE_NAME = #{stateName},<!--状态名称-->
+			STATE = #{state},<!--状态 1：待处理 2：已处理 3：已结案-->
+			UPDATE_TIME = #{operateTime},<!--更新时间-->
+			UPDATE_USER_NAME = #{userName},<!--更新人-->
+			UPDATE_USER_ID = #{userId}<!--更新人ID-->
+		where ID=#{id}
+	</update>
+
+	<select id="queryDataListByWx" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+			ID as id,<!--主键ID-->
+			ONELVL_ORG_CODE as onelvlOrgCode,
+			ORG_CODE as orgCode,<!--组织编码-->
+			ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+			OBJECT_ID as objectId,<!--来源ID-->
+			PROBLEM_NAME as problemName,<!--问题标题-->
+			PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+			LNG as lng,<!--经度-->
+			LAT as lat,<!--纬度-->
+			HAPPEN_TIME as happenTime,<!--发生时间-->
+			IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+			IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+			PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+			PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+			PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+			PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+			PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类（数据字典）-->
+			PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+			PROBLEM_CONTENT as problemContent,<!--问题说明-->
+			SUBMIT_ID as submitId,<!--提交人-->
+			SUBMIT_NAME as submitName,<!--提交人-->
+			SUBMIT_TIME as submitTime,<!--提交时间-->
+			PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+			END_TIME as endTime,<!--结案时间-->
+			END_NAME as endName,<!--结案人-->
+			END_EXPLAIN as endExplain,<!--结案说明-->
+			STATE_NAME as stateName,<!--状态名称-->
+			STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+			NOTE as note,<!--备注-->
+			SORT as sort,<!--排序-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建日期-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			UPDATE_TIME as updateTime,<!--更新时间-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_USER_ID as updateUserId<!--更新人ID-->
+		from
+			streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where
+			ENABLED = 1
+			and REMOVED = 0
+			and ORG_CODE IN ${orgCode}
+			<if test="entityTypeCode != null and entityTypeCode != ''">
+				and ENTITY_TYPE_CODE = #{entityTypeCode}
+			</if>
+			<if test="keyword != null and keyword != ''">
+				and (PROBLEM_NAME LIKE CONCAT('%',#{keyword},'%')
+				    or SUBMIT_NAME LIKE CONCAT('%',#{keyword},'%'))
+			</if>
+			<if test="problemTypeId != null and problemTypeId != ''">
+				and PROBLEM_TYPE_ID = #{problemTypeId}
+			</if>
+			<if test="problemSmallTypeId != null and problemSmallTypeId != ''">
+				and PROBLEM_SMALL_TYPE_ID = #{problemSmallTypeId}
+			</if>
+			<if test="state != null and state != ''">
+				and STATE = #{state}
+			</if>
+			<if test="problemSource != null and problemSource != ''">
+				and PROBLEM_SOURCE = #{problemSource}
+			</if>
+			<if test="happenStratTime != null and happenStratTime != ''">
+				and HAPPEN_TIME &gt;= #{happenStratTime}
+			</if>
+			<if test="happenEndTime != null and happenEndTime != ''">
+				and HAPPEN_TIME &lt;= #{happenEndTime}
+			</if>
+		order by HAPPEN_TIME desc
+	</select>
+
+	<select id="queryDataNumberBySate" resultType="java.util.Map">
+		select
+			STATE AS 'state',
+			STATE_NAME AS 'stateName',
+			IFNULL(COUNT(1),0) AS 'number'
+		from
+			streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where
+			ENABLED = 1
+			and REMOVED = 0
+			and ORG_CODE IN ${orgCode}
+			<if test="entityTypeCode != null and entityTypeCode != ''">
+				and ENTITY_TYPE_CODE = #{entityTypeCode}
+			</if>
+			<if test="keyword != null and keyword != ''">
+				and (PROBLEM_NAME LIKE CONCAT('%',#{keyword},'%')
+				or SUBMIT_NAME LIKE CONCAT('%',#{keyword},'%'))
+			</if>
+			<if test="problemTypeId != null and problemTypeId != ''">
+				and PROBLEM_TYPE_ID = #{problemTypeId}
+			</if>
+			<if test="problemSmallTypeId != null and problemSmallTypeId != ''">
+				and PROBLEM_SMALL_TYPE_ID = #{problemSmallTypeId}
+			</if>
+			<if test="state != null and state != ''">
+				and STATE = #{state}
+			</if>
+			<if test="problemSource != null and problemSource != ''">
+				and PROBLEM_SOURCE = #{problemSource}
+			</if>
+			<if test="happenStratTime != null and happenStratTime != ''">
+				and HAPPEN_TIME &gt;= #{happenStratTime}
+			</if>
+			<if test="happenEndTime != null and happenEndTime != ''">
+				and HAPPEN_TIME &lt;= #{happenEndTime}
+			</if>
+		GROUP BY
+			STATE
+	</select>
+
+	<select id="queryPuestionChartData" resultType="java.util.Map">
+		SELECT
+			a.ID AS 'id',
+			a.`NAME` AS 'name',
+			IFNULL( b.SIZE, 0 ) AS 'value'
+		FROM
+			(
+				SELECT
+					b.ID AS ID,
+					b.`NAME` AS `NAME`
+				FROM
+					SYS_DATADICTIONARY AS a
+						LEFT JOIN SYS_DDVALUES AS b ON a.ID = b.DDID
+				WHERE
+					a.ENABLED = 1
+				  AND a.REMOVED = 0
+				  AND a.`CODE` = #{ddCode}
+				  AND b.ORG_CODE IN ${orgCode}
+			) AS a
+			LEFT JOIN (
+				SELECT
+					PROBLEM_TYPE_ID AS PROBLEM_TYPE_ID,
+					PROBLEM_TYPE AS PROBLEM_TYPE,
+					COUNT( 1 ) AS SIZE
+				FROM
+					CM_PROBLEM_HANDLE_RECORD
+				WHERE
+					ENABLED = 1
+				  AND REMOVED = 0
+				  AND ORG_CODE IN ${orgCode}
+				  <if test="year != null and year != ''">
+					AND DATE_FORMAT(HAPPEN_TIME,'%Y') = #{year}
+				  </if>
+				GROUP BY
+					PROBLEM_TYPE_ID
+			) AS b ON a.ID = b.PROBLEM_TYPE_ID
+		GROUP BY
+			a.ID
+	</select>
+
+	<select id="queryDataNumberBySateForApi" resultType="java.util.Map">
+		select
+			STATE AS 'state',
+			STATE_NAME AS 'stateName',
+			IFNULL(COUNT(1),0) AS 'number'
+		from
+			streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where
+			ENABLED = 1
+			and REMOVED = 0
+			and ORG_CODE IN ${orgCode}
+			<if test="state != null and state != ''">
+				AND STATE = #{state}
+			</if>
+			<if test="year != null and year != ''">
+				AND DATE_FORMAT(HAPPEN_TIME,'%Y') = #{year}
+			</if>
+		GROUP BY
+			STATE
+	</select>
+
+	<select id="queryQuesDataListByTop" resultType="com.fijo.ebox.modular.wt.pojo.QUWT0001">
+		select
+			ID as id,<!--主键ID-->
+			ONELVL_ORG_CODE as onelvlOrgCode,
+			ORG_CODE as orgCode,<!--组织编码-->
+			ENTITY_TYPE_CODE as entityTypeCode,<!--来源实体类编码-->
+			OBJECT_ID as objectId,<!--来源ID-->
+			PROBLEM_NAME as problemName,<!--问题标题-->
+			PROBLEM_ADDRESS as problemAddress,<!--发生地址-->
+			LNG as lng,<!--经度-->
+			LAT as lat,<!--纬度-->
+			HAPPEN_TIME as happenTime,<!--发生时间-->
+			IS_REPAIR_RECORD as isRepairRecord,<!--是否生成维修记录（废弃）-->
+			IS_SYNC_DIS_PLAT as isSyncDisPlat,<!--是否同步区级平台-->
+			PROBLEM_SOURCE as problemSource,<!--数据来源 1：商铺巡查 2：设施巡查 3：自主提交 4：外部问题-->
+			PROBLEM_SOURCE_ID as problemSourceId,<!--问题来源ID（外部问题唯一标识）（废弃）-->
+			PROBLEM_TYPE as problemType,<!--问题类型（数据字典）-->
+			PROBLEM_TYPE_ID as problemTypeId,<!--问题类型ID （数据字典）-->
+			PROBLEM_SMALL_TYPE as problemSmallType,<!--问题类型小类（数据字典）-->
+			PROBLEM_SMALL_TYPE_ID as problemSmallTypeId,<!--问题类型小类ID （数据字典）-->
+			PROBLEM_CONTENT as problemContent,<!--问题说明-->
+			SUBMIT_ID as submitId,<!--提交人-->
+			SUBMIT_NAME as submitName,<!--提交人-->
+			SUBMIT_TIME as submitTime,<!--提交时间-->
+			PUNISH_DEPARTMENT as punishDepartment,<!--处罚部门-->
+			END_TIME as endTime,<!--结案时间-->
+			END_NAME as endName,<!--结案人-->
+			END_EXPLAIN as endExplain,<!--结案说明-->
+			STATE_NAME as stateName,<!--状态名称-->
+			STATE as state,<!--状态 1：待处理 2：已处理 3：已结案-->
+			NOTE as note,<!--备注-->
+			SORT as sort,<!--排序-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建日期-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			UPDATE_TIME as updateTime,<!--更新时间-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_USER_ID as updateUserId<!--更新人ID-->
+		from
+			streetcloud.CM_PROBLEM_HANDLE_RECORD
+		where
+			ENABLED = 1
+			and REMOVED = 0
+			and ORG_CODE IN ${orgCode}
+			<if test="year != null and year != ''">
+				AND DATE_FORMAT(HAPPEN_TIME,'%Y') = #{year}
+			</if>
+		order by HAPPEN_TIME desc
+		<if test="dataSize != null and dataSize != ''">
+			LIMIT #{dataSize}
+		</if>
+	</select>
+
+</mapper>
+

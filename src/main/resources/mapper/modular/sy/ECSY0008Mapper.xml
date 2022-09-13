@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.sy.mapper.ECSY0008Mapper">
+	<select id="queryDDvalueListByDdid" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008" parameterType="java.lang.Long">
+		select
+		ID as id,<!---->
+		DDID as ddid,<!--字典id-->
+		PARENT_DDID as parentDdid,<!--父项字典值ID-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		CODE as code,<!--编码,冗余-->
+		NAME as name,<!--值-->
+		REMARK as remark,<!--描述-->
+		SORT_NO as sortNo,<!--排序码，步长为5-->
+		IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where DDID = #{ddid}
+	</select>
+
+	<select id="queryDDvalueListByDdidAndOrgCode" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008" parameterType="java.lang.String">
+		select
+		ID as id,<!---->
+		DDID as ddid,<!--字典id-->
+		PARENT_DDID as parentDdid,<!--父项字典值ID-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		CODE as code,<!--编码,冗余-->
+		NAME as name,<!--值-->
+		REMARK as remark,<!--描述-->
+		SORT_NO as sortNo,<!--排序码，步长为5-->
+		IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where DDID = #{ddid} and ORG_CODE = #{orgCode} order by SORT_NO asc
+	</select>
+
+	<select id="getParentValue" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008" parameterType="java.lang.String">
+		select
+			ID as id,<!---->
+			DDID as ddid,<!--字典id-->
+			PARENT_DDID as pId,<!--父项字典值ID-->
+			CODE as pCode,<!--父项字典值code别名-->
+			NAME as name,<!--父项字典值name别名-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			REMARK as remark,<!--描述-->
+			SORT_NO as sortNo<!--排序-->
+		FROM
+		streetcloud.SYS_DDVALUES
+		WHERE
+			1=1 and DDID = #{ddid}
+			and ORG_CODE = #{orgCode}
+			and IS_TO_VOID = 0
+	</select>
+
+	<select id="queryAllByIds" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008" parameterType="java.lang.String">
+		select
+		ID as id,<!---->
+		DDID as ddid,<!--字典id-->
+		PARENT_DDID as parentDdid,<!--父项字典值ID-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		CODE as code,<!--编码,冗余-->
+		NAME as name,<!--值-->
+		REMARK as remark,<!--描述-->
+		SORT_NO as sortNo,<!--排序码，步长为5-->
+		IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where 1=1 and ID IN (${ids})
+	</select>
+
+	<select id="queryAllByOrgCode" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008" parameterType="java.lang.String">
+		select
+		ID as id,<!---->
+		DDID as ddid,<!--字典id-->
+		PARENT_DDID as parentDdid,<!--父项字典值ID-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		CODE as code,<!--编码,冗余-->
+		NAME as name,<!--值-->
+		REMARK as remark,<!--描述-->
+		SORT_NO as sortNo,<!--排序码，步长为5-->
+		IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where 1=1 and ORG_CODE = #{orgCode} and IS_TO_VOID = 0
+	</select>
+
+	<select id="queryAll" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		select 
+			ID as id,<!---->
+			DDID as ddid,<!--字典id-->
+			PARENT_DDID as parentDdid,<!--父项字典值ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			CODE as code,<!--编码,冗余-->
+			NAME as name,<!--值-->
+			REMARK as remark,<!--描述-->
+			SORT_NO as sortNo,<!--排序码，步长为5-->
+			IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where 1=1 and IS_TO_VOID = 0
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		select 
+			ID as id,<!---->
+			DDID as ddid,<!--字典id-->
+			PARENT_DDID as parentDdid,<!--父项字典值ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			CODE as code,<!--编码,冗余-->
+			NAME as name,<!--值-->
+			REMARK as remark,<!--描述-->
+			SORT_NO as sortNo,<!--排序码，步长为5-->
+			IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where ID = #{id}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		select 
+			ID as id,<!---->
+			DDID as ddid,<!--字典id-->
+			PARENT_DDID as parentDdid,<!--父项字典值ID-->
+			ORG_CODE as orgCode,<!--组织编码-->
+			CODE as code,<!--编码,冗余-->
+			NAME as name,<!--值-->
+			REMARK as remark,<!--描述-->
+			SORT_NO as sortNo,<!--排序码，步长为5-->
+			IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!---->
+		</if>
+		<if test="ddid != null and ddid!=''">
+			 and DDID = #{ddid}<!--字典id-->
+		</if>
+		<if test="parentDdid != null and parentDdid!=''">
+			 and PARENT_DDID = #{parentDdid}<!--父项字典值ID-->
+		</if>
+		<if test="orgCode != null and orgCode!=''">
+			 and ORG_CODE = #{orgCode}<!--组织编码-->
+		</if>
+		<if test="code != null and code!=''">
+			 and CODE = #{code}<!--编码,冗余-->
+		</if>
+		<if test="name != null and name!=''">
+			 and NAME = #{name}<!--值-->
+		</if>
+		<if test="remark != null and remark!=''">
+			 and REMARK = #{remark}<!--描述-->
+		</if>
+		<if test="sortNo != null and sortNo!=''">
+			 and SORT_NO = #{sortNo}<!--排序码，步长为5-->
+		</if>
+		<if test="isToVoid != null and isToVoid!=''">
+			 and IS_TO_VOID = #{isToVoid}<!--是否作废1=是，0=否-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+	</select>
+
+	<select id="queryDDValuesByCode" parameterType="java.lang.String" resultType="java.util.Map">
+        select distinct b.name from (
+            select ID as id FROM streetcloud.SYS_DATADICTIONARY where CODE = #{code})a
+            LEFT JOIN streetcloud.SYS_DDVALUES b
+        ON a.id = b.ddid and b.ORG_CODE IN (${orgCode}) order by b.SORT_NO ASC
+    </select>
+
+	<select id="queryDDValuesByCodeForInsert" parameterType="java.lang.String" resultType="java.util.Map">
+        select b.id, b.name from (
+            select * FROM streetcloud.SYS_DATADICTIONARY where CODE = #{code})a
+            LEFT JOIN streetcloud.SYS_DDVALUES b
+        ON a.id = b.ddid and b.ORG_CODE in (${orgCode}) order by b.SORT_NO ASC
+    </select>
+
+    <select id="batchQueryDDValuesByCode" resultType="java.util.Map">
+		select distinct b.name from (
+			select ID as id FROM streetcloud.SYS_DATADICTIONARY where CODE = #{code})a
+			LEFT JOIN streetcloud.SYS_DDVALUES b
+		ON a.id = b.ddid and b.ORG_CODE IN ${orgCode}
+	</select>
+
+	<select id="batchQueryDDValuesByCodeForInsert" resultType="java.util.Map">
+		select b.id, b.name from (
+			 select * FROM streetcloud.SYS_DATADICTIONARY where CODE = #{code})a
+			 LEFT JOIN streetcloud.SYS_DDVALUES b
+	    ON a.id = b.ddid and b.IS_TO_VOID = 0 and b.ORG_CODE in ${orgCode} order by b.SORT_NO ASC
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		 insert into streetcloud.SYS_DDVALUES(
+			ID,<!---->
+			DDID,<!--字典id-->
+			PARENT_DDID,<!--父项字典值ID-->
+			ORG_CODE,<!--组织编码-->
+			CODE,<!--编码,冗余-->
+			NAME,<!--值-->
+			REMARK,<!--描述-->
+			SORT_NO,<!--排序码，步长为5-->
+			IS_TO_VOID,<!--是否作废1=是，0=否-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人-->
+			UPDATE_TIME<!--更新时间-->
+		)
+ 		 values(
+			#{id},
+			#{ddid},
+			#{parentDdid},
+			#{orgCode},
+			#{code},
+			#{name},
+			#{remark},
+			#{sortNo},
+			#{isToVoid},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		 update streetcloud.SYS_DDVALUES
+			<set>
+		<if test="ddid != null ">
+			DDID = #{ddid},<!--字典id-->
+		</if>
+		<if test="parentDdid != null ">
+			PARENT_DDID = #{parentDdid},<!--父项字典值ID-->
+		</if>
+		<if test="orgCode != null ">
+			ORG_CODE = #{orgCode},<!--组织编码-->
+		</if>
+		<if test="code != null ">
+			CODE = #{code},<!--编码,冗余-->
+		</if>
+		<if test="name != null ">
+			NAME = #{name},<!--值-->
+		</if>
+		<if test="remark != null ">
+			REMARK = #{remark},<!--描述-->
+		</if>
+		<if test="sortNo != null ">
+			SORT_NO = #{sortNo},<!--排序码，步长为5-->
+		</if>
+		<if test="isToVoid != null ">
+			IS_TO_VOID = #{isToVoid},<!--是否作废1=是，0=否-->
+		</if>
+		<if test="enabled != null ">
+			ENABLED = #{enabled},<!--是否有效-->
+		</if>
+		<if test="removed != null ">
+			REMOVED = #{removed},<!--是否删除-->
+		</if>
+		<if test="createUserId != null ">
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+		</if>
+		<if test="createUserName != null ">
+			CREATE_USER_NAME = #{createUserName},<!--创建人-->
+		</if>
+		<if test="createTime != null ">
+			CREATE_TIME = #{createTime},<!--创建时间-->
+		</if>
+		<if test="updateUserId != null ">
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null ">
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人-->
+		</if>
+		<if test="updateTime != null ">
+			UPDATE_TIME = #{updateTime},<!--更新时间-->
+		</if>
+			</set>
+		 where id=#{id}	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_DDVALUES
+		 where id=#{id} 
+	</delete>
+
+	<delete id="deleteByOrgCode" parameterType="java.lang.String">
+		 delete from streetcloud.SYS_DDVALUES
+		 where ORG_CODE=#{orgCode}
+	</delete>
+
+	<select id="queryAllDDvalueListByDdidAndOrgCode" resultType="com.fijo.ebox.modular.sy.pojo.ECSY0008">
+		select
+		ID as id,<!---->
+		DDID as ddid,<!--字典id-->
+		PARENT_DDID as parentDdid,<!--父项字典值ID-->
+		ORG_CODE as orgCode,<!--组织编码-->
+		CODE as code,<!--编码,冗余-->
+		NAME as name,<!--值-->
+		REMARK as remark,<!--描述-->
+		SORT_NO as sortNo,<!--排序码，步长为5-->
+		IS_TO_VOID as isToVoid,<!--是否作废1=是，0=否-->
+		ENABLED as enabled,<!--是否有效-->
+		REMOVED as removed,<!--是否删除-->
+		CREATE_USER_ID as createUserId,<!--创建人ID-->
+		CREATE_USER_NAME as createUserName,<!--创建人-->
+		CREATE_TIME as createTime,<!--创建时间-->
+		UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+		UPDATE_USER_NAME as updateUserName,<!--更新人-->
+		UPDATE_TIME as updateTime<!--更新时间-->
+		from streetcloud.SYS_DDVALUES where DDID = #{ddId} and ORG_CODE in ${orgCode} order by SORT_NO asc
+	</select>
+</mapper>
