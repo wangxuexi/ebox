@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>主页</title>
+		<script type="application/javascript" src="../../lib/echarts/echarts.js"></script>
+		<script>
+			document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<script src="../../lib/vue-seamless-scroll/vue-seamless-scroll.js"></script>
+
+		<link rel="stylesheet" href="css/MAIN0001.css">
+		<script>
+			document.write('<script src="js/MAIN0001.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+
+		<style>
+			.el-calendar-table .el-calendar-day {
+                height: 50px;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="root" v-cloak>
+			<div style="padding:20px">
+				<el-row :gutter="20">
+					<el-col :span="8">
+						<div style="width: 100%;height: 150px;background-color: rgb(109, 174, 222);overflow: hidden;">
+							<p style="margin-top:10px;color: #fff"><i class="el-icon-s-unfold" style="margin-left: 20px;font-size: 16px;"></i> 履职管理</p>
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;">
+								<el-col :span="8">待确认</el-col>
+								<el-col :span="8">昨日新增</el-col>
+								<el-col :span="8">近7天新增</el-col>
+							</el-row>
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;font-size: 22px;">
+								<el-col :span="8">{{lzglMsg.unconfirm}}</el-col>
+								<el-col :span="8">{{lzglMsg.lastcount}}</el-col>
+								<el-col :span="8">{{lzglMsg.scount}}</el-col>
+							</el-row>
+						</div>
+					</el-col>
+					<el-col :span="8">
+						<div style="width: 100%;height: 150px;background-color: rgb(113, 199, 159);overflow: hidden;">
+							<p style="margin-top:10px;color: #fff"><i class="el-icon-s-unfold" style="margin-left: 20px;font-size: 16px;"></i> 诉求沟通</p>
+
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;">
+								<el-col :span="8">待确认</el-col>
+								<el-col :span="8">昨日新增</el-col>
+								<el-col :span="8">近7天新增</el-col>
+							</el-row>
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;font-size: 22px;">
+								<el-col :span="8">{{sqMsg.unconfirm}}</el-col>
+								<el-col :span="8">{{sqMsg.lastcount}}</el-col>
+								<el-col :span="8">{{sqMsg.scount}}</el-col>
+							</el-row>
+						</div>
+					</el-col>
+					<el-col :span="8">
+						<div style="width: 100%;height: 150px;background-color: rgb(245, 192, 106);overflow: hidden;">
+							<p style="margin-top:10px;color: #fff"><i class="el-icon-s-unfold" style="margin-left: 20px;font-size: 16px;"></i> 群众留言</p>
+
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;">
+								<el-col :span="12">昨日新增</el-col>
+								<el-col :span="12">近7天新增</el-col>
+							</el-row>
+							<el-row :gutter="20" style="text-align: center;color: #fff;margin-top: 20px;font-size: 22px;">
+								<el-col :span="12">{{qzlyMsg.lastcount}}</el-col>
+								<el-col :span="12">{{qzlyMsg.scount}}</el-col>
+							</el-row>
+						</div>
+					</el-col>
+				</el-row>
+
+
+				<el-row :gutter="20" style="margin-top: 30px;line-height: 50px;text-align: center;cursor: pointer;">
+					<el-col :span="12">
+						<div style="width: 100%;height: 50px;background-color: rgb(254, 248, 248);" @click="dbjyMenu">
+							代表建议管理系统
+						</div>
+					</el-col>
+					<el-col :span="12">
+						<div style="width: 100%;height: 50px;background-color: rgb(254, 248, 248);"  @click="rdysMenu">
+							人大预算系统
+						</div>
+					</el-col>
+				</el-row>
+			</div>
+			
+			
+		</div>
+
+	</body>
+</html>

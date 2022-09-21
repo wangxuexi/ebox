@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <link rel="shortcut icon" href="../../img/home/gh.png" /> -->
+		<title>快乐的小魔方</title>
+		<script>
+			document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<link rel="stylesheet" href="css/login.css">
+		<script>
+			document.write('<script src="js/login.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+	</head>
+
+	<body>
+		<div id="root">
+			<!-- <p class="loginTitle"> 问题管理服务</p> -->
+			<div class="titleBox">
+				<!-- <img src="../../img/home/gh.png" alt="" style="width: 80px;display: block;margin:20px auto;"> -->
+				<p>快乐的小魔方</p>
+			</div>
+
+			<div class="loginBox">
+				<div style="width: 100%;height: 40px;line-height: 60px;font-size: 20px;font-weight: 600">
+					<span style="margin-left: 40px">系统登录</span>
+				</div>
+				<el-divider></el-divider>
+				<el-col :span="20" :offset="2" class="loginInput">
+					<el-input placeholder="请输入用户名" prefix-icon="el-icon-user" v-model="userName">
+					</el-input>
+				</el-col>
+				<el-col :span="20" :offset="2" class="loginInput" style="margin-top: 30px">
+					<el-input placeholder="请输入密码" prefix-icon="el-icon-lock" v-model="passWord" show-password>
+					</el-input>
+				</el-col>
+				<el-col :span="20" :offset="2" class="loginLabel" style="margin-top: 30px">
+					<el-button type="primary" style="width: 100%;" @click="login" style="background-color: #235FCC;">登录</el-button>
+				</el-col>
+			</div>
+
+
+		</div>
+	</body>
+
+</html>

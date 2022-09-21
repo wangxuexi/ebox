@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.ct.mapper.BXCT0001Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.ct.pojo.BXCT0001">
+		select 
+			ID as id,<!--id-->
+			BRAND as brand,<!--品牌-->
+			NAME as name,<!--名称-->
+			ALIAS as alias,<!--别名-->
+			TRADE_PRICE as tradePrice,<!--批发价-->
+			RETAIL_PRICE as retailPrice,<!--零售价-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.CIGARETTE_BASE_INFO where ENABLED = 1 and REMOVED = 0
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.ct.pojo.BXCT0001">
+		select
+			ID as id,<!--id-->
+			BRAND as brand,<!--品牌-->
+			NAME as name,<!--名称-->
+			ALIAS as alias,<!--别名-->
+			TRADE_PRICE as tradePrice,<!--批发价-->
+			RETAIL_PRICE as retailPrice,<!--零售价-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.CIGARETTE_BASE_INFO where ID = #{id}
+	</select>
+
+	<select id="query" resultType="com.fijo.ebox.modular.ct.pojo.BXCT0001">
+		select
+			ID as id,<!--id-->
+			BRAND as brand,<!--品牌-->
+			NAME as name,<!--名称-->
+			ALIAS as alias,<!--别名-->
+			TRADE_PRICE as tradePrice,<!--批发价-->
+			RETAIL_PRICE as retailPrice,<!--零售价-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.CIGARETTE_BASE_INFO
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!--id-->
+		</if>
+		<if test="brand != null and brand!=''">
+			 and BRAND = #{brand}<!--品牌-->
+		</if>
+		<if test="name != null and name!=''">
+			 and NAME = #{name}<!--名称-->
+		</if>
+		<if test="alias != null and alias!=''">
+			 and ALIAS = #{alias}<!--别名-->
+		</if>
+		<if test="tradePrice != null and tradePrice!=''">
+			 and TRADE_PRICE = #{tradePrice}<!--批发价-->
+		</if>
+		<if test="retailPrice != null and retailPrice!=''">
+			 and RETAIL_PRICE = #{retailPrice}<!--零售价-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			 and COL_1 = #{col1}<!--预留字段1-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			 and COL_2 = #{col2}<!--预留字段2-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			 and COL_3 = #{col3}<!--预留字段3-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			 and COL_4 = #{col4}<!--预留字段4-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			 and COL_5 = #{col5}<!--预留字段5-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			 and COL_6 = #{col6}<!--预留字段6-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			 and COL_7 = #{col7}<!--预留字段7-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			 and COL_8 = #{col8}<!--预留字段8-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			 and COL_9 = #{col9}<!--预留字段9-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			 and COL_10 = #{col10}<!--预留字段10-->
+		</if>
+		<if test="sort != null and sort!=''">
+			 and SORT = #{sort}<!--排序-->
+		</if>
+		<if test="remark != null and remark!=''">
+			 and REMARK = #{remark}<!--备注-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人姓名-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人姓名-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.ct.pojo.BXCT0001" keyProperty="id" useGeneratedKeys="true">
+		 insert into ebox.CIGARETTE_BASE_INFO(
+			BRAND,<!--品牌-->
+			NAME,<!--名称-->
+			ALIAS,<!--别名-->
+			TRADE_PRICE,<!--批发价-->
+			RETAIL_PRICE,<!--零售价-->
+			COL_1,<!--预留字段1-->
+			COL_2,<!--预留字段2-->
+			COL_3,<!--预留字段3-->
+			COL_4,<!--预留字段4-->
+			COL_5,<!--预留字段5-->
+			COL_6,<!--预留字段6-->
+			COL_7,<!--预留字段7-->
+			COL_8,<!--预留字段8-->
+			COL_9,<!--预留字段9-->
+			COL_10,<!--预留字段10-->
+			SORT,<!--排序-->
+			REMARK,<!--备注-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人姓名-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人姓名-->
+			UPDATE_TIME<!--更新时间-->
+
+		)
+ 		 values(
+			#{brand},
+			#{name},
+			#{alias},
+			#{tradePrice},
+			#{retailPrice},
+			#{col1},
+			#{col2},
+			#{col3},
+			#{col4},
+			#{col5},
+			#{col6},
+			#{col7},
+			#{col8},
+			#{col9},
+			#{col10},
+			#{sort},
+			#{remark},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.ct.pojo.BXCT0001">
+		 update ebox.CIGARETTE_BASE_INFO set
+			BRAND = #{brand},<!--品牌-->
+			NAME = #{name},<!--名称-->
+			ALIAS = #{alias},<!--别名-->
+			TRADE_PRICE = #{tradePrice},<!--批发价-->
+			RETAIL_PRICE = #{retailPrice},<!--零售价-->
+			COL_1 = #{col1},<!--预留字段1-->
+			COL_2 = #{col2},<!--预留字段2-->
+			COL_3 = #{col3},<!--预留字段3-->
+			COL_4 = #{col4},<!--预留字段4-->
+			COL_5 = #{col5},<!--预留字段5-->
+			COL_6 = #{col6},<!--预留字段6-->
+			COL_7 = #{col7},<!--预留字段7-->
+			COL_8 = #{col8},<!--预留字段8-->
+			COL_9 = #{col9},<!--预留字段9-->
+			COL_10 = #{col10},<!--预留字段10-->
+			SORT = #{sort},<!--排序-->
+			REMARK = #{remark},<!--备注-->
+			ENABLED = #{enabled},<!--是否有效-->
+			REMOVED = #{removed},<!--是否删除-->
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+			CREATE_USER_NAME = #{createUserName},<!--创建人姓名-->
+			CREATE_TIME = #{createTime},<!--创建时间-->
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+			UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		 where ID=#{id}
+	</update>
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from ebox.CIGARETTE_BASE_INFO
+		 where ID=#{id}
+	</delete>
+
+
+	<delete id="logicDeleteById">
+		update  ebox.CIGARETTE_BASE_INFO set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID in ${id}
+	</delete>
+
+</mapper>
+

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>BXFA0001</title>
+		<script>document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')</script>
+		<script>document.write('<script src="js/BXFA0001.js?v=' + new Date().getTime() + '"><\/script>')</script>
+		<link rel="stylesheet" href="css/BXFA0001.css">
+		<style>
+
+		</style>
+	</head>
+	<!--新版前端框架-->
+	<body>
+		<div id="root"  v-cloak>
+ 			<!-- 导航栏 -->
+			 <fj-breadcrumb></fj-breadcrumb>
+
+			 <fj-query @hook:mounted="bindExport">
+				<div slot="query">
+						<!-- <el-row :gutter="10" size="mini">
+							
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+								<fj-title content="姓名"></fj-title>
+							</el-col>
+							<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
+								<el-input v-model="queryForm.name" :size="size" clearable></el-input>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+								<fj-title content="工号"></fj-title>
+							</el-col>
+							<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
+								<el-input v-model="queryForm.jobNo" :size="size" clearable></el-input>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+								<fj-title content="性别"></fj-title>
+							</el-col>
+							<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
+								<el-input v-model="queryForm.sax" :size="size" clearable></el-input>
+							</el-col>
+						</el-row>
+ -->
+						
+
+
+
+
+					<el-row :gutter="10">
+						<form id="form" method="POST" enctype="application/x-www-form-urlencoded">
+							<div style="display: none;">
+								<el-input v-model="queryStr" name="queryStr"></el-input>
+								<el-input v-model="columnList" name="columnList"></el-input>
+								<el-input v-model="orgCode" name="orgCode"></el-input>
+							</div>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="danger" :size="size" @click="deleteById" plain>删除</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;" :offset="1">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="insert">新增</el-button>
+								</div>
+							</el-col>
+
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" id="export" native-type="submit" :size="size" >导出</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="query" >查询</el-button>
+								</div>
+							</el-col>
+							
+						
+							
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;margin-right: 10px">
+								<div class="grid-content bg-purple-light">
+									<el-button type="success" id="import" :size="size" @click="importFile">导入</el-button>
+								</div>
+							</el-col>
+						</form>
+						<form id="formTemplate" method="POST" enctype="application/x-www-form-urlencoded">
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;margin-right: 10px">
+								<div class="grid-content bg-purple-light">
+									<el-button type="success" id="downloadTemplate" native-type="submit" :size="size" >模板下载</el-button>
+								</div>
+							</el-col>
+						</form>
+					
+					</el-row>
+				</div>
+			</fj-query>
+			<fj-resultbody>
+				<div slot="info">
+					<table id="table" class="appointWidthTable"></table>
+				</div>
+			</fj-resultbody>
+			<!--新增查看修改模态框-->
+			<el-dialog title="" :visible.sync="dialogFormVisible" width="40%" height="50vh" :top="top" :close-on-click-modal="close">
+				<fj-dialogtitle :name="operateName"></fj-dialogtitle>
+
+						<el-form :model="dataForm" :rules="rules" ref="dataForm" label-width="150px" class="demo-ruleForm">
+							<el-row :gutter="10" size="mini">
+							
+								<el-col :xs="22" :sm="22" :md="22" :lg="22" :xl="22">
+									<el-form-item label="姓名" prop="name">
+										<el-input v-model="dataForm.name"  :size="size" clearable :disabled="fieldIsDisabled"></el-input>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="22" :sm="22" :md="22" :lg="22" :xl="22">
+									<el-form-item label="工号" prop="jobNo">
+										<el-input v-model="dataForm.jobNo"  :size="size" clearable :disabled="fieldIsDisabled"></el-input>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="22" :sm="22" :md="22" :lg="22" :xl="22">
+									<el-form-item label="性别" prop="sax">
+										<el-select v-model="dataForm.sax" placeholder="请选择" :size="size" clearable>
+											<el-option
+											  v-for="item in fcdata.sexOption"
+											  :key="item.value"
+											  :label="item.label"
+											  :value="item.value">
+											</el-option>
+										</el-select>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="22" :sm="22" :md="22" :lg="22" :xl="22">
+									<el-form-item label="备注" prop="remark">
+										<el-input v-model="dataForm.remark"  :size="size" clearable :disabled="fieldIsDisabled"></el-input>
+									</el-form-item>
+								</el-col>
+								
+
+							</el-row>
+						</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="confirmOperate('dataForm')" >确定</el-button>
+				</div>
+			</el-dialog>
+			<!--上传文件模态框-->
+			<el-dialog title="" @opened="dialogOpened" :visible.sync="fileBaseConfig.dialogUploadFileFormVisible" width="40%" :top="top" :close-on-click-modal="close">
+				<fj-dialogtitle :name="fileBaseConfig.operateUploadFileName"></fj-dialogtitle>
+				<el-row :gutter="10" size="mini">
+					<el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18"  :offset="3" >
+						<el-upload style="width: 100%;height: 100%;"
+								   drag
+								   ref="file-upload"
+								   action=""
+								   :multiple="false"
+								   :limit="1"
+								   :on-exceed="handleExceed"
+								   :on-change="handleChange"
+								   :on-remove="handleRemove"
+								   :auto-upload="false"
+								   :accept="fileBaseConfig.acceptFileType">
+							<el-card shadow="hover" class="cardBox" >
+								<span style="display: block;">上传文件</span>
+								<i class="el-icon-upload backupDefault" style="font-size: 40px;"></i>
+								<span style="display: block;line-height: 0px;">将文件拖到此处，或<em>点击上传</em></span>
+							</el-card>
+						</el-upload>
+					</el-col>
+				</el-row>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="confirmImport">确认导入</el-button>
+				</div>
+			</el-dialog>
+
+
+			<!--上传文件模态框-->
+			<el-dialog title=""  :visible.sync="fileBaseConfig.customTemplateVisible" width="60%" height="50vh" :top="top" :close-on-click-modal="close">
+				<fj-dialogtitle name="自定义模板下载"></fj-dialogtitle>
+				<el-row :gutter="10" size="mini">
+					<el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18"  :offset="3" >
+						<el-checkbox :indeterminate="fileBaseConfig.isIndeterminate" v-model="fileBaseConfig.checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+						<div style="margin: 15px 0;"></div>
+						<el-checkbox-group v-model="fileBaseConfig.checkedFields" @change="handleCheckedFieldsChange" >
+							<el-row :gutter="10" size="mini">
+								<el-col v-for="(field,index) in fileBaseConfig.fieldOptions"  :key="index" :span="8" style="margin-bottom: 10px;"  >
+									<el-checkbox  :label="field.fieldEn"  :key="field.fieldEn" >{{field.fieldCn}}</el-checkbox>
+								</el-col>
+							</el-row>
+						</el-checkbox-group>
+					</el-col>
+				</el-row>
+				<div slot="footer" class="dialog-footer">
+					<form id="formCustomTemplate" method="POST" enctype="application/x-www-form-urlencoded">
+						<div style="display: none;">
+							<el-input v-model="fileBaseConfig.fieldConfigStr" name="fieldConfigStr"></el-input>
+
+						</div>
+						<el-button type="primary" native-type="submit" :size="size">确认下载</el-button>
+					</form>
+				</div>
+			</el-dialog>
+		</div>
+	</body>
+
+</html>
+

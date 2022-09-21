@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <link rel="shortcut icon" href="../../img/home/gh.png" /> -->
+		<title>快乐的小魔方</title>
+		<script>
+			document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<script src="../../const/orgCode/orgTitleConst.js"></script>
+		<link rel="stylesheet" href="css/index.css">
+		<script>
+			document.write('<script src="js/index.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+
+			.left-icon {
+				width: 30px;
+				height: 60px;
+				float: left;
+				text-align: center;
+				font-size: 18px;
+				color: gainsboro;
+				cursor: pointer;
+			}
+
+			.right-icon {
+				width: 30px;
+				height: 60px;
+				float: right;
+				text-align: center;
+				font-size: 18px;
+				color: gainsboro;
+				cursor: pointer;
+			}
+
+			.menuBox {
+				/*width: 100%;*/
+				height: 60px;
+				float: left;
+				cursor: pointer;
+				position: absolute;
+				/*left: -100px;*/
+			}
+
+			.menuContent {
+				float: left;
+				width: calc(100% - 60px);
+				height: 60px;
+				position: relative;
+				overflow: hidden;
+				/*background-color: #00B83F;*/
+			}
+
+			.active {
+				color: #fff;
+				border-bottom: 1px solid #fff;
+				font-weight: 600;
+			}
+
+			.menuSelect:hover {
+				color: #fff;
+			}
+
+			.displayItem {
+				background-color: #fff;
+				width: 150px;
+				position: fixed;
+				z-index: 99999;
+				display: none;
+				top: 59px;
+				border: 1px solid rgba(233, 233, 233, 0.67);
+				color: #606266;
+				text-align: left;
+			}
+
+			.displayItem p .menuNames:hover {
+				color: #235FCC;
+			}
+
+			.displayItem p {
+				height: 35px;
+				line-height: 35px;
+			}
+
+			.menuItem {
+				width: 100px;
+				text-align: center;
+				overflow: hidden;
+			}
+
+			.threeMenu {
+				width: 150px;
+				position: absolute;
+				left: 149px;
+				background-color: #fff;
+				z-index: 99999;
+				border: 1px solid rgba(233, 233, 233, 0.67);
+				color: #909399;
+				text-align: left;
+				top: 0;
+				display: none;
+			}
+
+			.fourMenu {
+				width: 150px;
+				position: absolute;
+				left: 149px;
+				background-color: #fff;
+				z-index: 99999;
+				border: 1px solid rgba(233, 233, 233, 0.67);
+				color: #909399;
+				text-align: left;
+				top: -1px;
+				display: none;
+			}
+
+			.fiveMenu {
+				width: 150px;
+				position: absolute;
+				left: 149px;
+				background-color: #fff;
+				z-index: 99999;
+				border: 1px solid rgba(233, 233, 233, 0.67);
+				color: #909399;
+				text-align: left;
+				top: -1px;
+				display: none;
+			}
+
+			.header {
+				background-color: #235FCC;
+				color: #fff;
+			}
+
+			.el-dropdown-selfdefine {
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root" v-cloak>
+			<el-row :gutter="30" style="height: 60px;border-bottom: 1px solid ghostwhite;overflow: hidden;"
+				class="header">
+				<el-col :span="10" style="height: 60px;overflow: hidden;line-height: 60px;">
+					<!-- <img :src="orgMsg.url" alt="" style="height: 40px;margin-left: 30px"> -->
+					<span style="font-size: 18px;margin-left: 15px;font-weight: 600;">{{orgMsg.title}}</span>
+				</el-col>
+				<el-col :span="7" style="height: 60px;overflow: hidden;line-height: 60px;" class="tabsNew">
+
+
+					<!--第一种模板类型   类似于经济管理平台-->
+					<div v-if="menuTemplateType == menuType.menuTemplateA">
+
+					</div>
+					<!--第三种模板类型   类似于党校系统-->
+					<div v-else-if="menuTemplateType == menuType.menuTemplateC">
+						<div class="left-icon">
+							<template v-if="menuicon">
+								<i class="el-icon-arrow-left" @click="leftClick"></i>
+							</template>
+						</div>
+						<div class="menuContent">
+							<div class="menuBox">
+								<div class="menuItem" style="height: 60px;float: left;"
+									v-for="(item,index) in transDate">
+									<div class="menuSelect" style="width: 100%;height: 58px;z-index: 99"
+										@click="handleClick(item)" :class="{active:item.id==activeName}">
+										{{item.menuName}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="right-icon">
+							<template v-if="menuicon">
+								<i class="el-icon-arrow-right" @click="rightClick"></i>
+							</template>
+						</div>
+					</div>
+					<!--第二种模板类型   类似于华漕-->
+					<div v-else>
+						<div class="left-icon">
+							<template v-if="menuicon">
+								<i class="el-icon-arrow-left" @click="leftClick"></i>
+							</template>
+						</div>
+						<div class="menuContent">
+
+							<div class="menuBox">
+								<div class="menuItem" style="height: 60px;float: left;"
+									v-for="(item,index) in transDate">
+									<div class="menuSelect" style="width: 100%;height: 58px;z-index: 99"
+										@click="handleClick(item)" :class="{active:item.id==activeName}">
+										{{item.menuName}}
+										<template v-if="item.children">
+											<i style="color:gainsboro;" class="el-icon-arrow-down"></i>
+										</template>
+									</div>
+									<template v-if="item.children">
+										<div class="displayItem">
+											<template v-for="(element,index) in item.children">
+												<p style="font-size: 12px;color: #909399;padding: 5px 10px">
+													{{element.menuName}}</p>
+												<template v-if="element.children">
+													<template v-for="key in element.children">
+														<p class="threeName"
+															style="position: relative;padding: 5px 10px;">
+															<span @click="menuClick(key)" class="menuNames">
+																{{key.menuName}} <span :class="key.menuDomId"
+																	style="color: red"></span>
+															</span>
+															<template v-if="key.children">
+																<i style="color:gainsboro;"
+																	class="el-icon-arrow-right"></i>
+																<div class="fourMenu">
+																	<template v-for="four in key.children">
+																		<p class="fourName"
+																			style="position: relative;padding: 5px 10px;">
+																			<span
+																				@click="fourmenuClick(four)">{{four.menuName}}<span
+																					:class="four.menuDomId"
+																					style="color: red"></span></span>
+																			<template v-if="four.children">
+																				<i style="color:gainsboro;"
+																					class="el-icon-arrow-right"></i>
+																				<div class="fiveMenu">
+																					<template
+																						v-for="five in four.children">
+																						<p
+																							style="position: relative;padding: 5px 10px">
+																							<span
+																								@click="fivemenuClick(five)">{{five.menuName}}<span
+																									:class="five.menuDomId"
+																									style="color: red"></span></span>
+																						</p>
+																					</template>
+																				</div>
+																			</template>
+																		</p>
+																	</template>
+																</div>
+															</template>
+														</p>
+													</template>
+												</template>
+												<template v-if="index+1 < item.children.length">
+													<div
+														style="background-color: #dee2ea;width: 90%;height: 1px;margin: auto">
+													</div>
+												</template>
+											</template>
+										</div>
+									</template>
+								</div>
+
+							</div>
+						</div>
+
+
+
+
+						<div class="right-icon">
+							<template v-if="menuicon">
+								<i class="el-icon-arrow-right" @click="rightClick"></i>
+							</template>
+						</div>
+					</div>
+				</el-col>
+				<el-col :span="3" style="height: 60px;overflow: hidden;line-height: 60px;">
+					<org-select :key-childer='keyChilder' @fatherorgnotice="fatherOrgNotice"></org-select>
+				</el-col>
+
+				<!--<el-col :span="3" style="height: 60px;overflow: hidden;line-height: 60px;">-->
+				<!--<div v-if="titleShow == '2'">-->
+				<!--<org-select></org-select>-->
+				<!--</div>-->
+				<!--<div v-else class="searchBox">-->
+				<!--<el-autocomplete-->
+				<!--v-model="keyWord"-->
+				<!--:fetch-suggestions="querySearchAsync"-->
+				<!--placeholder="请输入企业关键词"-->
+				<!--@select="handleSelect"-->
+				<!--size="small"-->
+				<!--suffix-icon="el-icon-search"-->
+				<!--&gt;</el-autocomplete>-->
+				<!--</div>-->
+				<!--</el-col>-->
+				<el-col :span="4" style="height: 60px;overflow: hidden;">
+					<el-dropdown style="float: left;">
+						<el-avatar style="margin-top: 10px;float: left;width: 35px;height: 35px;" :src="headImg">
+						</el-avatar>
+						<el-dropdown-menu slot="dropdown">
+							<el-dropdown-item @click.native="versionClick">版本信息</el-dropdown-item>
+							<el-dropdown-item @click.native="change">修改密码</el-dropdown-item>
+							<el-dropdown-item @click.native="changeImg">修改头像</el-dropdown-item>
+							<el-dropdown-item @click.native="signOut">退出登录</el-dropdown-item>
+						</el-dropdown-menu>
+					</el-dropdown>
+
+					<span style="margin-left: 10px;line-height: 60px;    overflow: hidden;
+            word-break: keep-all;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 60px;
+            display: inline-block;
+            float: left;
+            height: 60px;">{{nickName}}</span>
+					<span style="margin-left: 5px;font-size: 20px;cursor: pointer;">
+						<i class="el-icon-refresh" @click="refresh" style="margin-top: 20px"></i>
+					</span>
+					<el-dropdown trigger="click" style="margin-left: 10px;">
+						<el-badge :value="msgForm.totalNum" class="item">
+							<i class="el-icon-bell" style="font-size: 20px;"></i>
+							<!-- <el-button size="small">评论</el-button> -->
+						</el-badge>
+						<el-dropdown-menu slot="dropdown">
+
+							<template v-if="msgForm.list.length == 0">
+								<div style="width: 150px;height: 36px;text-align: center">
+									暂无消息通知！
+								</div>
+							</template>
+
+							<div style="width: 100%;height: 36px" v-for="(item,index) in msgForm.list"
+								@click="msgClick(item)">
+								<el-dropdown-item class="clearfix" :index="index">
+									{{item.name}}
+									<el-badge class="mark" :value="item.num" :max="99"></el-badge>
+								</el-dropdown-item>
+							</div>
+						</el-dropdown-menu>
+					</el-dropdown>
+					<span style="margin-left: 15px;font-size: 20px;cursor: pointer;">
+						<i class="el-icon-switch-button" @click="signOut"></i>
+					</span>
+
+
+
+				</el-col>
+			</el-row>
+			<div v-if="pageType == '2'">
+				<div class="contentTabs" :style="{height:contentHight}">
+					<el-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit"
+						@tab-click="tabClick">
+						<el-tab-pane :key="item.name" v-for="(item, index) in editableTabs" :label="item.title"
+							:name="item.name">
+							<div v-html="item.content">{{item.content}}</div>
+						</el-tab-pane>
+					</el-tabs>
+				</div>
+			</div>
+			<div v-else>
+				<iframe id="myframe" :src="iframeUrl" frameborder="0" width="100%" :height="iframeHeight"></iframe>
+			</div>
+			<!-- 修改密码 -->
+			<el-drawer :visible.sync="drawer" size="30%" :closed="passwordClose">
+				<el-row>
+					<el-col :span="22" :offset="1">
+						<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
+							class="demo-ruleForm">
+							<el-form-item label="原密码" prop="oldPassword">
+								<el-input v-model="ruleForm.oldPassword" :size="size" type="password"
+									autocomplete="off"></el-input>
+							</el-form-item>
+							<el-form-item label="新密码" prop="pass">
+								<el-input type="password" v-model="ruleForm.pass" autocomplete="off" :size="size">
+								</el-input>
+							</el-form-item>
+							<el-form-item label="确认密码" prop="checkPass">
+								<el-input type="password" v-model="ruleForm.checkPass" autocomplete="off" :size="size">
+								</el-input>
+							</el-form-item>
+							<el-form-item>
+								<el-button type="primary" @click="submitForm('ruleForm')" :size="size">提交</el-button>
+							</el-form-item>
+						</el-form>
+					</el-col>
+				</el-row>
+			</el-drawer>
+			<!-- 版本号 -->
+			<el-dialog title=" " :visible.sync="versionVisible" width="80%" top="80px" :close-on-click-modal="close">
+				<el-table :data="versionDatas" stripe style="width: 100%">
+					<el-table-column prop="version" label="版本" align="center" width="220">
+					</el-table-column>
+					<el-table-column prop="buildNo" label="BUILD号" align="center" width="220">
+					</el-table-column>
+					<el-table-column prop="releaseTime" label="发布时间" align="center" width="220">
+					</el-table-column>
+					<el-table-column prop="releaseInfo" label="发布内容">
+					</el-table-column>
+				</el-table>
+				<div slot="footer" class="dialog-footer">
+					<el-button :size="size" @click="versionVisible = false" style="margin-right: 15px">取 消</el-button>
+				</div>
+			</el-dialog>
+
+
+			<el-drawer :visible.sync="imgDirection" size="30%" :closed="imgClose">
+				<el-upload action="" class="avatar-uploader" :show-file-list="false" :on-change="beforeAvatarUpload"
+					:auto-upload="false" accept=".jpg,.jpeg,.png">
+					<img v-if="imageUrl" :src="imageUrl" class="avatar">
+					<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+				</el-upload>
+				<el-button type="primary" style="margin-left: 120px;width: 178px;margin-top: 15px" @click="imgUpdate">提交
+				</el-button>
+			</el-drawer>
+		</div>
+	</body>
+
+</html>

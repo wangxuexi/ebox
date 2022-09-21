@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>数据字典值管理</title>
+		<script src="../../js/public.js"></script>
+		<link rel="stylesheet" href="css/ECSY0008.css">
+		<script src="js/ECSY0008.js"></script>
+		<style>
+			.scrollBox::-webkit-scrollbar {
+				display: none;
+			}
+			.el-input-number .el-input__inner{
+				text-align: left !important;
+			}
+			/*.orgBox:nth-child(1) .cardBox{*/
+				/*background-color: #f37b1d;*/
+				/*color: #fff;*/
+			/*}*/
+			/*.orgBox:nth-child(2) .cardBox{*/
+				/*background-color: #fbbd08;*/
+				/*color: #fff;*/
+			/*}*/
+		</style>
+	</head>
+	<body>
+		<div id="root"  v-cloak>
+ 			<!-- 导航栏 -->
+			<fj-breadcrumb></fj-breadcrumb>
+
+			<fjec-query>
+				<div slot="query">
+					<el-row :gutter="12">
+						<template v-for="(org,index) in orgList">
+							<div  @click="orgClick(org)" class="orgBox">
+								<el-col :span="6"  style="margin-top: 15px">
+									<el-card shadow="hover"  style="text-align: center;cursor: pointer;" class="cardBox">
+										{{org.name}}
+									</el-card>
+								</el-col>
+							</div>
+						</template>
+					</el-row>
+				</div>
+			</fjec-query>
+
+			<!--新增查看修改模态框-->
+			<el-dialog title="" :visible.sync="dialogFormVisible" width="50%" height="30vh" :top="top" :close-on-click-modal="close">
+				<fj-dialogtitle :name="operateName"></fj-dialogtitle>
+						<el-form :model="dataForm" :rules="rules" ref="dataForm" label-width="150px" class="demo-ruleForm">
+							<el-row :gutter="10" size="mini">
+								<el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
+									<el-form-item label="名称" prop="name">
+										<el-input v-model="dataForm.name"  :size="size"></el-input>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
+									<el-form-item label="父级名称(级联必选)" prop="parentDdid">
+										<el-select v-model="dataForm.parentDdid" placeholder="请选择" clearable>
+											<el-option
+
+													v-for="item in pNodeList"
+													:key="item.id"
+													:label="item.name"
+													:value="item.id">
+											</el-option>
+										</el-select>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
+									<el-form-item label="作废" prop="isToVoid">
+										<el-select v-model="dataForm.isToVoid" :size="size">
+											<el-option v-for="item in enums.isToVoidEnums"
+														:key="item.code"
+														:label="item.msg"
+														:value="item.code">
+											</el-option>
+										</el-select>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
+									<el-form-item label="排序" prop="sortNo">
+										<el-input-number v-model="dataForm.sortNo" :step="5" controls-position="right" style="width: 100%" ></el-input-number>
+									</el-form-item>
+								</el-col>
+								<el-col :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
+									<el-form-item label="备注" prop="remark">
+										<el-input v-model="dataForm.remark"  :size="size"></el-input>
+									</el-form-item>
+								</el-col>
+							</el-row>
+						</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="confirmOperate('dataForm')" :style="{backgroundColor:count.button.bgc,border:count.button.border}">确定</el-button>
+				</div>
+			</el-dialog>
+			<el-drawer
+					:title="drawTitle"
+					:visible.sync="drawer"
+					:size="deawerSize"
+					:with-header="false"
+					@opened="openedDrawer"
+			>
+				<el-row :gutter="20">
+					<el-col :span="6">
+						<div class="scrollBox" style="width: 100%;border-right: 1px dashed gainsboro;height: 80vh;overflow-y: scroll;">
+
+							<ul id="treeDemo" class="ztree"></ul>
+						</div>
+					</el-col>
+					<el-col :span="18">
+						<el-row :gutter="10">
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light" id="delete">
+									<el-button type="danger" :size="size"  icon="el-icon-document-delete"  circle  @click="deleteById" title="作废"></el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light" id="insert">
+									<el-button type="primary" :size="size" title="新增" icon="el-icon-plus"  circle  @click="insert" :style="{backgroundColor:count.button.bgc,border:count.button.border}"></el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light" id="document">
+									<el-button type="primary" :size="size"  icon="el-icon-document-add" title="部分分享" circle  @click="documentAdd" :style="{backgroundColor:count.button.bgc,border:count.button.border}"></el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light" id="share">
+									<el-button type="primary" :size="size"  icon="el-icon-share" title="全部分享" circle  @click="share" :style="{backgroundColor:count.button.bgc,border:count.button.border}"></el-button>
+								</div>
+							</el-col>
+						</el-row>
+						<fjec-body>
+							<div slot="info">
+								<div class="scrollBox" style="width: 100%;height: 80vh;overflow-y: scroll;">
+									<table id="table" class="appointWidthTable"></table>
+								</div>
+							</div>
+						</fjec-body>
+					</el-col>
+				</el-row>
+			</el-drawer>
+			<el-drawer
+					title="选择组织"
+					:visible.sync="drawerTree"
+					size="30%"
+					:with-header="false">
+				<el-row :gutter="20">
+					<el-col :span="16">
+						<div class="scrollBox" style="width: 100%;height: 80vh;overflow-y: scroll;">
+							<ul id="treeDemo1" class="ztree"></ul>
+						</div>
+					</el-col>
+					<el-col :span="4">
+						<el-button type="success" :size="size"  icon="el-icon-check" @click="isOk" circle ></el-button>
+
+					</el-col>
+				</el-row>
+			</el-drawer>
+		</div>
+
+
+
+	</body>
+
+</html>
+<script src="../../js/vueComponent.js"></script>

@@ -1,0 +1,20 @@
+
+
+/*对菜单的公共样式进行处理*/
+.el-menu-item.is-active{
+    background-color: #235FCC !important;
+    color: #fff !important;
+}
+.el-submenu.is-active .el-submenu__title {
+    border-bottom-color: gainsboro !important;
+}
+.el-menu-item:hover{
+    background-color: gainsboro !important;
+}
+.el-submenu__title:hover{
+    background-color: gainsboro !important;
+}
+.el-menu-item.is-active:hover{
+    background-color: #235FCC !important;
+    color: #fff !important;
+}

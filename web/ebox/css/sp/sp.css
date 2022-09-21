@@ -1,0 +1,64 @@
+[v-cloak] {
+	display: none;
+}
+
+.titleClass {
+	margin: 2vh 2vh;
+	color: #235FCC;
+	font-size: 18px;
+	text-align: center;
+}
+
+.detailsClass {
+	font-size: 14px;
+	text-align: right;
+	color: #235FCC;
+}
+
+.el-step__title.is-process {
+	font-weight: 700;
+	color: #235FCC;
+}
+
+.el-step__head.is-process {
+	color: #235FCC;
+	border-color: #235FCC;
+}
+
+.el-tabs--border-card>.el-tabs__content {
+	padding: 0px;
+}
+
+.drawerClass {
+	overflow-y: auto;
+}
+
+.el-drawer__body {
+	overflow: auto;
+}
+
+.el-drawer__header {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	color: #000000;
+	font-weight: bold;
+	font-size: 20px;
+	display: flex;
+	margin-bottom: 32px;
+	padding: 20px 20px 0;
+}
+
+.el-drawer__header span:focus {
+	outline: 0;
+}
+
+.el-drawer:focus {
+    outline: none; 
+}
+
+.el-steps--simple {
+    padding: 13px 4%;
+    border-radius: 4px;
+    background: #F5F7FA;
+}

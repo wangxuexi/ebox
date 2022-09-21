@@ -1,0 +1,122 @@
+.appointWidthTable{
+	table-layout: fixed;
+	word-break:break-all;
+}
+/*模态框重写*/
+.el-dialog-div{
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 20px 0 20px;
+}
+
+.elInput{
+    width: 65% !important;float: left;margin-left: 1%
+}
+.el-dialog__body{
+    padding: 5px  15px 0 15px !important;
+}
+
+/*.elInput{
+    width: 65%;float: left;margin-left: 1%
+}
+.el-dialog__body{
+    padding: 5px  15px 0 15px !important;
+}*/
+input{
+    border-radius: 2px !important;
+}
+
+/*列表每行距离*/
+.el-row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 13px ;
+}
+.el-col {
+    border-radius: 4px;
+}
+
+a{
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+/*设置表头*/
+/*.resultTable table thead tr th{*/
+    /*background-color: #235FCC !important;*/
+    /*color: #fff;*/
+    /*text-align: center !important;*/
+/*}*/
+/*.tableDelete{*/
+    /*color: #235FCC;*/
+/*}*/
+/*.tableDelete:hover{*/
+    /*color: #235FCC;*/
+/*}*/
+
+
+/*.resultTable table tr:nth-child(even){*/
+    /*background: #fafafa;*/
+/*}*/
+/*.resultTable table th {*/
+    /*background: #efefef;*/
+/*}*/
+thead tr{
+    background-color: #E8F2FF;
+}
+
+/*自己写的加载*/
+.pubLoading{
+    width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);z-index: 999999999999;position: absolute;top: 0;left: 0;display: none;
+}
+
+
+/**/
+.messageConfirm{
+    background-color: #235FCC !important;
+    border-color:  #235FCC !important;
+}
+
+[v-cloak]{
+    display: none
+}
+
+.bgcPublic{
+    background-color: #235FCC !important;
+}
+.colorPublic{
+    color: #235FCC;
+}
+/*tab页签*/
+.el-tabs__header{
+    background-color: #235FCC !important;
+}
+
+
+/*改禁用鼠标样式*/
+.el-input.is-disabled .el-input__inner{
+    cursor: auto !important;
+}
+.el-textarea.is-disabled .el-textarea__inner{
+    cursor: auto !important;
+}
+
+
+.el-input.is-disabled .el-input__inner{
+    color: #000 !important;
+    background: #F8FAFF !important;
+    border: 1px solid #DBE0EC !important;
+}
+
+.el-textarea.is-disabled .el-textarea__inner{
+    color: #000 !important;
+    background: #F8FAFF !important;
+    border: 1px solid #DBE0EC !important;
+}
+
+
+
+.el-image-viewer__close .el-icon-circle-close{
+    color: #fff !important;
+}

@@ -1,0 +1,133 @@
+[v-cloak] {
+	display: none;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	/* overflow: hidden; */
+	overflow-x: hidden;
+}
+
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+::-webkit-scrollbar {
+	width: 1px;
+}
+
+.titelClass {
+	margin: 30px 0 20px 0;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+
+.headImg{
+	width: 100%;height: 100px;background-color: #fff;
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+.calendarBox{
+	width: 100%;height: 450px;background-color: #fff;
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	text-align: center;
+}
+/*.el-table th{*/
+	/*background-color: #B10004 !important;*/
+/*}*/
+.noticeBox{
+	width: 100%;height: 540px;background-color: #fff;
+	box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	padding: 10px 3%;
+	overflow: hidden;
+}
+.noticeBox .content{
+	height: 40px;line-height: 40px;
+	cursor: pointer;
+	border-bottom: 1px solid #E1E7F3;
+}
+
+.commonUrl {
+	border-radius: 5px;
+	height: 55px;
+	text-align: center;
+	line-height: 55px;
+	cursor: pointer;
+	border: 1px solid #FFF;
+	color: #FFFFFF;
+	margin-top: 25px;
+}
+
+
+.commonUrl:hover {
+	-webkit-box-shadow: #ccc 0px 0px 10px;
+	-moz-box-shadow: #ccc 0px 0px 10px;
+	box-shadow: #ccc 0px 0px 10px;
+}
+
+
+.el-table .today-work {
+	background: oldlace;
+}
+
+.content div:nth-child(1){
+	width: 68%;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.content div:nth-child(2){
+	width: 30%;
+	margin-left: 2%;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+}
+
+
+
+.newsBox{
+	height: 50px;line-height: 50px;border-bottom: 1px solid #E1E7F3;cursor: pointer;
+}
+.newsBox div:nth-child(1){
+	width: 68%;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.newsBox div:nth-child(2){
+	width: 30%;
+	margin-left: 2%;
+	height: 100%;
+	overflow: hidden;
+	float: left;
+}
+.newsBox div:nth-child(2) span{
+	float: right;
+}
+
+
+.jxglBox{
+	width: 100%;height: 40px;line-height: 40px;color: #fff;background-color: #A40006;background-image: linear-gradient(to right, #F05E38 , #A40006);font-weight: 600;font-size: 16px
+}
+
+.jxImg{
+	margin:10px auto;width: 80px; height: 80px;overflow: hidden;border-radius: 40px
+}

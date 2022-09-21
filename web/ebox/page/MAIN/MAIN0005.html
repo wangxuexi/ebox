@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>主页</title>
+		<script>
+			document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<script src="../../lib/vue-seamless-scroll/vue-seamless-scroll.js"></script>
+		
+		<link rel="stylesheet" href="css/MAIN0001.css">
+		<script>
+			document.write('<script src="js/MAIN0001.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+
+        <style>
+            .el-calendar-table .el-calendar-day {
+                height: 40px;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="root" v-cloak>
+            <div style="padding: 30px 50px 0 50px;">
+                <div ><img src="../../img/home/homebg.png" alt="" style="width: 100%"></div>
+
+
+            </div>
+
+            <el-button type="primary" @click="btnClick1">主要按钮</el-button>
+            <el-button type="primary"  @click="btnClick2">主要按钮</el-button>
+		</div>
+
+	</body>
+</html>

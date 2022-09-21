@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/home/topIcon.png" />
+    <title>登录</title>
+    <script>document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')</script>
+    <link rel="stylesheet" href="css/login.css">
+    <script>document.write('<script src="js/loginCA.js?v=' + new Date().getTime() + '"><\/script>')</script>
+	<style>
+		
+	</style>
+</head>
+
+<body>
+    <div id="root" v-cloak>
+        <p class="loginTitle"> 闵行区委党校综合信息管理系统</p>
+
+        <div class="loginBox">
+            <el-col :span="20" :offset="2" class="loginInput">
+                <el-input placeholder="请输入用户名" prefix-icon="el-icon-user" v-model="userName">
+                </el-input>
+            </el-col>
+            <el-col :span="20" :offset="2" class="loginInput" style="margin-top: 30px">
+                <el-input placeholder="请输入密码" prefix-icon="el-icon-lock" v-model="passWord" show-password>
+                </el-input>
+            </el-col>
+            <el-col :span="20" :offset="2" class="loginLabel" style="margin-top: 30px">
+                <el-button type="primary" style="width: 100%;" @click="login">登录</el-button>
+            </el-col>
+        </div>
+		<el-dialog
+		  title="请输入证书PIN"
+		  :visible.sync="dialogVisible"
+		  width="30%"
+		  :close-on-click-modal="close"
+		  :before-close="handleClose">
+			<el-input placeholder="请输入PIN" prefix-icon="el-icon-lock" v-model="caInfo.pin" show-password>
+			</el-input>
+			  <span slot="footer" class="dialog-footer">
+				<el-button @click="dialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="getSignature()">确 定</el-button>
+			  </span>
+		</el-dialog>
+
+    </div>
+</body>
+
+</html>

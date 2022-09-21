@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单模板</title>
+    <!--第一种菜单模板  类似于经济管理平台-->
+    <script>document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')</script>
+    <script>document.write('<script src="js/menuTemplateC.js?v=' + new Date().getTime() + '"><\/script>')</script>
+    <link rel="stylesheet" href="css/menuTemplateC.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+
+    </style>
+    <link rel="stylesheet" href="css/menuPublic.css">
+</head>
+<body>
+<div id="root" v-cloak>
+
+    <!--左侧菜单    :style="{backgroundColor:count.menu.bgc}"-->
+    <div class="dynamicHight"  :style="{height:dynamicHight}">
+        <div class="hiddens">
+            <menu-template @show="showFather"></menu-template>
+        </div>
+    </div>
+    <!--右侧iframe区域-->
+    <div class="content"  :style="{height:contentHight}">
+        <el-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit" @tab-click="tabClick">
+            <el-tab-pane
+                    :key="item.name"
+                    v-for="(item, index) in editableTabs"
+                    :label="item.title"
+                    :name="item.name"
+            >
+                <div v-html="item.content">{{item.content}}</div>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>
+</body>
+</html>

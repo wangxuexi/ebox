@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+[v-cloak]{
+    display: none
+}
+#root{
+    width: 100%;
+    height: 100%;
+}
+.dynamicHight{
+    width: 12%;
+    float: left;
+    background-color: #fff;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid gainsboro;
+}
+.hiddens{
+    width: 100%;
+
+}
+.content{
+    width: calc(88% - 2px);;
+    height:100%;
+    float: left;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.iframes{
+    width: 100%;height: 100%;overflow-x: auto
+}
+.dynamicHight::-webkit-scrollbar{
+    width:0;
+}
+.el-menu{
+    border-right: none !important;
+}
+
+/*设置菜单栏选中颜色及文字*/
+/*.el-menu-item.is-active {*/
+    /*background-color: #ff6262 !important;*/
+    /*color: #fff !important;*/
+/*}*/
+
+.el-submenu .el-menu-item {
+    height: 45px !important;
+    line-height: 45px !important;
+}
+.el-submenu__title{
+    border-bottom: 1px solid gainsboro;
+}
+.el-menu-item{
+    border-bottom: 1px solid gainsboro;
+}
+
+/*
+.is-opened .el-submenu__title{
+    background-color: #ff6262 !important;
+    color: #fff !important;
+}*/
+
+
+
+
+.el-cascader__tags .el-tag .el-icon-close{
+    display: none;
+}
+
+
+
+.titlebgc{
+    background: url("../img/title.png") no-repeat fixed ;
+    background-size: 100% 78px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.el-tabs__new-tab{
+    display: none;
+}
+.el-tabs__header{
+    margin: 0;
+}
+.el-tabs__nav div:nth-child(1) .el-icon-close{
+    display: none;
+}
+
+
+.el-menu-item-group__title{
+    padding: 0 !important;
+}

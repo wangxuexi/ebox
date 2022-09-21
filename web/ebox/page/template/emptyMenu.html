@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三级菜单</title>
+    <script>document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')</script>
+    <link rel="stylesheet" href="css/emptyMenu.css">
+    <script>document.write('<script src="js/emptyMenu.js?v=' + new Date().getTime() + '"><\/script>')</script>
+	<style>
+		[v-cloak]{
+		    display: none;
+		}
+        .approvalClass{
+            color: red;
+            position: relative;top:-1.5px
+        }
+	</style>
+    <link rel="stylesheet" href="css/menuPublic.css">
+</head>
+<body>
+    <div id="root" v-cloak>
+        <!--左侧菜单    :style="{backgroundColor:count.menu.bgc}"-->
+        <div class="dynamicHight"  :style="{height:dynamicHight}">
+            <div class="hiddens">
+                <fj-navmenu :url="transDate" style="width: 100%"  @func="getMsgFormSon"></fj-navmenu>
+            </div>
+        </div>
+        <!--右侧iframe区域-->
+        <div class="content"  :style="{height:contentHight}">
+            <el-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit" @tab-click="tabClick">
+                <el-tab-pane
+                        :key="item.name"
+                        v-for="(item, index) in editableTabs"
+                        :label="item.title"
+                        :name="item.name"
+                >
+                    <div v-html="item.content">{{item.content}}</div>
+                </el-tab-pane>
+            </el-tabs> 
+        </div>
+    </div>
+</body>
+</html>

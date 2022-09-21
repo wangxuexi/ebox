@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fijo.ebox.modular.fa.mapper.BXFA0002Mapper">
+	<select id="queryAll" resultType="com.fijo.ebox.modular.fa.pojo.BXFA0002">
+		select 
+			ID as id,<!--id-->
+			POLICY_MONTH as policyMonth,<!--保单月份-->
+			POLICY_NAME as policyName,<!--保单名称-->
+			POLICY_CODE as policyCode,<!--保单编号-->
+			POLICY_AMOUNT as policyAmount,<!--保单金额-->
+			POLICY_HOLDER_NAME as policyHolderName,<!--投保人姓名-->
+			INSURED_NAME as insuredName,<!--被保人姓名-->
+			DISTRIBUTE_FA_ID as distributeFaId,<!--所属FAID-->
+			DISTRIBUTE_FA_NO as distributeFaNo,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME as distributeFaName,<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA as isDistributeFa,<!--是否已被分配-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.POLICY_BASE_INFO where ENABLED = 1 and REMOVED = 0
+		order by POLICY_MONTH desc,DISTRIBUTE_FA_ID , ID
+	</select>
+
+	<select id="queryById" resultType="com.fijo.ebox.modular.fa.pojo.BXFA0002">
+		select
+			ID as id,<!--id-->
+			POLICY_MONTH as policyMonth,<!--保单月份-->
+			POLICY_NAME as policyName,<!--保单名称-->
+			POLICY_CODE as policyCode,<!--保单编号-->
+			POLICY_AMOUNT as policyAmount,<!--保单金额-->
+			POLICY_HOLDER_NAME as policyHolderName,<!--投保人姓名-->
+			INSURED_NAME as insuredName,<!--被保人姓名-->
+			DISTRIBUTE_FA_ID as distributeFaId,<!--所属FAID-->
+			DISTRIBUTE_FA_NO as distributeFaNo,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME as distributeFaName,<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA as isDistributeFa,<!--是否已被分配-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.POLICY_BASE_INFO where ID = #{id}
+	</select>
+
+	<select id="queryListByDistributeFaType" resultType="com.fijo.ebox.modular.fa.pojo.BXFA0002" parameterType="java.lang.Boolean">
+		select
+			ID as id,<!--id-->
+			POLICY_MONTH as policyMonth,<!--保单月份-->
+			POLICY_NAME as policyName,<!--保单名称-->
+			POLICY_CODE as policyCode,<!--保单编号-->
+			POLICY_AMOUNT as policyAmount,<!--保单金额-->
+			POLICY_HOLDER_NAME as policyHolderName,<!--投保人姓名-->
+			INSURED_NAME as insuredName,<!--被保人姓名-->
+			DISTRIBUTE_FA_ID as distributeFaId,<!--所属FAID-->
+			DISTRIBUTE_FA_NO as distributeFaNo,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME as distributeFaName,<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA as isDistributeFa,<!--是否已被分配-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+			from ebox.POLICY_BASE_INFO where (IS_DISTRIBUTE_FA =  #{isDistributeFa} or IS_DISTRIBUTE_FA is null) and ENABLED = 1 and REMOVED = 0
+			order by DISTRIBUTE_FA_ID , ID
+	</select>
+
+
+	<select id="query" resultType="com.fijo.ebox.modular.fa.pojo.BXFA0002">
+		select
+			ID as id,<!--id-->
+			POLICY_MONTH as policyMonth,<!--保单月份-->
+			POLICY_NAME as policyName,<!--保单名称-->
+			POLICY_CODE as policyCode,<!--保单编号-->
+			POLICY_AMOUNT as policyAmount,<!--保单金额-->
+			POLICY_HOLDER_NAME as policyHolderName,<!--投保人姓名-->
+			INSURED_NAME as insuredName,<!--被保人姓名-->
+			DISTRIBUTE_FA_ID as distributeFaId,<!--所属FAID-->
+			DISTRIBUTE_FA_NO as distributeFaNo,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME as distributeFaName,<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA as isDistributeFa,<!--是否已被分配-->
+			COL_1 as col1,<!--预留字段1-->
+			COL_2 as col2,<!--预留字段2-->
+			COL_3 as col3,<!--预留字段3-->
+			COL_4 as col4,<!--预留字段4-->
+			COL_5 as col5,<!--预留字段5-->
+			COL_6 as col6,<!--预留字段6-->
+			COL_7 as col7,<!--预留字段7-->
+			COL_8 as col8,<!--预留字段8-->
+			COL_9 as col9,<!--预留字段9-->
+			COL_10 as col10,<!--预留字段10-->
+			SORT as sort,<!--排序-->
+			REMARK as remark,<!--备注-->
+			ENABLED as enabled,<!--是否有效-->
+			REMOVED as removed,<!--是否删除-->
+			CREATE_USER_ID as createUserId,<!--创建人ID-->
+			CREATE_USER_NAME as createUserName,<!--创建人姓名-->
+			CREATE_TIME as createTime,<!--创建时间-->
+			UPDATE_USER_ID as updateUserId,<!--更新人ID-->
+			UPDATE_USER_NAME as updateUserName,<!--更新人姓名-->
+			UPDATE_TIME as updateTime<!--更新时间-->
+
+		from ebox.POLICY_BASE_INFO
+		where 1=1  
+		<if test="id != null and id!=''">
+			 and ID = #{id}<!--id-->
+		</if>
+		<if test="policyMonth != null and policyMonth!=''">
+			 and POLICY_MONTH = #{policyMonth}<!--保单月份-->
+		</if>
+		<if test="policyName != null and policyName!=''">
+			 and POLICY_NAME = #{policyName}<!--保单名称-->
+		</if>
+		<if test="policyCode != null and policyCode!=''">
+			 and POLICY_CODE = #{policyCode}<!--保单编号-->
+		</if>
+		<if test="policyAmount != null and policyAmount!=''">
+			 and POLICY_AMOUNT = #{policyAmount}<!--保单金额-->
+		</if>
+		<if test="policyHolderName != null and policyHolderName!=''">
+			 and POLICY_HOLDER_NAME = #{policyHolderName}<!--投保人姓名-->
+		</if>
+		<if test="insuredName != null and insuredName!=''">
+			 and INSURED_NAME = #{insuredName}<!--被保人姓名-->
+		</if>
+		<if test="distributeFaId != null and distributeFaId!=''">
+			 and DISTRIBUTE_FA_ID = #{distributeFaId}<!--所属FAID-->
+		</if>
+		<if test="distributeFaNo != null and distributeFaNo!=''">
+			 and DISTRIBUTE_FA_NO = #{distributeFaNo}<!--所属FA工号-->
+		</if>
+		<if test="distributeFaName != null and distributeFaName!=''">
+			 and DISTRIBUTE_FA_NAME = #{distributeFaName}<!--所属FA姓名-->
+		</if>
+		<if test="isDistributeFa != null and isDistributeFa!=''">
+			 and IS_DISTRIBUTE_FA = #{isDistributeFa}<!--是否已被分配-->
+		</if>
+		<if test="col1 != null and col1!=''">
+			 and COL_1 = #{col1}<!--预留字段1-->
+		</if>
+		<if test="col2 != null and col2!=''">
+			 and COL_2 = #{col2}<!--预留字段2-->
+		</if>
+		<if test="col3 != null and col3!=''">
+			 and COL_3 = #{col3}<!--预留字段3-->
+		</if>
+		<if test="col4 != null and col4!=''">
+			 and COL_4 = #{col4}<!--预留字段4-->
+		</if>
+		<if test="col5 != null and col5!=''">
+			 and COL_5 = #{col5}<!--预留字段5-->
+		</if>
+		<if test="col6 != null and col6!=''">
+			 and COL_6 = #{col6}<!--预留字段6-->
+		</if>
+		<if test="col7 != null and col7!=''">
+			 and COL_7 = #{col7}<!--预留字段7-->
+		</if>
+		<if test="col8 != null and col8!=''">
+			 and COL_8 = #{col8}<!--预留字段8-->
+		</if>
+		<if test="col9 != null and col9!=''">
+			 and COL_9 = #{col9}<!--预留字段9-->
+		</if>
+		<if test="col10 != null and col10!=''">
+			 and COL_10 = #{col10}<!--预留字段10-->
+		</if>
+		<if test="sort != null and sort!=''">
+			 and SORT = #{sort}<!--排序-->
+		</if>
+		<if test="remark != null and remark!=''">
+			 and REMARK = #{remark}<!--备注-->
+		</if>
+		<if test="enabled != null and enabled!=''">
+			 and ENABLED = #{enabled}<!--是否有效-->
+		</if>
+		<if test="removed != null and removed!=''">
+			 and REMOVED = #{removed}<!--是否删除-->
+		</if>
+		<if test="createUserId != null and createUserId!=''">
+			 and CREATE_USER_ID = #{createUserId}<!--创建人ID-->
+		</if>
+		<if test="createUserName != null and createUserName!=''">
+			 and CREATE_USER_NAME = #{createUserName}<!--创建人姓名-->
+		</if>
+		<if test="createTime != null and createTime!=''">
+			 and CREATE_TIME = #{createTime}<!--创建时间-->
+		</if>
+		<if test="updateUserId != null and updateUserId!=''">
+			 and UPDATE_USER_ID = #{updateUserId}<!--更新人ID-->
+		</if>
+		<if test="updateUserName != null and updateUserName!=''">
+			 and UPDATE_USER_NAME = #{updateUserName}<!--更新人姓名-->
+		</if>
+		<if test="updateTime != null and updateTime!=''">
+			 and UPDATE_TIME = #{updateTime}<!--更新时间-->
+		</if>
+
+	</select>
+
+	<insert id="insert" parameterType="com.fijo.ebox.modular.fa.pojo.BXFA0002" keyProperty="id" useGeneratedKeys="true">
+		 insert into ebox.POLICY_BASE_INFO(
+			POLICY_MONTH,<!--保单月份-->
+			POLICY_NAME,<!--保单名称-->
+			POLICY_CODE,<!--保单编号-->
+			POLICY_AMOUNT,<!--保单金额-->
+			POLICY_HOLDER_NAME,<!--投保人姓名-->
+			INSURED_NAME,<!--被保人姓名-->
+			DISTRIBUTE_FA_ID,<!--所属FAID-->
+			DISTRIBUTE_FA_NO,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME,<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA,<!--是否已被分配-->
+			COL_1,<!--预留字段1-->
+			COL_2,<!--预留字段2-->
+			COL_3,<!--预留字段3-->
+			COL_4,<!--预留字段4-->
+			COL_5,<!--预留字段5-->
+			COL_6,<!--预留字段6-->
+			COL_7,<!--预留字段7-->
+			COL_8,<!--预留字段8-->
+			COL_9,<!--预留字段9-->
+			COL_10,<!--预留字段10-->
+			SORT,<!--排序-->
+			REMARK,<!--备注-->
+			ENABLED,<!--是否有效-->
+			REMOVED,<!--是否删除-->
+			CREATE_USER_ID,<!--创建人ID-->
+			CREATE_USER_NAME,<!--创建人姓名-->
+			CREATE_TIME,<!--创建时间-->
+			UPDATE_USER_ID,<!--更新人ID-->
+			UPDATE_USER_NAME,<!--更新人姓名-->
+			UPDATE_TIME<!--更新时间-->
+
+		)
+ 		 values(
+			#{policyMonth},
+			#{policyName},
+			#{policyCode},
+			#{policyAmount},
+			#{policyHolderName},
+			#{insuredName},
+			#{distributeFaId},
+			#{distributeFaNo},
+			#{distributeFaName},
+			#{isDistributeFa},
+			#{col1},
+			#{col2},
+			#{col3},
+			#{col4},
+			#{col5},
+			#{col6},
+			#{col7},
+			#{col8},
+			#{col9},
+			#{col10},
+			#{sort},
+			#{remark},
+			#{enabled},
+			#{removed},
+			#{createUserId},
+			#{createUserName},
+			#{createTime},
+			#{updateUserId},
+			#{updateUserName},
+			#{updateTime}
+
+		)
+	</insert>
+
+	<update id="update" parameterType="com.fijo.ebox.modular.fa.pojo.BXFA0002">
+		 update ebox.POLICY_BASE_INFO set
+			POLICY_MONTH = #{policyMonth},<!--保单月份-->
+			POLICY_NAME = #{policyName},<!--保单名称-->
+			POLICY_CODE = #{policyCode},<!--保单编号-->
+			POLICY_AMOUNT = #{policyAmount},<!--保单金额-->
+			POLICY_HOLDER_NAME = #{policyHolderName},<!--投保人姓名-->
+			INSURED_NAME = #{insuredName},<!--被保人姓名-->
+			DISTRIBUTE_FA_ID = #{distributeFaId},<!--所属FAID-->
+			DISTRIBUTE_FA_NO = #{distributeFaNo},<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME = #{distributeFaName},<!--所属FA姓名-->
+			IS_DISTRIBUTE_FA = #{isDistributeFa},<!--是否已被分配-->
+			COL_1 = #{col1},<!--预留字段1-->
+			COL_2 = #{col2},<!--预留字段2-->
+			COL_3 = #{col3},<!--预留字段3-->
+			COL_4 = #{col4},<!--预留字段4-->
+			COL_5 = #{col5},<!--预留字段5-->
+			COL_6 = #{col6},<!--预留字段6-->
+			COL_7 = #{col7},<!--预留字段7-->
+			COL_8 = #{col8},<!--预留字段8-->
+			COL_9 = #{col9},<!--预留字段9-->
+			COL_10 = #{col10},<!--预留字段10-->
+			SORT = #{sort},<!--排序-->
+			REMARK = #{remark},<!--备注-->
+			ENABLED = #{enabled},<!--是否有效-->
+			REMOVED = #{removed},<!--是否删除-->
+			CREATE_USER_ID = #{createUserId},<!--创建人ID-->
+			CREATE_USER_NAME = #{createUserName},<!--创建人姓名-->
+			CREATE_TIME = #{createTime},<!--创建时间-->
+			UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+			UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+			UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		 where ID=#{id}
+	</update>
+
+	<update id="batchUpdateDistributeInfo">
+		update ebox.POLICY_BASE_INFO set
+
+		DISTRIBUTE_FA_ID = #{distributeFaId},<!--所属FAID-->
+		DISTRIBUTE_FA_NO = #{distributeFaNo},<!--所属FA工号-->
+		DISTRIBUTE_FA_NAME = #{distributeFaName},<!--所属FA姓名-->
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		where ID in ${ids}
+	</update>
+
+
+
+	<update id="batchSetIsDistributeFa">
+		update ebox.POLICY_BASE_INFO set
+
+
+
+		IS_DISTRIBUTE_FA = #{isDistributeFa},
+		<if test="isDistributeFa != null  and isDistributeFa == false ">
+			DISTRIBUTE_FA_ID = null,<!--所属FAID-->
+			DISTRIBUTE_FA_NO = null,<!--所属FA工号-->
+			DISTRIBUTE_FA_NAME = null,<!--所属FA姓名-->
+		</if>
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+
+		where ID in ${ids}
+	</update>
+
+
+	<delete id="deleteById" parameterType="java.lang.String">
+		 delete from ebox.POLICY_BASE_INFO
+		 where ID=#{id}
+	</delete>
+
+
+	<delete id="logicDeleteById">
+		update  ebox.POLICY_BASE_INFO set
+		ENABLED = #{enabled},
+		REMOVED = #{removed},
+		UPDATE_USER_ID = #{updateUserId},<!--更新人ID-->
+		UPDATE_USER_NAME = #{updateUserName},<!--更新人姓名-->
+		UPDATE_TIME = #{updateTime}<!--更新时间-->
+		where ID in ${id}
+	</delete>
+
+</mapper>
+

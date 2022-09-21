@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>ECSY0005</title>
+		<script>
+			document.write('<script src="../../js/public.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<script>
+			document.write('<script src="js/ECSY0005.js?v=' + new Date().getTime() + '"><\/script>')
+		</script>
+		<link rel="stylesheet" href="css/ECSY0005.css">
+		<style>
+
+		</style>
+	</head>
+	<!--新版前端框架-->
+	<body>
+		<div id="root" v-cloak>
+			<!-- 导航栏 -->
+			<fj-breadcrumb></fj-breadcrumb>
+
+			<fj-query @hook:mounted="bindExport">
+				<div slot="query">
+					<el-row :gutter="10" size="mini">
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+							<fj-title content="标签类型编码"></fj-title>
+						</el-col>
+						<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
+							<el-input v-model="queryForm.tagTypeCode" :size="size"></el-input>
+						</el-col>
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+							<fj-title content="标签类型名称"></fj-title>
+						</el-col>
+						<el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">
+							<el-input v-model="queryForm.tagTypeName" :size="size"></el-input>
+						</el-col>
+					</el-row>
+
+					<el-row :gutter="10">
+						<form id="form" method="POST" enctype="application/x-www-form-urlencoded">
+							<div style="display: none;">
+								<el-input v-model="queryStr" name="queryStr"></el-input>
+								<el-input v-model="columnList" name="columnList"></el-input>
+								<el-input v-model="orgCode" name="orgCode"></el-input>
+							</div>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="danger" :size="size" @click="deleteById" plain>删除</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;" :offset="1">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="insert">新增</el-button>
+								</div>
+							</el-col>
+
+							<!-- <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" id="export" native-type="submit" :size="size">导出
+									</el-button>
+								</div>
+							</el-col> -->
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="query">查询</el-button>
+								</div>
+							</el-col>
+							<!-- <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;margin-right: 10px">
+								<div class="grid-content bg-purple-light">
+									<el-button type="success" id="import" :size="size" @click="importFile">导入
+									</el-button>
+								</div>
+							</el-col> -->
+						</form>
+						<!-- <form id="formTemplate" method="POST" enctype="application/x-www-form-urlencoded">
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;margin-right: 10px">
+								<div class="grid-content bg-purple-light">
+									<el-button type="success" id="downloadTemplate" native-type="submit" :size="size">
+										模板下载</el-button>
+								</div>
+							</el-col>
+						</form>
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;margin-right: 10px;">
+							<div class="grid-content bg-purple-light">
+								<el-button type="success" id="customTemplate" @click="customTemplateConfig"
+									:size="size">自定义模板</el-button>
+							</div>
+						</el-col> -->
+					</el-row>
+				</div>
+			</fj-query>
+			<fj-resultbody>
+				<div slot="info">
+					<table id="table" class="appointWidthTable"></table>
+				</div>
+			</fj-resultbody>
+			<!--新增查看修改模态框-->
+			<el-dialog title="" :visible.sync="dialogFormVisible" width="90%" height="50vh" :top="top"
+				:close-on-click-modal="close">
+				<fj-dialogtitle :name="operateName"></fj-dialogtitle>
+
+				<el-form :model="dataForm" :rules="rules" ref="dataForm" label-width="150px" class="demo-ruleForm">
+					<el-row :gutter="10" size="mini">
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标签类型编码" prop="tagTypeCode">
+								<el-input v-model="dataForm.tagTypeCode" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标签类型名称" prop="tagTypeName">
+								<el-input v-model="dataForm.tagTypeName" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="圆角样式">
+								<el-input v-model="dataForm.roundType" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标记样式">
+								<el-input v-model="dataForm.markType" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="空心样式">
+								<el-input v-model="dataForm.plainType" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标签大小">
+								<el-input v-model="dataForm.tagSize" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="默认文本颜色" prop="defaultTextColor">
+								<el-input v-model="dataForm.defaultTextColor" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="默认背景颜色" prop="defaultBackgroundColor">
+								<el-input v-model="dataForm.defaultBackgroundColor" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="选择类型" prop="choiceType">
+								<el-radio-group v-model="dataForm.choiceType">
+									<el-radio :label="1">单选</el-radio>
+									<el-radio :label="2">多选</el-radio>
+								</el-radio-group>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="排序" prop="sort">
+								<el-input-number v-model="dataForm.sort" :step="5" :size="size"></el-input-number>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+							<el-form-item label="备注">
+								<el-input v-model="dataForm.remark" type="textarea" :rows="2" :size="size">
+								</el-input>
+							</el-form-item>
+						</el-col>
+
+					</el-row>
+				</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="confirmOperate('dataForm')">确定</el-button>
+				</div>
+			</el-dialog>
+
+			<!--系统标签配置详情模态框-->
+			<el-dialog title="" :visible.sync="detailsdialogFormVisible" width="90%" height="50vh" :top="top"
+				:close-on-click-modal="close">
+				<fj-dialogtitle name="系统标签配置详情"></fj-dialogtitle>
+				<fj-query>
+					<div slot="query">
+						<el-row :gutter="10">
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="danger" :size="size" @click="detailsdeleteById" plain>删除
+									</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="detailsupdate">
+										修改</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;" :offset="1">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="detailsinsert">
+										新增</el-button>
+								</div>
+							</el-col>
+							<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" style="float: right;" :offset="1">
+								<div class="grid-content bg-purple-light">
+									<el-button type="primary" :size="size" @click="openChoose">
+										组织挑选标签</el-button>
+								</div>
+							</el-col>
+						</el-row>
+					</div>
+				</fj-query>
+				<fj-resultbody>
+					<div slot="info">
+						<table id="detailstable" class="appointWidthTable"></table>
+					</div>
+				</fj-resultbody>
+			</el-dialog>
+
+			<!--系统标签配置详情新增查看修改模态框-->
+			<el-dialog title="" :visible.sync="detailsdialogFormVisibleCZ" width="65%" height="30vh" :top="top"
+				:close-on-click-modal="close" :modal="false">
+				<fj-dialogtitle :name="operateName"></fj-dialogtitle>
+				<el-form :model="detailsdataForm" :rules="rules" ref="detailsdataForm" label-width="110px"
+					class="demo-ruleForm">
+					<el-row :gutter="10" size="mini">
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标签编码" prop="tagCode">
+								<el-input v-model="detailsdataForm.tagCode" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="标签名称" prop="tagName">
+								<el-input v-model="detailsdataForm.tagName" :size="size"></el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="文本颜色" prop="textColor">
+								<el-input v-model="detailsdataForm.textColor" :size="size">
+								</el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="背景颜色" prop="backgroundColor">
+								<el-input v-model="detailsdataForm.backgroundColor" :size="size">
+								</el-input>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-form-item label="排序" prop="sort">
+								<el-input-number v-model="detailsdataForm.sort" :step="5" :size="size">
+								</el-input-number>
+							</el-form-item>
+						</el-col>
+						<el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
+							<el-form-item label="备注">
+								<el-input v-model="detailsdataForm.remark" type="textarea" :rows="2" :size="size">
+								</el-input>
+							</el-form-item>
+						</el-col>
+					</el-row>
+				</el-form>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="detailsconfirmOperate('detailsdataForm')"
+						:style="{backgroundColor:count.button.bgc,border:count.button.border}">确定
+					</el-button>
+				</div>
+			</el-dialog>
+			
+			<el-drawer :title="tagChooseTitle" :visible.sync="tagChooseDrawer1" direction="rtl" size="80%"
+				:before-close="tagChooseDrawerClose">
+				<el-row>
+					<el-col :span="22" :offset="1">
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+							<fj-title content="标签名称"></fj-title>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-input v-model="fcdata.tagName" placeholder="请输入标签名称。如果查询多个标签需要用英文逗号隔开" type="textarea" :rows="3"
+								clearable></el-input>
+						</el-col>
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" :offset="1">
+							<el-button type="primary" size="medium" icon="el-icon-search" circle
+								@click="queryEelationTag(fcdata.tagName,1)"></el-button>
+						</el-col>
+					</el-col>
+					<el-col :span="22" :offset="1" style="margin-top: 15px;">
+						<fj-resultbody>
+							<div slot="info">
+								<table id="table2" class="appointWidthTable"></table>
+							</div>
+						</fj-resultbody>
+						<el-row>
+							<el-col :span="24">
+								<div style="float: right;">
+									<el-button type="primary" @click="openChooseTag">挑选标签</el-button>
+									<el-button type="danger" @click="removeChooseTag">移除标签</el-button>
+								</div>
+							</el-col>
+						</el-row>
+					</el-col>
+				</el-row>
+			</el-drawer>
+			
+			<el-drawer :title="tagChooseTitle" :visible.sync="tagChooseDrawer2" size="75%" direction="rtl"
+				:close-on-click-modal="close" :append-to-body="true">
+				<el-row>
+					<el-col :span="22" :offset="1">
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+							<fj-title content="标签名称"></fj-title>
+						</el-col>
+						<el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
+							<el-input v-model="fcdata.chooseTagName" placeholder="请输入标签名称" type="textarea" :rows="3"
+								clearable></el-input>
+						</el-col>
+						<el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2" :offset="1">
+							<el-button type="primary" size="medium" icon="el-icon-search" circle
+								@click="queryEelationTag(fcdata.chooseTagName,2)"></el-button>
+						</el-col>
+					</el-col>
+					<el-col :span="22" :offset="1" style="margin-top: 15px;">
+						<fj-resultbody>
+							<div slot="info">
+								<table id="table3" class="appointWidthTable"></table>
+							</div>
+						</fj-resultbody>
+			
+						<el-row>
+							<el-col :span="24">
+								<div style="float: right;">
+									<el-button type="primary" @click="addChooseTag">确定挑选</el-button>
+								</div>
+							</el-col>
+						</el-row>
+					</el-col>
+				</el-row>
+			</el-drawer>
+
+
+
+
+			<!--上传文件模态框-->
+			<el-dialog title="" @opened="dialogOpened" :visible.sync="fileBaseConfig.dialogUploadFileFormVisible"
+				width="40%" :top="top" :close-on-click-modal="close">
+				<fj-dialogtitle :name="fileBaseConfig.operateUploadFileName"></fj-dialogtitle>
+				<el-row :gutter="10" size="mini">
+					<el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" :offset="3">
+						<el-upload style="width: 100%;height: 100%;" drag ref="file-upload" action="" :multiple="false"
+							:limit="1" :on-exceed="handleExceed" :on-change="handleChange" :on-remove="handleRemove"
+							:auto-upload="false" :accept="fileBaseConfig.acceptFileType">
+							<el-card shadow="hover" class="cardBox">
+								<span style="display: block;">上传文件</span>
+								<i class="el-icon-upload backupDefault" style="font-size: 40px;"></i>
+								<span style="display: block;line-height: 0px;">将文件拖到此处，或<em>点击上传</em></span>
+							</el-card>
+						</el-upload>
+					</el-col>
+				</el-row>
+				<div slot="footer" class="dialog-footer">
+					<el-button type="primary" :size="size" @click="confirmImport">确认导入</el-button>
+				</div>
+			</el-dialog>
+
+
+			<!--上传文件模态框-->
+			<el-dialog title="" :visible.sync="fileBaseConfig.customTemplateVisible" width="60%" height="50vh"
+				:top="top" :close-on-click-modal="close">
+				<fj-dialogtitle name="自定义模板下载"></fj-dialogtitle>
+				<el-row :gutter="10" size="mini">
+					<el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18" :offset="3">
+						<el-checkbox :indeterminate="fileBaseConfig.isIndeterminate" v-model="fileBaseConfig.checkAll"
+							@change="handleCheckAllChange">全选</el-checkbox>
+						<div style="margin: 15px 0;"></div>
+						<el-checkbox-group v-model="fileBaseConfig.checkedFields" @change="handleCheckedFieldsChange">
+							<el-row :gutter="10" size="mini">
+								<el-col v-for="(field,index) in fileBaseConfig.fieldOptions" :key="index" :span="8"
+									style="margin-bottom: 10px;">
+									<el-checkbox :label="field.fieldEn" :key="field.fieldEn">{{field.fieldCn}}
+									</el-checkbox>
+								</el-col>
+							</el-row>
+						</el-checkbox-group>
+					</el-col>
+				</el-row>
+				<div slot="footer" class="dialog-footer">
+					<form id="formCustomTemplate" method="POST" enctype="application/x-www-form-urlencoded">
+						<div style="display: none;">
+							<el-input v-model="fileBaseConfig.fieldConfigStr" name="fieldConfigStr"></el-input>
+
+						</div>
+						<el-button type="primary" native-type="submit" :size="size">确认下载</el-button>
+					</form>
+				</div>
+			</el-dialog>
+		</div>
+	</body>
+
+</html>

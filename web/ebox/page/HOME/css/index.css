@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#root{
+    width: 100%;
+    height: 100%;
+}
+
+.mark {
+    padding: 0; 
+    background-color: rgba(0,0,0,0);
+}
+
+.tabsNew .el-tabs__nav-next, .el-tabs__nav-prev {
+    line-height: 60px;
+}
+.tabsNew .el-tabs__nav-wrap::after {
+    background-color: rgba(0,0,0,0);
+}
+.contentTabs .el-tabs__header{
+    margin-bottom: 0 !important;
+}
+.contentTabs{
+    width: 100%;
+}
+.iframetab{
+    width: 100%;
+}
+
+.contentTabs .el-tabs__new-tab{
+    display: none;
+}
+.contentTabs .el-tabs__header{
+    margin: 0;
+}
+.contentTabs .el-tabs__nav div:nth-child(1) .el-icon-close{
+    display: none;
+}
+
+
+.el-autocomplete-suggestion .el-scrollbar ul li:nth-child(1){
+    color: #FE2D46;
+}
+.el-autocomplete-suggestion .el-scrollbar ul li:nth-child(2){
+    color: #F60;
+}
+.el-autocomplete-suggestion .el-scrollbar ul li:nth-child(3){
+    color: #FAA90E;
+}
+
+
+
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-left: 120px;
+}
+.avatar-uploader .el-upload:hover {
+    border-color: #235FCC;
+}
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+.avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+.el-upload__input{
+    display: none !important;
+}

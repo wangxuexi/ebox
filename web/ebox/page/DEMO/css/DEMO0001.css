@@ -1,0 +1,10 @@
+[v-cloak] {
+	display: none;
+}
+
+html {
+	-webkit-tap-highlight-color: transparent;
+	background-color: #FFFFFF;
+	
+	height: 500px;
+}
